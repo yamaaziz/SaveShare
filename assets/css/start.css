@@ -1,0 +1,140 @@
+/* Global Styles */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: black;
+}
+
+.vert-text h1 {
+  padding-top: 0px;
+  margin: 0;
+  font-size: 4.5em;
+  font-weight: 700;
+}
+/*Custom: Removes the blue link color and underline from logo and text*/
+.logo_text a {
+  color: inherit;
+  text-decoration: none;
+}
+/*Custom: Creates some space between the text and sign buttons*/
+.sign_buttons {
+  padding: 10px;
+}
+
+#info_button {
+	padding-top: 50px;
+	color: rgb(66,139,177);
+	font-size: inherit;
+}
+
+/*Custom: Positions the modals a bit more south*/
+#sign_in_modal_ {
+  margin-top: 170px;
+        
+}
+#sign_up_modal_{
+  margin-top: 0px;
+  
+}
+/*Custom: Reduces modal width size*/
+/*#sign_in_modal .modal-dialog {
+  width: 300px;
+}*/
+/*Custom: Colors field errors in sign in/up red*/
+.text-error {
+  color: red;
+}
+
+/* Full Page Image Header Area */
+
+.header {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: url(../img/back2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Intro */
+
+.intro {
+  padding: 50px 0;
+  background: rgba(250,250,250,1);
+  color: black;
+}
+
+/* Services */
+
+.services {
+  background: rgb(66,139,177);
+  padding: 50px 0;
+  color: #ffffff;
+}
+
+.service-item {
+  margin-bottom: 15px;
+}
+
+i.service-icon {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle; 
+  text-align: center;
+}
+
+/* Footer */
+
+footer {
+  padding: 120px 0;
+  background: rgba(250,250,250,1);
+}
+
+footer a {
+  color: #0b5276;
+}
+
+footer a:hover{
+  color: #000000;
+}
+
+.top-scroll {
+  margin-top: 50px;
+}
+
+.top-scroll a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .header {
+	background: url(../img/back2.jpg) no-repeat center center scroll;
+  }
+
+}
+
+/*Custom:
+	I changed the @media settings in the source bootstrap.css to always keep the modal centered when screen size changes.
+	Need to test this on small mobile screens somehow.
+*/
