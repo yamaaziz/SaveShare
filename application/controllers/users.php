@@ -119,17 +119,6 @@ class Users extends CI_Controller{
 	//is passed on to start. In start, the variable $trigger_modal will load the variable $data and a php echo function will echo ""; 	//								//the full pathway to the script, which will then execute and trigger the modal to show. This is neccessary do to because of 		//								//the way the sign in component is built. The sign in modal is a external view that is loaded on the start page by CLICKING a 		//								//button. This button triggers the modal to show. And this is exactly what this custom javascript replicates. It artificially 		//								//CLICKS the button.																												//
 	//**********************************************************************************************************************************//
 	
-	/*public function direct_to_sign_in(){
-		
-		$data['pathway']='sign_in_script.js';
-		$this->load->view('start', $data);
-		
-	}
-	public function direct_to_sign_up(){
-		$data['pathway'] = 'sign_up_script.js';
-		$this->load->view('start',$data);
-	}*/
-	
 	public function load_modal($option){
 	
 		if($option == 'sign_in'){

@@ -1,4 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- PHP Code Here -->
+	<!-- START PAGE -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -20,7 +22,8 @@
 	    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	    <script src="<?php echo base_url();?>assets/js/Chart.js"></script>
 	    
-	    <?php $username = $session_data['username']; ?>
+	    <!-- PHP Code Here -->
+	    <?php $username = ucfirst($this->session->userdata['username']); ?>
 
 	</head>
 
@@ -128,12 +131,12 @@
 					        </li>
 				            <li class="dropdown">
 				            	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				                	<i class="fa fa-user fa-fw"></i><?php echo ' '.ucfirst($username).' '; ?><i class="fa fa-caret-down"></i>
+				                	<i class="fa fa-user fa-fw"></i><?php echo ' '.$username.' '; ?><i class="fa fa-caret-down"></i>
 				                </a>
 				                <ul class="dropdown-menu dropdown-user">
 				                	<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
 									</li>
-									<li><a href="<?php echo base_url(); ?>profile/settings"><i class="fa fa-gear fa-fw"></i> Settings</a>
+									<li><a href="<?php echo base_url(); ?>profile/show_settings/"><i class="fa fa-gear fa-fw"></i> Settings</a>
 									</li>
 									<li class="divider"></li>
 									<li><a href="<?php echo base_url(); ?>users/sign_out"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -150,7 +153,7 @@
 			        	</form>
 			        	
 			        	<ul class = "advanced-search">
- 			            	<a href="#">
+ 			            	<a href="<?php echo base_url(); ?>profile/advanced_search">
 								<small><em>Advanced search</em></small>
 								<i class="fa fa-angle-right"></i>
 		        			</a>
@@ -165,7 +168,7 @@
 			        	<a href="<?php echo base_url();?>#"><i class="fa fa-truck"></i> Profile</a>
 			        </li>
 			        <li>
-			        	<a href="<?php echo base_url(); ?>profile/economy"><i class="fa fa-table"></i> Economy</a>
+			        	<a href="<?php echo base_url(); ?>profile/show_economy"><i class="fa fa-table"></i> Economy</a>
 			        </li>
 			        <li>
 			        	<a href="#"><i class="fa fa-heart"></i> Followers</a>

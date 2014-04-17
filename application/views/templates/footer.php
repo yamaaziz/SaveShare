@@ -1,4 +1,6 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>	  
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- PHP Code Here -->
+	<!-- START PAGE -->	  
 		<footer>
 			<div id="footer">
 				<hr>

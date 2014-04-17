@@ -34,7 +34,7 @@ class Economy extends CI_Controller{
 		
 		if($this->form_validation->run() == FALSE){
 				//Gör nått ...
-				redirect('profile/economy');
+				redirect('profile/economy/add_economy');
 				}
 		else
 		{

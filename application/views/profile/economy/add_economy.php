@@ -1,7 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- PHP Code Here -->
+	<!-- START PAGE -->
 <?php $attributes = array('id' =>'submit_economy_form',
 						'class' => 'form-horizontal'); ?>
-<?php echo form_open('economy/submit_economy', $attributes); ?>
+<?php echo form_open('show_economy/submit_economy', $attributes); ?>
 		<!-- Page content -->
 	    <div id="page-content-wrapper">
 	        <div class="content-header">

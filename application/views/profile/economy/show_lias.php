@@ -1,4 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- PHP Code Here -->
+	<!-- START PAGE -->
+	
 <!DOCTYPE html>
 <html lang="en">
 	<?php $economy = get_object_vars($economy_info);?>

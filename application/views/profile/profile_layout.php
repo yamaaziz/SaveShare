@@ -1,4 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- PHP Code Here -->
+<?php $session_data = $this->session->all_userdata(); ?>
+	<!-- START PAGE -->
 		<!-- Page content -->
 	    <div id="page-content-wrapper">
 	        <div class="content-header">
@@ -54,7 +57,7 @@
 			
 					</div>
 					<div class="col-md-6">
-						<?php echo $this->load->view('profile/show_savings'); ?>
+						<?php echo $this->load->view('profile/economy/show_savings'); ?>
 					</div>
 				</div>
 				<div class="row">
@@ -87,7 +90,7 @@
 					</div>
 					
 					<div class="col-md-6">
-						<?php echo $this->load->view('profile/show_lias'); ?>
+						<?php echo $this->load->view('profile/economy/show_lias'); ?>
 					</div>
 				</div>
 
@@ -114,4 +117,4 @@
 
 			    </div><!-- /.row -->
 			</div><!-- /.page-content inset -->
-			</div><!-- /.page-content-wrapper --> 
+		</div><!-- /.page-content-wrapper --> 

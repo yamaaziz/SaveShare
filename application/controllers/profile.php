@@ -18,27 +18,27 @@ class Profile extends CI_Controller{
     	}
     	else{ 			
     		//Load Data
-    		$data['session_data']	=	$this->session->all_userdata();
+    		//$data['session_data']	=	$this->session->all_userdata();
     		$data1['user_info']		= 	$this->collect_userinfo();
     		$data1['economy_info']	=	$this->collect_economyinfo();
     		//Load Views
-    		$this->load->view('templates/header', $data);
+    		$this->load->view('templates/header');
 	    	$this->load->view('profile/profile_layout', $data1);
 	    	$this->load->view('templates/footer');    	}
 	    
     }
-    public function settings(){
-		$data['session_data']	=	$this->session->all_userdata();
-    	$this->load->view('templates/header',$data);
-    	$this->load->view('profile/settings');
+    public function show_settings(){
+		//$data['session_data']	=	$this->session->all_userdata();
+    	$this->load->view('templates/header');
+    	$this->load->view('profile/settings/settings_layout');
     	$this->load->view('templates/footer');
     	    
     }
     
     public function economy(){
-		$data['session_data']	=	$this->session->all_userdata();
-    	$this->load->view('templates/header',$data);
-    	$this->load->view('profile/economy');
+		//$data['session_data']	=	$this->session->all_userdata();
+    	$this->load->view('templates/header');
+    	$this->load->view('profile/economy/add_economy');
     	$this->load->view('templates/footer');    	    
     }
     
@@ -53,9 +53,9 @@ class Profile extends CI_Controller{
     }
     
     public function advanced_search(){
-		$data['session_data']	=	$this->session->all_userdata();
-    	$this->load->view('templates/header',$data);
-    	$this->load->view('profile/advanced_search');
+		//$data['session_data']	=	$this->session->all_userdata();
+    	$this->load->view('templates/header');
+    	$this->load->view('profile/search/advanced_search');
     	$this->load->view('templates/footer');    	    
     }
 
