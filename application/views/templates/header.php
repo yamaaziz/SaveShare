@@ -21,6 +21,13 @@
 	    <!--<link href="<?php echo base_url();?>css/font-awesome.min.css" rel="stylesheet">-->
 	    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	    <script src="<?php echo base_url();?>assets/js/Chart.js"></script>
+	    <script src="<?php echo base_url();?>assets/js/morris.js"></script>
+	    <script src="<?php echo base_url();?>assets/js/Donut.js"></script>
+	    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 	    
 	    <!-- PHP Code Here -->
 	    <?php $username = ucfirst($this->session->userdata['username']); ?>

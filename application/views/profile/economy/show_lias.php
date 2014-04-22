@@ -16,42 +16,54 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Liability Type</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Housing loan</td>
-                                <td><?php echo $economy['housing_loan']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Construction loan</td>
-                                <td><?php echo $economy['construction_loan']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Private loan</td>
-                                <td><?php echo $economy['private_loan']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Student loan</td>
-                                <td><?php echo $economy['student_loan']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Senior loan</td>
-                                <td><?php echo $economy['senior_loan']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Other loan</td>
-                                <td><?php echo $economy['other_liabilities']; ?></td>
-                            </tr>
+                        	<?php if (!empty ($economy['housing_loan'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Housing Loan</td>
+                                	<td><?php echo $economy['housing_loan']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['construction_loan'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Construction Loan</td>
+                                	<td><?php echo $economy['construction_loan']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['private_loan'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Private Loan</td>
+                                	<td><?php echo $economy['private_loan']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['student_loan'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Student Loan</td>
+                                	<td><?php echo $economy['student_loan']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['senior_loan'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Senior Loan</td>
+                                	<td><?php echo $economy['senior_loan']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['other_liabilities'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Other Loan</td>
+                                	<td><?php echo $economy['other_liabilities']; ?></td>
+                            	</tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

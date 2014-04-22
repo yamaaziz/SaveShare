@@ -10,11 +10,12 @@
 		</footer>
 		</div> <!-- /.wrapper -->		
 	
-	    <!-- JavaScript 
-	    <script src="<?php echo base_url();?>js/jquery-1.10.2.js"></script>
-	    <script src="<?php echo base_url();?>js/bootstrap.js"></script>
+	    <!-- JavaScript -->
+	    <!--<script src="<?php echo base_url();?>js/jquery-1.10.2.js"></script>-->
+	    <!--<script src="<?php echo base_url();?>js/bootstrap.js"></script>-->
 	    <!-- Latest compiled and minified jQuery -->
 	    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
 	    <script>window.jQuery || document.write('\x3Cscript src="<?php echo base_url(); ?>js/jquery-1.10.2.js">\x3C/script>');</script>
 	    
 	    <!-- Latest compiled and minified JavaScript -->
