@@ -23,32 +23,5 @@ class Profile_model extends CI_Model{
 				return $query->row();
 				}
 	}
-	
-	public function get_economydata($id) {
-		$this->db->select("
-			economy.e_id,
-			economy.total_savings,
-			economy.funds,
-			economy.shares,
-			economy.bonds,
-			economy.commodities,
-			economy.properties,
-			economy.saving_account,
-			economy.other_savings,
-			economy.total_liabilities,
-			economy.housing_loan,
-			economy.construction_loan,
-			economy.private_loan,
-			economy.student_loan,
-			economy.senior_loan,
-			economy.other_liabilities
-			");
-		
-		$this->db->from('economy');
-		$this->db->where('economy.e_id', $id);
-		$query = $this->db->get();
-			if ($query->num_rows() == 1) {
-				return $query->row();
-				}
-	}
+
 }

@@ -34,11 +34,16 @@ class Economy extends CI_Controller{
 		
 		if($this->form_validation->run() == FALSE){
 				//Gör nått ...
-				redirect('profile/economy');
+				//redirect('profile/show_economy');
+				
+				$this->load->view('templates/header');
+				$this->load->view('profile/economy/add_economy');
+				$this->load->view('templates/footer');
 				}
 		else
 		{
-		 if($this->economy_model->set_economy()){
+		$id = $this->session->userdata('user_id');
+		 if($this->economy_model->set_economy($id)){
            		
            redirect('profile');
            }
@@ -51,5 +56,5 @@ class Economy extends CI_Controller{
 	}
 				
 }	
-/* End of file users.php */
-/* Location: ./application/controllers//users.php */
+/* End of file economy.php */
+/* Location: ./application/controllers//economy.php */

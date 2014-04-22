@@ -8,10 +8,10 @@ class Economy_model extends CI_Model{
        }
 
 	
-	public function set_economy(){
+	public function set_economy($id){
 		
 		$economy = array(
-			'e_id'				=>		$this->session->userdata('user_id'),
+			'e_id'				=>		$id,
 			'total_savings'		=>		$this->input->post('total_savings'),
 			'funds'				=>		$this->input->post('funds'),
 			'shares'			=>		$this->input->post('shares'),
@@ -33,7 +33,34 @@ class Economy_model extends CI_Model{
         $insert = $this->db->insert('economy', $economy);
         return $insert;
 	}
+		public function get_economydata($id) {
+		$this->db->select("
+			economy.e_id,
+			economy.total_savings,
+			economy.funds,
+			economy.shares,
+			economy.bonds,
+			economy.commodities,
+			economy.properties,
+			economy.saving_account,
+			economy.other_savings,
+			economy.total_liabilities,
+			economy.housing_loan,
+			economy.construction_loan,
+			economy.private_loan,
+			economy.student_loan,
+			economy.senior_loan,
+			economy.other_liabilities
+			");
+		
+		$this->db->from('economy');
+		$this->db->where('economy.e_id', $id);
+		$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				return $query->row();
+				}
+	}
 		
 }
-/*End of file table_model.php*/
-/*Location: ./application/models/table_model.php */
+/*End of file economy_model.php*/
+/*Location: ./application/models/economy_model.php */
