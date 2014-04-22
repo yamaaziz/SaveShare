@@ -3,7 +3,7 @@
 	<!-- START PAGE -->
 <?php $attributes = array('id' =>'submit_economy_form',
 						'class' => 'form-horizontal'); ?>
-<?php echo form_open('show_economy/submit_economy', $attributes); ?>
+<?php echo form_open('economy/submit_economy', $attributes); ?>
 		<!-- Page content -->
 	    <div id="page-content-wrapper">
 	        <div class="content-header">
@@ -16,22 +16,20 @@
 			<div class="page-content inset">
 			    <div class="row">
 			        <div class="col-md-12">
-			            <p class="lead">bla</p>
+			            <p class="lead">Edit your Economy</p>
 			        </div>
 					<div class="row">
 		                <div class="col-lg-12">
 		                    <div class="panel panel-default">
 		                        <div class="panel-heading">
-		                            Your savings and liabilities
+		                           Savings and Liabilities
 		                        </div>
 		                        <div class="panel-body">
 		                            <div class="row">
 		                                <div class="col-lg-6">
 		                                    <form role="form">
-		                                    	<h1>Savings</h1>
-		                                    	
-		                                    	
-		                                    														
+		                                    	<h2>Savings</h2>
+												
 		                                    		<!--Field: Total savings-->
 													<p>
 													<?php echo form_label('Total savings'); ?>
@@ -172,12 +170,9 @@
 													<!--Display field errors-->
 													<?php echo form_error('other_savings'); ?>
 													</p>			                                        
-            
-															                                       
-															                                 
-													 <h1>Liabilities</h1>
-															                                    
-															                                    
+	                                 
+													 <h2>Liabilities</h2>
+				                                    
 													 <!--Field: Total liabilities-->
 													<p>
 													<?php echo form_label('Total liabilities'); ?>

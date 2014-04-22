@@ -37,7 +37,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="#">Save Share</a>
+			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile">Save Share</a>
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">
 			        <ul class="nav navbar-nav">
@@ -165,7 +165,7 @@
 			<div id="sidebar-wrapper">
 			    <ul class="sidebar-nav">
 			        <li>
-			        	<a href="<?php echo base_url();?>#"><i class="fa fa-truck"></i> Profile</a>
+			        	<a href="<?php echo base_url();?>profile"><i class="fa fa-truck"></i> Profile</a>
 			        </li>
 			        <li>
 			        	<a href="<?php echo base_url(); ?>profile/show_economy"><i class="fa fa-table"></i> Economy</a>

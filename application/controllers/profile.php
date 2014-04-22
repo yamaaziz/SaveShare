@@ -18,7 +18,6 @@ class Profile extends CI_Controller{
     	}
     	else{ 			
     		//Load Data
-    		//$data['session_data']	=	$this->session->all_userdata();
     		$data1['user_info']		= 	$this->collect_userinfo();
     		$data1['economy_info']	=	$this->collect_economyinfo();
     		//Load Views
@@ -28,15 +27,13 @@ class Profile extends CI_Controller{
 	    
     }
     public function show_settings(){
-		//$data['session_data']	=	$this->session->all_userdata();
     	$this->load->view('templates/header');
     	$this->load->view('profile/settings/settings_layout');
     	$this->load->view('templates/footer');
     	    
     }
     
-    public function economy(){
-		//$data['session_data']	=	$this->session->all_userdata();
+    public function show_economy(){
     	$this->load->view('templates/header');
     	$this->load->view('profile/economy/add_economy');
     	$this->load->view('templates/footer');    	    
@@ -49,18 +46,15 @@ class Profile extends CI_Controller{
     
     public function collect_economyinfo() {
     	$id = $this->session->userdata('user_id');
-    	return $this->profile_model->get_economydata($id);
+    	return $this->economy_model->get_economydata($id);
     }
     
     public function advanced_search(){
-		//$data['session_data']	=	$this->session->all_userdata();
     	$this->load->view('templates/header');
     	$this->load->view('profile/search/advanced_search');
     	$this->load->view('templates/footer');    	    
     }
 
-    
-    
     //you should extend Start so this function is included 
     private function is_signed_in(){
 	
@@ -74,5 +68,5 @@ class Profile extends CI_Controller{
 	}
 
 }
-
-?>
+/* End of file profile.php */
+/* Location: ./application/controllers//profile.php */

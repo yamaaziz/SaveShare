@@ -7,7 +7,7 @@
 	        <div class="content-header">
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
-	                Economy
+	                Profile
 	            </h1>	            
 	        </div><!-- content-header-->
 	    	 <!-- Keep all page content within the page-content inset div! -->
@@ -15,7 +15,7 @@
 			
 			    <div class="row">
 			        <div class="col-md-12">
-			            <p class="lead">The Home Page</p>
+			            <p class="lead">User Info</p>
 			        </div>
 			    </div>
 			    
