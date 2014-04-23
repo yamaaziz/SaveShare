@@ -48,7 +48,7 @@ class Economy extends CI_Controller{
 				$data['economy_data']	=	$this->collect_economyinfo();
 												
 				$this->load->view('templates/header');
-				$this->load->view('profile/economy/add_economy', $data);
+				$this->load->view('economy/add_economy', $data);
 				$this->load->view('templates/footer');
 				}
 		else
