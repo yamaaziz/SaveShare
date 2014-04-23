@@ -16,42 +16,54 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Savings Type</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Funds</td>
-                                <td><?php echo $economy['funds']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Shares</td>
-                                <td><?php echo $economy['shares']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Commodities</td>
-                                <td><?php echo $economy['commodities']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Saving Account</td>
-                                <td><?php echo $economy['saving_account']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Properties</td>
-                                <td><?php echo $economy['properties']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Other Savings</td>
-                                <td><?php echo $economy['other_savings']; ?></td>
-                            </tr>
+                        	<?php if (!empty ($economy['housing_loan'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Funds</td>
+                                	<td><?php echo $economy['housing_loan']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['shares'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Shares</td>
+                                	<td><?php echo $economy['shares']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['commodities'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Commodities</td>
+                                	<td><?php echo $economy['commodities']; ?></td>
+                            	</tr>
+                             <?php } ?>
+                             <?php if (!empty ($economy['saving_account'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Saving Account</td>
+                                	<td><?php echo $economy['saving_account']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['properties'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Properties</td>
+                                	<td><?php echo $economy['properties']; ?></td>
+                            	</tr>
+                            <?php } ?>
+                            <?php if (!empty ($economy['other_savings'])) {?>
+                            	<tr>
+                                	<td></td>
+                                	<td>Other Savings</td>
+                                	<td><?php echo $economy['other_savings']; ?></td>
+                            	</tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

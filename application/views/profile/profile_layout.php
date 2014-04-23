@@ -1,6 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
-<?php $session_data = $this->session->all_userdata(); ?>
+<?php
+	$session_data = $this->session->all_userdata(); 
+	$economy = get_object_vars($economy_info);
+	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
 	    <div id="page-content-wrapper">
@@ -28,65 +31,117 @@
 			            <p class="well"> Extra space. Follow-button? Send private message-button? </p>
 			        </div>
 			    </div>
-				
+
 				<div class="row">
 					<div class="col-md-6">
-						<p class="lead">Savings Chart</p>
-						<canvas id="canvas" height="300" width="300"></canvas>
-							<script>
-							
-								var pieData = [
-										{
-											value: 30,
-											color:"#F38630"
-										},
-										{
-											value : 50,
-											color : "#E0E4CC"
-										},
-										{
-											value : 100,
-											color : "#69D2E7"
-										}
-									
-									];
-							
-								var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
-								
+					<p class="lead" >Savings Chart</p>		
+							<div id="donut_chart" style="height: 350px;"></div>
+							<?php $total_savings = $economy['funds']+$economy['shares']+$economy['commodities']+$economy['saving_account']+$economy['properties']+$economy['other_savings'];?>
+			            		<script>
+									new Morris.Donut({
+								        element: 'donut_chart',
+								        data: [
+								        
+								        <?php if (!empty ($economy['funds'])) {?>
+								        {
+								            label: "Funds",
+								            value: <?php echo round(($economy['funds']/$total_savings)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['shares'])) {?>
+								         {
+								            label: "Shares",
+								            value: <?php echo round(($economy['shares']/$total_savings)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['commodities'])) {?>
+								        {
+								            label: "Commodities",
+								            value: <?php echo round(($economy['commodities']/$total_savings)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['saving_account'])) {?>
+								        {
+								            label: "Saving Account",
+								            value: <?php echo round(($economy['saving_account']/$total_savings)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['properties'])) {?>
+								        {
+								            label: "Properties",
+								            value: <?php echo round(($economy['properties']/$total_savings)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['other_savings'])) {?>
+								        {
+								            label: "Other Savings",
+								            value: <?php echo round(($economy['other_savings']/$total_savings)*100); ?>
+								        }
+								        <?php } ?>
+								        ],
+								        resize: true,
+								        formatter: function (x, data) { return x + "%"; }
+								    });
 								</script>
-			
 					</div>
 					<div class="col-md-6">
 						<?php echo $this->load->view('profile/economy/show_savings'); ?>
 					</div>
 				</div>
+
 				<div class="row">
 					<div class="col-md-6">
 						<p class="lead"> Liabilities Chart</p>
-						<canvas id="canvas2" height="300" width="300"></canvas>
-							<script>
-							
-								var pieData = [
-										{
-											value: 30,
-											color:"#F38630"
-										},
-										{
-											value : 50,
-											color : "#E0E4CC"
-										},
-										{
-											value : 100,
-											color : "#69D2E7"
-										}
-									
-									];
-							
-								var myPie2 = new Chart(document.getElementById("canvas2").getContext("2d")).Pie(pieData);
-								
+							<div id="donut_chart2" style="height: 350px;"></div>
+							<?php $total_lias = $economy['housing_loan']+$economy['construction_loan']+$economy['private_loan']+$economy['student_loan']+$economy['senior_loan']+$economy['other_liabilities'];?>
+			            		<script>
+									new Morris.Donut({
+								        element: 'donut_chart2',
+								        data: [
+								        
+								        <?php if (!empty ($economy['housing_loan'])) {?>
+								        {
+								            label: "Housing Loan",
+								            value: <?php echo round(($economy['housing_loan']/$total_lias)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['construction_loan'])) {?>
+								         {
+								            label: "Construction Loan",
+								            value: <?php echo round(($economy['construction_loan']/$total_lias)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['private_loan'])) {?>
+								        {
+								            label: "Private Loan",
+								            value: <?php echo round(($economy['private_loan']/$total_lias)*100);?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['student_loan'])) {?>
+								        {
+								            label: "Student Loan",
+								            value: <?php echo round(($economy['student_loan']/$total_lias)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['senior_loan'])) {?>
+								        {
+								            label: "Senior Loan",
+								            value: <?php echo round(($economy['senior_loan']/$total_lias)*100); ?>
+								        },
+								        <?php } ?>
+								        <?php if (!empty ($economy['other_liabilities'])) {?>
+								        {
+								            label: "Other Liabilities",
+								            value: <?php echo round(($economy['other_liabilities']/$total_lias)*100);?>
+								        }
+								        <?php } ?>
+								        ],
+								        resize: true,
+								        formatter: function (x, data) { return x + "%"; }
+								    });
+								    
 								</script>
-							<p>&nbsp;<p>
-			
+
 					</div>
 					
 					<div class="col-md-6">
@@ -117,4 +172,6 @@
 
 			    </div><!-- /.row -->
 			</div><!-- /.page-content inset -->
-		</div><!-- /.page-content-wrapper --> 
+		</div><!-- /.page-content-wrapper -->
+		
+ 
