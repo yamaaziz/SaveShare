@@ -30,7 +30,7 @@ class Economy_model extends CI_Model{
         );
         
         //Make NULL values
-        $insert = $this->db->insert('economy', $economy);
+        $insert = $this->db->update('economy', $economy);
         return $insert;
 	}
 		public function get_economydata($id) {

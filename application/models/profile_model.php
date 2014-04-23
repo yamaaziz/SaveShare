@@ -9,6 +9,8 @@ class Profile_model extends CI_Model{
        
 	public function get_userdata($id) {
 		$this->db->select("
+			users.username,
+			users.email,
 			users.birth_year,
 			users.gender,
 			users.city,
