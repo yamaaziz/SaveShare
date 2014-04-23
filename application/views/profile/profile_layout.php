@@ -34,7 +34,7 @@
 
 				<div class="row">
 					<div class="col-md-6">
-					<p class="lead">Savings Chart</p>		
+					<p class="lead" >Savings Chart</p>		
 							<div id="donut_chart" style="height: 350px;"></div>
 							<?php $total_savings = $economy['funds']+$economy['shares']+$economy['commodities']+$economy['saving_account']+$economy['properties']+$economy['other_savings'];?>
 			            		<script>
@@ -79,7 +79,8 @@
 								        }
 								        <?php } ?>
 								        ],
-								        resize: true
+								        resize: true,
+								        formatter: function (x, data) { return x + "%"; }
 								    });
 								</script>
 					</div>
@@ -113,7 +114,7 @@
 								        <?php if (!empty ($economy['private_loan'])) {?>
 								        {
 								            label: "Private Loan",
-								            value: <?php echo round(($economy['private_loan']/$total_lias)*100); ?>
+								            value: <?php echo round(($economy['private_loan']/$total_lias)*100);?>
 								        },
 								        <?php } ?>
 								        <?php if (!empty ($economy['student_loan'])) {?>
@@ -131,15 +132,15 @@
 								        <?php if (!empty ($economy['other_liabilities'])) {?>
 								        {
 								            label: "Other Liabilities",
-								            value: <?php echo round(($economy['other_liabilities']/$total_lias)*100); ?>
+								            value: <?php echo round(($economy['other_liabilities']/$total_lias)*100);?>
 								        }
 								        <?php } ?>
 								        ],
-								        resize: true
+								        resize: true,
+								        formatter: function (x, data) { return x + "%"; }
 								    });
 								    
 								</script>
-								
 
 					</div>
 					

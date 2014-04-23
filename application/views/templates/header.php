@@ -178,8 +178,8 @@
 			        	<a href="<?php echo base_url(); ?>profile/show_economy"><i class="fa fa-table"></i> Economy</a>
 			        </li>
 			        <li>
-			        	<a href="#"><i class="fa fa-heart"></i> Followers</a>
-			        </li>  
+			        	<a href="<?php echo base_url(); ?>followers"><i class="fa fa-heart"></i> Followers</a>
+			        </li>
 					<li>
 			        	<a href="#"><i class="fa fa-comment-o"></i> Forum</a>
 			        </li>   

@@ -1,15 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<!-- PHP Code Here -->
-	<!-- START PAGE -->
 	
 <!DOCTYPE html>
 <html lang="en">
 	<?php $economy = get_object_vars($economy_info);?>
 	<ul>
         <div class="panel panel-default">
-            <div class="panel-heading">
-                Liabilities
-            </div>
+            <div class="panel-heading"> Liabilities </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
