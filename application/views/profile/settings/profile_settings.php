@@ -112,21 +112,21 @@
 								global $profile_data_;
 								$gender = $profile_data_['gender'];
 								
-								if($gender == (string) 'male'){
+								if($gender === 'male'){
+
 									return TRUE;
 								}
+								else
+								{
+									return FALSE;
+								}
 								
-								
-							
-									
 							}
-							
 							?>
 							
-							<?php
+							<?php			
 							
-							
-							echo form_radio($data, 'male', is_male());
+							echo form_radio($data, 'male', is_male() );
 							echo 'Male';
 							echo form_radio($data, 'female', is_male());
 							echo 'Female' 
@@ -146,7 +146,7 @@
 											'name' 			=>'city',
 											'placeholder' 	=> 'Enter City',
 											'style' 		=> 'width:100%',
-											'value'			=> set_value('city', var_dump($gender))
+											'value'			=> set_value('city', $profile_data_['city'])
 											
 										);
 							?>

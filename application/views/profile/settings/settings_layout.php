@@ -13,7 +13,7 @@
 			        <div class="col-md-12">
 			        	<div class="form-settings">
 			        		<p> Kanske visa profile info </p>
-			        		<p><a href="<?php echo base_url();?>profile/show_profile_settings">Change profile settings</a></p>
+			        		<p><a href="<?php echo base_url();?>profile/profile_settings">Change profile settings</a></p>
 			        	</div>
 			            <p><a href="#" >Change password</a></p>    
 			        </div>

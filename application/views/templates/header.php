@@ -136,7 +136,7 @@
 				                <ul class="dropdown-menu dropdown-user">
 				                	<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
 									</li>
-									<li><a href="<?php echo base_url(); ?>profile/show_settings/"><i class="fa fa-gear fa-fw"></i> Settings</a>
+									<li><a href="<?php echo base_url(); ?>settings"><i class="fa fa-gear fa-fw"></i> Settings</a>
 									</li>
 									<li class="divider"></li>
 									<li><a href="<?php echo base_url(); ?>users/sign_out"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -168,7 +168,7 @@
 			        	<a href="<?php echo base_url();?>profile"><i class="fa fa-truck"></i> Profile</a>
 			        </li>
 			        <li>
-			        	<a href="<?php echo base_url(); ?>profile/show_economy"><i class="fa fa-table"></i> Economy</a>
+			        	<a href="<?php echo base_url(); ?>economy"><i class="fa fa-table"></i> Economy</a>
 			        </li>
 			        <li>
 			        	<a href="#"><i class="fa fa-heart"></i> Followers</a>

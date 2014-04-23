@@ -25,13 +25,13 @@ class Profile extends CI_Controller{
 	    	$this->load->view('templates/footer');
 	    
     }
-    public function show_settings(){
+    public function settings(){
     	$this->load->view('templates/header');
     	$this->load->view('profile/settings/settings_layout');
     	$this->load->view('templates/footer');
     	    
     }
-    public function show_profile_settings(){
+    public function profile_settings(){
     	//Load Profile Data
     	$id = $this->session->userdata('user_id');
     	$data['profile_data'] = $this->profile_model->get_userdata($id);
@@ -71,24 +71,16 @@ class Profile extends CI_Controller{
 	           //Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
            }
 		}	
-    	
-	    
     }
-    
-    public function show_economy(){
-    	$this->load->view('templates/header');
-    	$this->load->view('profile/economy/add_economy');
-    	$this->load->view('templates/footer');    	    
-    }
-    
-    public function collect_userinfo(){
-    	$id = $this->session->userdata('user_id');
-    	return $this->profile_model->get_userdata($id);
-    }
-    
+
     public function collect_economyinfo() {
     	$id = $this->session->userdata('user_id');
     	return $this->economy_model->get_economydata($id);
+    }
+    
+    public function collect_userinfo(){
+	$id = $this->session->userdata('user_id');
+	return $this->profile_model->get_userdata($id);
     }
     
     public function advanced_search(){

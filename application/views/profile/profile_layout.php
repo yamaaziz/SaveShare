@@ -57,7 +57,7 @@
 			
 					</div>
 					<div class="col-md-6">
-						<?php echo $this->load->view('profile/economy/show_savings'); ?>
+						<?php echo $this->load->view('economy/show_savings'); ?>
 					</div>
 				</div>
 				<div class="row">
@@ -90,7 +90,7 @@
 					</div>
 					
 					<div class="col-md-6">
-						<?php echo $this->load->view('profile/economy/show_lias'); ?>
+						<?php echo $this->load->view('economy/show_lias'); ?>
 					</div>
 				</div>
 
