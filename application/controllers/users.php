@@ -47,6 +47,8 @@ class Users extends CI_Controller{
            if($this->user_model->create_user())
            {
            		//Skriv ut ett meddelande. 'Registrering lyckades. Logga in.'
+ 
+		   		
                 redirect('users/sign_in');
            }
            else

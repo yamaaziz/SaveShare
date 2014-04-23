@@ -23,9 +23,10 @@ class Profile extends CI_Controller{
     		//Load Views
     		$this->load->view('templates/header');
 	    	$this->load->view('profile/profile_layout', $data1);
-	    	$this->load->view('templates/footer');    	}
-	    
+	    	$this->load->view('templates/footer');    
+	    	}	    
     }
+    
     public function show_settings(){
     	$this->load->view('templates/header');
     	$this->load->view('profile/settings/settings_layout');
@@ -34,8 +35,9 @@ class Profile extends CI_Controller{
     }
     
     public function show_economy(){
+     	$data1['economy_data']	=	$this->collect_economyinfo();
     	$this->load->view('templates/header');
-    	$this->load->view('profile/economy/add_economy');
+    	$this->load->view('profile/economy/add_economy', $data1);
     	$this->load->view('templates/footer');    	    
     }
     

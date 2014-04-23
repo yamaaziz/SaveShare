@@ -1,22 +1,28 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
 <!-- PHP Code Here -->
 	<!-- START PAGE -->
+	
+<?php $economy_data_ = get_object_vars($economy_data);?>
 <?php $attributes = array('id' =>'submit_economy_form',
-						'class' => 'form-horizontal'); ?>
+						'class' => 'form-horizontal'); ?>						
+
+
 <?php echo form_open('economy/submit_economy', $attributes); ?>
 		<!-- Page content -->
 	    <div id="page-content-wrapper">
 	        <div class="content-header">
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
-	                Economy
+	                Edit your economy
 	            </h1>	            
 	        </div><!-- content-header-->
 		    <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
 			    <div class="row">
 			        <div class="col-md-12">
-			            <p class="lead">Edit your Economy</p>
+			           <!--<p class="lead">Edit your Economy</p> -->
+			           
 			        </div>
 					<div class="row">
 		                <div class="col-lg-12">
@@ -32,13 +38,14 @@
 												
 		                                    		<!--Field: Total savings-->
 													<p>
+													
 													<?php echo form_label('Total savings'); ?>
 													<?php
 													$data = array(
 																	'name' 			=>'total_savings',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('total_savings')				
+																	'value'			=> set_value('total_savings', $economy_data_['total_savings'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -55,7 +62,7 @@
 																	'name' 			=>'funds',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('funds')				
+																	'value'			=> set_value('funds', $economy_data_['funds'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -73,7 +80,7 @@
 																	'name' 			=>'shares',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('shares')				
+																	'value'			=> set_value('shares', $economy_data_['shares'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -91,7 +98,7 @@
 																	'name' 			=> 'bonds',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('bonds')				
+																	'value'			=> set_value('bonds', $economy_data_['bonds'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -110,7 +117,7 @@
 																	'name' 			=> 'commodities',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('commodities')				
+																	'value'			=> set_value('commodities',$economy_data_['commodities'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -127,7 +134,7 @@
 																	'name' 			=> 'properties',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('properties')				
+																	'value'			=> set_value('properties', $economy_data_['properties'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -144,7 +151,7 @@
 																	'name' 			=>'saving_account',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('saving_account')				
+																	'value'			=> set_value('saving_account', $economy_data_['saving_account'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -162,7 +169,7 @@
 																	'name' 			=> 'other_savings',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('other_savings')				
+																	'value'			=> set_value('other_savings', $economy_data_['other_savings'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -181,7 +188,7 @@
 																	'name' 			=>'total_liabilities',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('total_liabilities')				
+																	'value'			=> set_value('total_liabilities', $economy_data_['total_liabilities'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -198,7 +205,7 @@
 																	'name' 			=>'housing_loan',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('housing_loan')				
+																	'value'			=> set_value('housing_loan', $economy_data_['housing_loan'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -216,7 +223,7 @@
 																	'name' 			=>'construction_loan',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('construction_loan')				
+																	'value'			=> set_value('construction_loan', $economy_data_['construction_loan'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -234,7 +241,7 @@
 																	'name' 			=> 'private_loan',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('private_loan')				
+																	'value'			=> set_value('private_loan', $economy_data_['private_loan'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -253,7 +260,7 @@
 																	'name' 			=> 'student_loan',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('student_loan')				
+																	'value'			=> set_value('student_loan', $economy_data_['student_loan'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -270,7 +277,7 @@
 																	'name' 			=> 'senior_loan',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('senior_loan')				
+																	'value'			=> set_value('senior_loan', $economy_data_['senior_loan'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -287,7 +294,7 @@
 																	'name' 			=> 'other_liabilities',
 																	'placeholder' 	=> 'SEK',
 																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('other_liabilities')				
+																	'value'			=> set_value('other_liabilities', $economy_data_['other_liabilities'])				
 																);
 													?>
 													<?php echo form_input($data); ?>
@@ -309,9 +316,7 @@
 													<?php echo form_close(); ?>
 
 													<!-- /.col-lg-6 (nested) -->
-		                                <div class="col-lg-6">
-		                                
-		                                       
+		                                <div class="col-lg-6">		                                		                                       
 		                                            </span>
 		                                        </div>
 		                                   </form>
