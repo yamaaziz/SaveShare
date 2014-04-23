@@ -9,35 +9,21 @@ class User_model extends CI_Model{
 
 	public function login_user($username,$password){
 
-		//GET HASH FROM DB
 		$this->db->where('username',$username);
-		//$this->db->get('users');
 		$result=$this->db->get('users');
 		if($result->num_rows==1){
 			$hash = $result->row(2)->password;
 			
 			if(password_verify($password,$hash)){
 		
-			//hämta user_ID och returnera det
 			return $result->row(0)->id;
-			//return TRUE;
+			
 			}
-		}
-		//$p_hash = '$2y$10$KFfo3wt7W9TQD.L4VhrH2.oZpZ379APLQE8AD.3lAmcXUpm0duQy2';
-		//PASS ON HASH AND PLAINTEXT PASSWORD TO P_VERIFICATION
-		
+		}	
 		else{
 			return FALSE;
 		}
 		
-		//Validate credentials
-		/*$this->db->where('username',$username);
-		$this->db->where('password',$password);
-		
-		$result = $this->db->get('users');
-		if($result->num_rows()==1){
-			return $result->row(0)->id; //kolla upp row(0)
-		}*/
 		
 	}
 	

@@ -15,14 +15,19 @@ class Profile extends CI_Controller{
 	    	redirect('users/sign_in');
 	    	//set session data 'need login' och skriv ut felmeddelande
 	    	//redirect('users/login');
+<<<<<<< HEAD
     	}
     	else { 			
+=======
+    	}		
+>>>>>>> yamas-gren
     		//Load Data
     		$data1['user_info']		= 	$this->collect_userinfo();
     		$data1['economy_info']	=	$this->collect_economyinfo();
     		//Load Views
     		$this->load->view('templates/header');
 	    	$this->load->view('profile/profile_layout', $data1);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	    	$this->load->view('templates/footer');    
 	    	}	    
@@ -36,10 +41,17 @@ class Profile extends CI_Controller{
 
     public function show_settings() {
 >>>>>>> pr/2
+=======
+	    	$this->load->view('templates/footer');
+	    
+    }
+    public function settings(){
+>>>>>>> yamas-gren
     	$this->load->view('templates/header');
     	$this->load->view('profile/settings/settings_layout');
     	$this->load->view('templates/footer');   
     }
+<<<<<<< HEAD
     
 <<<<<<< HEAD
     public function show_economy(){
@@ -55,14 +67,65 @@ class Profile extends CI_Controller{
     public function collect_userinfo() {
     	$id = $this->session->userdata('user_id');
     	return $this->profile_model->get_userdata($id);
+=======
+    public function profile_settings(){
+    	//Load Profile Data
+    	$id = $this->session->userdata('user_id');
+    	$data['profile_data'] = $this->profile_model->get_userdata($id);
+    	
+    	//View data
+    	$this->load->view('templates/header');
+    	$this->load->view('profile/settings/profile_settings', $data);
+    	$this->load->view('templates/footer');
     }
-    
+    public function validate_settings(){
+    	$this->form_validation->set_rules('username','Username','required|min_length[4]|max_length[12]|is_unique[users.username]|trim|xss_clean');
+		$this->form_validation->set_rules('password','Password','required|min_length[4]|max_length[128]|trim|xss_clean');
+		$this->form_validation->set_rules('password_confirmation','Password Confirmation','required|min_length[4]|max_length[128]|matches[password]|trim|xss_clean');
+		
+		$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]|trim|xss_clean');
+		$this->form_validation->set_rules('birth_year','Birth year','trim|xss_clean');
+		$this->form_validation->set_rules('gender','gender','trim|xss_clean');
+		$this->form_validation->set_rules('city','City','trim|xss_clean');
+		$this->form_validation->set_rules('occupation','Occupation','trim|xss_clean');
+		$this->form_validation->set_rules('income','Income','trim|xss_clean');
+		
+		$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+		
+		if($this->form_validation->run() == FALSE){
+
+		$this->show_profile_settings();
+		}
+		else
+		{
+           if($bla/*Modellen lyckas update info*/)
+           {
+           		//Skicka till profilsidan
+   
+           }
+           else
+           {
+	           //Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
+           }
+		}	
+>>>>>>> yamas-gren
+    }
+
     public function collect_economyinfo() {
     	$id = $this->session->userdata('user_id');
     	return $this->economy_model->get_economydata($id);
     }
     
+<<<<<<< HEAD
     public function advanced_search() {
+=======
+    public function collect_userinfo(){
+	$id = $this->session->userdata('user_id');
+	return $this->profile_model->get_userdata($id);
+    }
+    
+    public function advanced_search(){
+>>>>>>> yamas-gren
     	$this->load->view('templates/header');
     	$this->load->view('profile/search/advanced_search');
     	$this->load->view('templates/footer');    	    

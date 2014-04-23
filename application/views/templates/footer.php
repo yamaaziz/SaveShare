@@ -4,8 +4,8 @@
 		<footer>
 			<div id="footer">
 				<hr>
-				<h6><a href="<?php echo base_url();?>about">About</a>
-				<a href="<?php echo base_url();?>contact">Contact</a></h6>
+				<h5><a href="<?php echo base_url();?>about">About</a>
+				<a href="<?php echo base_url();?>contact">Contact</a></h5>
 			</div>
 		</footer>
 		</div> <!-- /.wrapper -->		

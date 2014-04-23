@@ -8,7 +8,16 @@ class Economy extends CI_Controller{
             parent::__construct();
             // Your own constructor code
        }
-
+	   
+	public function index(){
+		//Load Data
+		
+		//Load Views
+    	$this->load->view('templates/header');
+    	$this->load->view('economy/add_economy');
+    	$this->load->view('templates/footer');    	       
+	}
+	
 		
 	public function submit_economy(){
 		//Set rules

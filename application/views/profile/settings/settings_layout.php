@@ -11,8 +11,12 @@
 			<div class="page-content inset">
 			    <div class="row">
 			        <div class="col-md-12">
-			            <p class="lead">Lägg in Username</p>
+			        	<div class="form-settings">
+			        		<p> Kanske visa profile info </p>
+			        		<p><a href="<?php echo base_url();?>profile/profile_settings">Change profile settings</a></p>
+			        	</div>
+			            <p><a href="#" >Change password</a></p>    
 			        </div>
 			    </div><!-- /.row -->
 			</div><!-- /.page-content inset -->
-			</div><!-- /.page-content-wrapper --> 
+		</div><!-- /.page-content-wrapper --> 

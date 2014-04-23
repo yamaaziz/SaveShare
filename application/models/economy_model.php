@@ -30,6 +30,7 @@ class Economy_model extends CI_Model{
         );
         
         //Make NULL values
+<<<<<<< HEAD
         
         //if-sats som kollar om economy för user finns eller ej
         $this->db->from('economy');
@@ -45,6 +46,10 @@ class Economy_model extends CI_Model{
 			//	 $insert = $this->db->insert('economy', $economy);
 			//     return $insert;
 		//	}         
+=======
+        $insert = $this->db->update('economy', $economy);
+        return $insert;
+>>>>>>> yamas-gren
 	}
 	
 	
