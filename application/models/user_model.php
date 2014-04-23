@@ -56,14 +56,27 @@ class User_model extends CI_Model{
 		$essential = array(
 		'username'		=>		$this->input->post('username'),
 		'password'		=>		password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-		'email'			=>		$this->input->post('email'),
+		'email'			=>		$this->input->post('email')
 		);
 		
-		$new_user = $essential+$optional_clean;
-			
-		$insert = $this->db->insert('users', $new_user);
+		$new_user = $essential+$optional_clean;			
 		
+		$insert = $this->db->insert('users', $new_user);
 		return $insert;
+		
+		//Skapa economy table
+		
+		
+		//$this->db->where($essential);
+		//$this->db->get('id');
+		//$eid = $this->db->get('users');
+		//$ecid = get_object_vars($eid);
+		 
+		//$economy = $this->db->query("INSERT INTO economy (e_id) VALUES ('".$ecid."')");
+		  		 				
+		//$this->db->set('e_id', $ecid['id']);  
+		//$economy = $this->db->insert('economy');
+		
 		
 		}
 		

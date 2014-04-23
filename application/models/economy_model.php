@@ -11,7 +11,7 @@ class Economy_model extends CI_Model{
 	public function set_economy($id){
 		
 		$economy = array(
-			'e_id'				=>		$id,
+			//'e_id'				=>		$id,
 			'total_savings'		=>		$this->input->post('total_savings'),
 			'funds'				=>		$this->input->post('funds'),
 			'shares'			=>		$this->input->post('shares'),
@@ -30,9 +30,24 @@ class Economy_model extends CI_Model{
         );
         
         //Make NULL values
-        $insert = $this->db->insert('economy', $economy);
-        return $insert;
+        
+        //if-sats som kollar om economy för user finns eller ej
+        $this->db->from('economy');
+		$this->db->where('e_id', $id);
+		$query = $this->db->get();
+		
+			if ($query->num_rows() == 1) {
+					$this->db->where('e_id', $id);
+			        $update = $this->db->update('economy', $economy);
+			        return $update;
+				}				
+			//else {
+			//	 $insert = $this->db->insert('economy', $economy);
+			//     return $insert;
+		//	}         
 	}
+	
+	
 		public function get_economydata($id) {
 		$this->db->select("
 			economy.e_id,
@@ -60,6 +75,8 @@ class Economy_model extends CI_Model{
 				return $query->row();
 				}
 	}
+	
+
 		
 }
 /*End of file economy_model.php*/
