@@ -11,10 +11,10 @@ class Economy extends CI_Controller{
 	   
 	public function index(){
 		//Load Data
-		
+		$data['economy_data']	=	$this->collect_economyinfo();
 		//Load Views
     	$this->load->view('templates/header');
-    	$this->load->view('economy/add_economy');
+    	$this->load->view('economy/add_economy', $data);
     	$this->load->view('templates/footer');    	       
 	}
 	
@@ -45,10 +45,10 @@ class Economy extends CI_Controller{
 				//Gör nått ...
 				//redirect('profile/show_economy');
 				
-				$data1['economy_data']	=	$this->collect_economyinfo();
+				$data['economy_data']	=	$this->collect_economyinfo();
 												
 				$this->load->view('templates/header');
-				$this->load->view('profile/economy/add_economy', $data1);
+				$this->load->view('profile/economy/add_economy', $data);
 				$this->load->view('templates/footer');
 				}
 		else
@@ -65,12 +65,14 @@ class Economy extends CI_Controller{
                
 		}	
 	}
-
 	
 	public function collect_economyinfo() {
-    	$id = $this->session->userdata('user_id');
-    	return $this->economy_model->get_economydata($id);
+		$id = $this->session->userdata('user_id');
+		return $this->economy_model->get_economydata($id);
     }
+
+	
+
 
 	
 				
