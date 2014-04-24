@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php $attributes = array('id' =>'search_form',
+						'class' => 'form-horizontal'); ?>
+
+<?php echo form_open('profile/advanced_search', $attributes); ?>
 		<!-- Page content -->
 		<div id="page-content-wrapper">
 			<div class="content-header">

@@ -60,7 +60,7 @@ class Economy extends CI_Controller{
            }
            else
            {
-	           //Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
+	           //Skriv ut ett felmeddelande. 
            }
                
 		}	
