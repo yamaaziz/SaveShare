@@ -2,7 +2,10 @@
 	
 <!DOCTYPE html>
 <html lang="en">
-	<?php $economy = get_object_vars($economy_info);?>
+	<?php 
+	if(isset($economy_info)){
+	$economy = get_object_vars($economy_info);
+	}?>
 	<ul>
         <div class="panel panel-default">
             <div class="panel-heading"> Liabilities </div>
@@ -53,11 +56,11 @@
                                 	<td><?php echo $economy['senior_loan']; ?></td>
                             	</tr>
                             <?php } ?>
-                            <?php if (!empty ($economy['other_liabilities'])) {?>
+                            <?php if (!empty ($economy['other_loan'])) {?>
                             	<tr>
                                 	<td></td>
                                 	<td>Other Loan</td>
-                                	<td><?php echo $economy['other_liabilities']; ?></td>
+                                	<td><?php echo $economy['other_loan']; ?></td>
                             	</tr>
                             <?php } ?>
                         </tbody>
