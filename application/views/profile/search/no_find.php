@@ -4,10 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $attributes = array('id' =>'search_form',
-						'class' => 'form-horizontal'); 
-	$var = get_object_vars($user_info);
-	?>
 	
 		<!-- Page content -->
 		<div id="page-content-wrapper">
@@ -27,23 +23,19 @@
 									<form role="form">
 									<div class="row">
 			        <div class="col-md-12">
-			            <p class="lead">User Info</p>
+			            <p class="lead">No user was found</p>
 			        </div>
 			    </div>
-			    <?php echo ucfirst($var['username']); ?>
+			   
 
 			 <ul class = "advanced-search">
- 			            	<a href="<?php echo base_url(); ?>profile">
-								<large><em>Go to profile</em></large>
+ 			            	<a href="<?php echo base_url(); ?>profile/advanced_search">
+								<large><em>Search again</em></large>
 								<i class="fa fa-angle-right"></i>
 		        			</a>
 		        		</ul>
 
-			    <div class = "row">
-					<div class="col-md-6" >
-			            <?php $this->load->view('profile/user_info'); ?>
-
-			        </div>
+	
 
 	
 											<!-- /.col-lg-6 (nested) -->

@@ -122,25 +122,23 @@ class Profile extends CI_Controller{
     	
     	if($this->search_model->adv_search()){
            		
-           // Visa en resultatlista med användare
-           //$this->load->view('templates/header');
-		   //$this->load->view('profile/search/search_result', $data1);
-		   //$this->load->view('templates/footer');
            
            $data1['user_info']		= 	$this->collect_user();
 		   $data1['economy_info']	=	$this->collect_economy();
     		//Load Views
 			$this->load->view('templates/header');
-	    	$this->load->view('profile/profile_layout', $data1);
+	    	$this->load->view('profile/search/search_result', $data1);
 	    	$this->load->view('templates/footer'); 
-	    	//$this->load->view('profile/otherprofile');
+	    	
            }
            else
            {
-           //Göra nått?
+           $this->load->view('templates/header');
+		   $this->load->view('profile/search/no_find');
+	    	$this->load->view('templates/footer');
            }
            
-           }
+        }
     		
              	    
     }      
