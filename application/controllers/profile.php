@@ -96,14 +96,7 @@ class Profile extends CI_Controller{
 		}	
  
     }
-    
-<<<<<<< HEAD
-    public function advanced_search(){
- 
-    	$this->load->view('templates/header');
-    	$this->load->view('profile/search/advanced_search');
-    	$this->load->view('templates/footer');    	    
-=======
+
     public function advanced_search(){ 
     	
     	
@@ -163,7 +156,7 @@ class Profile extends CI_Controller{
 	$id = $this->search_model->adv_search();
 	$var = get_object_vars($id);
 	return $this->economy_model->get_economydata($var['id']);
->>>>>>> sofia
+
     }
 
     //you should extend Start so this function is included 
