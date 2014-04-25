@@ -41,10 +41,7 @@ class Economy extends CI_Controller{
 		$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
 		
 		
-		if($this->form_validation->run() == FALSE){
-				//Gör nått ...
-				//redirect('profile/show_economy');
-				
+		if($this->form_validation->run() == FALSE){		
 				$data['economy_data']	=	$this->collect_economyinfo();
 												
 				$this->load->view('templates/header');
@@ -53,14 +50,18 @@ class Economy extends CI_Controller{
 				}
 		else
 		{
-		$id = $this->session->userdata('user_id');
-		 if($this->economy_model->set_economy($id)){
-           		
-           redirect('profile');
-           }
+			$id = $this->session->userdata('user_id');
+			if($this->economy_model->set_economy($id))
+			{
+				redirect('profile');
+			}
            else
            {
+<<<<<<< HEAD
 	           //Skriv ut ett felmeddelande. 
+=======
+           //Skriv ut fel meddelande
+>>>>>>> yamas-gren
            }
                
 		}	
@@ -70,12 +71,7 @@ class Economy extends CI_Controller{
 		$id = $this->session->userdata('user_id');
 		return $this->economy_model->get_economydata($id);
     }
-
-	
-
-
-	
-				
+			
 }	
 /* End of file economy.php */
 /* Location: ./application/controllers//economy.php */

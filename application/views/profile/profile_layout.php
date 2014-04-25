@@ -1,10 +1,18 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
 <?php
+<<<<<<< HEAD
 	$session_data = $this->session->all_userdata(); 
 	$economy = get_object_vars($economy_info);
 	$var = get_object_vars($user_info);
 
+=======
+	$session_data = $this->session->all_userdata();
+	if(isset($economy_info)){
+		$economy = get_object_vars($economy_info);
+	} 
+	
+>>>>>>> yamas-gren
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -40,7 +48,10 @@
 					<div class="col-md-6">
 					<p class="lead" >Savings Chart</p>		
 							<div id="donut_chart" style="height: 350px;"></div>
-							<?php $total_savings = $economy['funds']+$economy['shares']+$economy['commodities']+$economy['saving_account']+$economy['properties']+$economy['other_savings'];?>
+							<?php 
+							if(isset($economy_info)){
+							$total_savings = $economy['funds']+$economy['shares']+$economy['commodities']+$economy['saving_account']+$economy['properties']+$economy['other_savings'];}
+							?>
 			            		<script>
 									new Morris.Donut({
 								        element: 'donut_chart',
@@ -97,7 +108,10 @@
 					<div class="col-md-6">
 						<p class="lead"> Liabilities Chart</p>
 							<div id="donut_chart2" style="height: 350px;"></div>
-							<?php $total_lias = $economy['housing_loan']+$economy['construction_loan']+$economy['private_loan']+$economy['student_loan']+$economy['senior_loan']+$economy['other_liabilities'];?>
+							<?php 
+							if(isset($economy_info)){
+							$total_lias = $economy['housing_loan']+$economy['construction_loan']+$economy['private_loan']+$economy['student_loan']+$economy['senior_loan']+$economy['other_loan'];}
+							?>
 			            		<script>
 									new Morris.Donut({
 								        element: 'donut_chart2',
@@ -133,10 +147,10 @@
 								            value: <?php echo round(($economy['senior_loan']/$total_lias)*100); ?>
 								        },
 								        <?php } ?>
-								        <?php if (!empty ($economy['other_liabilities'])) {?>
+								        <?php if (!empty ($economy['other_loan'])) {?>
 								        {
-								            label: "Other Liabilities",
-								            value: <?php echo round(($economy['other_liabilities']/$total_lias)*100);?>
+								            label: "Other Loan",
+								            value: <?php echo round(($economy['other_loan']/$total_lias)*100);?>
 								        }
 								        <?php } ?>
 								        ],

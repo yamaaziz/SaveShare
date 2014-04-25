@@ -48,22 +48,25 @@ class User_model extends CI_Model{
 		$new_user = $essential+$optional_clean;			
 		
 		$insert = $this->db->insert('users', $new_user);
-		return $insert;
+		
 		
 		//Skapa economy table
 		
+		//Hämta user id
+		$this->db->select('users.id');
+		$this->db->from('users');
+		$this->db->where('username', $this->input->post('username'));
+		$query = $this->db->get();
+		if ($query->num_rows() == 1)
+		{
+			$this->economy_model->create_economy($query->row(0));
+		}
 		
-		//$this->db->where($essential);
-		//$this->db->get('id');
-		//$eid = $this->db->get('users');
-		//$ecid = get_object_vars($eid);
-		 
-		//$economy = $this->db->query("INSERT INTO economy (e_id) VALUES ('".$ecid."')");
-		  		 				
-		//$this->db->set('e_id', $ecid['id']);  
-		//$economy = $this->db->insert('economy');
+		//Kalla på user model
 		
+		//returnera värden
 		
+		return $insert;
 		}
 		
 	public function set_NULL($optional){

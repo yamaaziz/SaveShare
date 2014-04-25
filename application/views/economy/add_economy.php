@@ -3,7 +3,9 @@
 <!-- PHP Code Here -->
 	<!-- START PAGE -->
 	
-<?php $economy_data_ = get_object_vars($economy_data);?>
+<?php if(isset($economy_data)){
+$economy_data_ = get_object_vars($economy_data);
+}?>
 <?php $attributes = array('id' =>'submit_economy_form',
 						'class' => 'form-horizontal'); ?>						
 
@@ -35,25 +37,7 @@
 		                                <div class="col-lg-6">
 		                                    <form role="form">
 		                                    	<h2>Savings</h2>
-												
-		                                    		<!--Field: Total savings-->
-													<p>
-													
-													<?php echo form_label('Total savings'); ?>
-													<?php
-													$data = array(
-																	'name' 			=>'total_savings',
-																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('total_savings', $economy_data_['total_savings'])				
-																);
-													?>
-													<?php echo form_input($data); ?>
-													
-													<!--Display field errors-->
-													<?php echo form_error('total_savings'); ?>
-													</p>
-													
+																			
 													<!--Field: Funds-->
 													<p>
 													<?php echo form_label('Funds'); ?>
@@ -61,11 +45,27 @@
 													$data = array(
 																	'name' 			=>'funds',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('funds', $economy_data_['funds'])				
+																	'style' 		=> 'width:100%'			
 																);
 													?>
-													<?php echo form_input($data); ?>
+													
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('funds',$economy_data_['funds'])
+																   );
+																			
+																			
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('funds'); ?>
@@ -79,11 +79,27 @@
 													$data = array(
 																	'name' 			=>'shares',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('shares', $economy_data_['shares'])				
-																);
+																	'style' 		=> 'width:100%'				
+																 );
 													?>
-													<?php echo form_input($data); ?>
+													
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('shares', $economy_data_['shares'])
+																  );
+																			
+																			
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('shares'); ?>
@@ -97,11 +113,26 @@
 													$data = array(
 																	'name' 			=> 'bonds',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('bonds', $economy_data_['bonds'])				
+																	'style' 		=> 'width:100%'				
 																);
 													?>
-													<?php echo form_input($data); ?>
+													
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('bonds', $economy_data_['bonds'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('bonds'); ?>
@@ -116,11 +147,26 @@
 													$data = array(
 																	'name' 			=> 'commodities',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('commodities',$economy_data_['commodities'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('commodities', $economy_data_['commodities'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
+													
 													
 													<!--Display field errors-->
 													<?php echo form_error('commodities'); ?>
@@ -133,11 +179,26 @@
 													$data = array(
 																	'name' 			=> 'properties',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('properties', $economy_data_['properties'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('properties', $economy_data_['properties'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
+													
 													
 													<!--Display field errors-->
 													<?php echo form_error('properties'); ?>
@@ -150,11 +211,25 @@
 													$data = array(
 																	'name' 			=>'saving_account',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('saving_account', $economy_data_['saving_account'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('saving_account', $economy_data_['saving_account'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('saving_account'); ?>
@@ -168,47 +243,59 @@
 													$data = array(
 																	'name' 			=> 'other_savings',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('other_savings', $economy_data_['other_savings'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('other_savings',$economy_data_['other_savings'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('other_savings'); ?>
-													</p>			                                        
-	                                 
-													 <h2>Liabilities</h2>
-				                                    
-													 <!--Field: Total liabilities-->
-													<p>
-													<?php echo form_label('Total liabilities'); ?>
-													<?php
-													$data = array(
-																	'name' 			=>'total_liabilities',
-																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('total_liabilities', $economy_data_['total_liabilities'])				
-																);
-													?>
-													<?php echo form_input($data); ?>
-													
-													<!--Display field errors-->
-													<?php echo form_error('total_liabilities'); ?>
-													</p>
-													
-													<!--Field: Funds-->
+													</p>			      
+													                                  
+													<h2>Liabilities</h2>
+													<!--Field: Housing loan-->
 													<p>
 													<?php echo form_label('Housing loan'); ?>
 													<?php
 													$data = array(
 																	'name' 			=>'housing_loan',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('housing_loan', $economy_data_['housing_loan'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('housing_loan',$economy_data_['housing_loan'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
+													
 													
 													<!--Display field errors-->
 													<?php echo form_error('housing_loan'); ?>
@@ -222,11 +309,25 @@
 													$data = array(
 																	'name' 			=>'construction_loan',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('construction_loan', $economy_data_['construction_loan'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('construction_loan',$economy_data_['construction_loan'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('construction_loan'); ?>
@@ -240,11 +341,25 @@
 													$data = array(
 																	'name' 			=> 'private_loan',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('private_loan', $economy_data_['private_loan'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('private_loan',$economy_data_['private_loan'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('private_loan'); ?>
@@ -259,11 +374,25 @@
 													$data = array(
 																	'name' 			=> 'student_loan',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('student_loan', $economy_data_['student_loan'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('student_loan',$economy_data_['student_loan'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('student_loan'); ?>
@@ -276,31 +405,59 @@
 													$data = array(
 																	'name' 			=> 'senior_loan',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('senior_loan', $economy_data_['senior_loan'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('senior_loan',$economy_data_['senior_loan'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
 													<?php echo form_error('senior_loan'); ?>
 													</p>																																								
 													
-													<!--Field: Other liabilities-->
+													<!--Field: other loan-->
 													<p>
-													<?php echo form_label('Other liabilities'); ?>
+													<?php echo form_label('Other loan'); ?>
 													<?php
 													$data = array(
-																	'name' 			=> 'other_liabilities',
+																	'name' 			=> 'other_loan',
 																	'placeholder' 	=> 'SEK',
-																	'style' 		=> 'width:100%',
-																	'value'			=> set_value('other_liabilities', $economy_data_['other_liabilities'])				
+																	'style' 		=> 'width:100%'
 																);
 													?>
-													<?php echo form_input($data); ?>
+													<?php 
+													
+													if(isset($economy_data)){
+													$value = array(
+																	'value'	=>	set_value('other_loan',$economy_data_['other_loan'])
+																  );
+																							
+													$data2 = $data+$value;
+													
+													echo form_input($data2);
+													}
+													else{
+													echo form_input($data);
+													}
+													
+													?>
 													
 													<!--Display field errors-->
-													<?php echo form_error('other_liabilities'); ?>
+													<?php echo form_error('other_loan'); ?>
 													</p>	
 															                                    
 													
