@@ -5,6 +5,7 @@
 	$session_data = $this->session->all_userdata(); 
 	$economy = get_object_vars($economy_info);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$var = get_object_vars($user_info);
 
 =======
@@ -14,6 +15,8 @@
 	} 
 	
 >>>>>>> yamas-gren
+=======
+>>>>>>> parent of 5d9937f... Merge branch 'sofia'
 =======
 >>>>>>> parent of 5d9937f... Merge branch 'sofia'
 	?>
