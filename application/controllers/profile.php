@@ -97,11 +97,73 @@ class Profile extends CI_Controller{
  
     }
     
+<<<<<<< HEAD
     public function advanced_search(){
  
     	$this->load->view('templates/header');
     	$this->load->view('profile/search/advanced_search');
     	$this->load->view('templates/footer');    	    
+=======
+    public function advanced_search(){ 
+    	
+    	
+    	$this->form_validation->set_rules('username','Username','trim|xss_clean');
+    	$this->form_validation->set_rules('birth_year','birth_year','trim|xss_clean');
+    	$this->form_validation->set_rules('gender','Gender','trim|xss_clean');
+    	$this->form_validation->set_rules('city','City','trim|xss_clean');
+    	$this->form_validation->set_rules('income','Income','trim|xss_clean');
+    	
+    	$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+		
+		
+		if($this->form_validation->run() == FALSE){
+				
+				$this->load->view('templates/header');
+		    	$this->load->view('profile/search/advanced_search');
+		    	$this->load->view('templates/footer');
+				}
+		else
+		{
+
+    	
+    	if($this->search_model->adv_search()){
+           		
+           
+           $data1['user_info']		= 	$this->collect_user();
+		   $data1['economy_info']	=	$this->collect_economy();
+    		//Load Views
+			$this->load->view('templates/header');
+	    	$this->load->view('profile/search/search_result', $data1);
+	    	$this->load->view('templates/footer'); 
+	    	
+           }
+           else
+           {
+           $this->load->view('templates/header');
+		   $this->load->view('profile/search/no_find');
+	    	$this->load->view('templates/footer');
+           }
+           
+        }
+    		
+             	    
+    }      
+	    		    
+    
+    
+    public function collect_user() {
+    	$id = $this->search_model->adv_search();
+    	$var = get_object_vars($id);
+        // Pass the results to the view.
+    	return $this->profile_model->get_userdata($var['id']);
+    }
+     
+	public function collect_economy() {	
+	//Hämta username och userid
+	$id = $this->search_model->adv_search();
+	$var = get_object_vars($id);
+	return $this->economy_model->get_economydata($var['id']);
+>>>>>>> sofia
     }
 
     //you should extend Start so this function is included 
