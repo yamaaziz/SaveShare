@@ -253,11 +253,11 @@
 							<?php echo form_submit($data); ?>
 							
 							<?php $data = array(
-												    'name' => 'cancel',
-												    'id' => 'cancel_button',
+												    'name' => 'reset',
+												    'id' => 'reset_button',
 												    'value' => 'true',
 												    'type' => 'reset',
-												    'content' => 'Cancel',
+												    'content' => 'Reset',
 												    'class'	=>	'btn btn-danger'
 												);
 							?>
