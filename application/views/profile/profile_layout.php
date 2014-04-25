@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 	$session_data = $this->session->all_userdata(); 
 	$economy = get_object_vars($economy_info);
+<<<<<<< HEAD
 	$var = get_object_vars($user_info);
 
 =======
@@ -13,6 +14,8 @@
 	} 
 	
 >>>>>>> yamas-gren
+=======
+>>>>>>> parent of 5d9937f... Merge branch 'sofia'
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -20,20 +23,18 @@
 	        <div class="content-header">
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
-	                <?php echo ucfirst($var['username']); ?>
+	                Profile
 	            </h1>	            
 	        </div><!-- content-header-->
 	    	 <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
 			
-
 			    <div class="row">
 			        <div class="col-md-12">
 			            <p class="lead">User Info</p>
 			        </div>
 			    </div>
 			    
-			 
 			    <div class = "row">
 					<div class="col-md-6" >
 			            <?php $this->load->view('profile/user_info'); ?>

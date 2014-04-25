@@ -58,10 +58,14 @@ class Economy extends CI_Controller{
            else
            {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	           //Skriv ut ett felmeddelande. 
 =======
            //Skriv ut fel meddelande
 >>>>>>> yamas-gren
+=======
+	           //Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
+>>>>>>> parent of 5d9937f... Merge branch 'sofia'
            }
                
 		}	
