@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('user_model', 'economy_model', 'profile_model', 'search_model', 'follower_model');
+$autoload['model'] = array('account_model', 'economy_model', 'profile_model', 'search_model', 'follower_model');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

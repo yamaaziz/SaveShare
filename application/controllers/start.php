@@ -1,5 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php
+//Save Share 2014
 class Start extends CI_Controller{
 	
 	public function __construct(){
