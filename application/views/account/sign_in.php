@@ -1,9 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<!-- SaveShare 2014 -->
+<!-- Save Share 2014 -->
 <!--Start form-->
 <?php $attributes = array('id' =>'sign_in_form',
 						  'class' => 'form-horizontal'); ?>
-<?php echo form_open('users/sign_in', $attributes); ?>
+<?php echo form_open('account/sign_in', $attributes); ?>
 
 <!--Field: Username-->
 <p>

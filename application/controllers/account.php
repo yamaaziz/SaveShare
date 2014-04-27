@@ -1,13 +1,20 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php
-//SaveShare 2014
-class Users extends CI_Controller{
+//Save Share 2014
+class Account extends CI_Controller{
 	
-	public function __construct()
-       {
-            parent::__construct();
-            // Your own constructor code
-       }
+	public function __construct(){
+		parent::__construct();
+		// Your own constructor code
+	}
+	public function index(){
+		//Load Views
+		$this->load->view('profile/templates/header');
+		$this->load->view("account/settings/settings_layout");
+		$this->load->view('profile/templates/footer');
+		
+	}
+
 
 	public function sign_in(){
 		$this->form_validation->set_rules('username_','Username','required|min_length[4]|trim|xss_clean|');
@@ -29,7 +36,7 @@ class Users extends CI_Controller{
 		$this->form_validation->set_rules('password','Password','required|min_length[4]|max_length[128]|trim|xss_clean');
 		$this->form_validation->set_rules('password_confirmation','Password Confirmation','required|min_length[4]|max_length[128]|matches[password]|trim|xss_clean');
 		
-		$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]|trim|xss_clean');
+		$this->form_validation->set_rules('email','Email','required|max_length[60]|valid_email|is_unique[users.email]|trim|xss_clean');
 		$this->form_validation->set_rules('birth_year','Birth year','trim|xss_clean');
 		$this->form_validation->set_rules('gender','gender','trim|xss_clean');
 		$this->form_validation->set_rules('city','City','trim|xss_clean');
@@ -44,12 +51,12 @@ class Users extends CI_Controller{
 		}
 		else
 		{
-           if($this->user_model->create_user())
+           if($this->account_model->create_user())
            {
            		//Skriv ut ett meddelande. 'Registrering lyckades. Logga in.'
  
 		   		
-                redirect('users/sign_in');
+                redirect('account/sign_in');
            }
            else
            {
@@ -59,15 +66,14 @@ class Users extends CI_Controller{
 	}
 	
 	public function sign_out(){
-        //Unset user data
-        $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('user_id');
-        $this->session->unset_userdata('username');
-        $this->session->sess_destroy();
-        
-         //Set message
-        $this->session->set_flashdata('logged_out', 'You have been logged out');
-        redirect('start');
+		//Unset user data
+		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('username');
+		$this->session->sess_destroy();
+		//Set message
+		$this->session->set_flashdata('logged_out', 'You have been logged out');
+		redirect('start');
     }
 	
 	//**********************************************************************************************************************************// 
@@ -80,8 +86,8 @@ class Users extends CI_Controller{
 		//Retrieve username and password from the form.
 		$username = $this->input->post('username_');
 		$password = $this->input->post('password_');
-		//Retrieve user_id from user_model. login_user returns FALSE if the username & password does not match the one in the DB.
-		$user_id = $this->user_model->login_user($username,$password);
+		//Retrieve user_id from account_model. login_user returns FALSE if the username & password does not match the one in the DB.
+		$user_id = $this->account_model->login_user($username,$password);
 		
 		//Validate user and prepare a session for user
 		if($user_id){
@@ -118,7 +124,7 @@ class Users extends CI_Controller{
 		
 	//**********************************************************************************************************************************//
 	//This custom script will trigger the sign in modal on the start page to show. The filename is saved in the variable $data that		//		
-	//is passed on to start. In start, the variable $trigger_modal will load the variable $data and a php echo function will echo ""; 	//								//the full pathway to the script, which will then execute and trigger the modal to show. This is neccessary do to because of 		//								//the way the sign in component is built. The sign in modal is a external view that is loaded on the start page by CLICKING a 		//								//button. This button triggers the modal to show. And this is exactly what this custom javascript replicates. It artificially 		//								//CLICKS the button.																												//
+	//is passed on to start. In start, the variable $trigger_modal will load the variable $data and a php echo function will echo ""; 	//					//the full pathway to the script, which will then execute and trigger the modal to show. This is neccessary do to because of 		//					//the way the sign in component is built. The sign in modal is a external view that is loaded on the start page by CLICKING a 		//					//button. This button triggers the modal to show. And this is exactly what this custom javascript replicates. It artificially 		//					//CLICKS the button.																												//
 	//**********************************************************************************************************************************//
 	
 	public function load_modal($option){
@@ -134,7 +140,48 @@ class Users extends CI_Controller{
 			$this->load->view('start',$data);
 		
 		}	
+	}
+	
+	public function profile_settings(){
+		//Load Profile Data
+	    $id = $this->session->userdata('user_id');
+	    $data['profile_data'] = $this->profile_model->get_userdata($id);	
+		//View data
+		$this->load->view('profile/templates/header');
+		$this->load->view('account/settings/profile_settings', $data);
+		$this->load->view('profile/templates/footer');
+	}
+	
+    public function validate_settings(){
+    	$this->form_validation->set_rules('username','Username','required|min_length[4]|max_length[12]|is_unique[users.username]|trim|xss_clean');
+		$this->form_validation->set_rules('password','Password','required|min_length[4]|max_length[128]|trim|xss_clean');
+		$this->form_validation->set_rules('password_confirmation','Password Confirmation','required|min_length[4]|max_length[128]|matches[password]|trim|xss_clean');
+		
+		$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]|trim|xss_clean');
+		$this->form_validation->set_rules('birth_year','Birth year','trim|xss_clean');
+		$this->form_validation->set_rules('gender','gender','trim|xss_clean');
+		$this->form_validation->set_rules('city','City','trim|xss_clean');
+		$this->form_validation->set_rules('occupation','Occupation','trim|xss_clean');
+		$this->form_validation->set_rules('income','Income','trim|xss_clean');
+		
+		$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+		
+		if($this->form_validation->run() == FALSE){
+
+		$this->profile_settings();
+		}
+		else
+		{
+			if($bla/*Modellen lyckas update info*/)
+			{
+			//Skicka till profilsidan
+			}
+			else
+			{
+			//Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
+			}
+		}	
 	}	
 }	
-/* End of file users.php */
-/* Location: ./application/controllers//users.php */
+/* End of file account.php */
+/* Location: ./application/controllers//account.php */

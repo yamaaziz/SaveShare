@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- Save Share 2014 -->
 <!-- PHP Code Here -->
 <?php $profile_data_ = get_object_vars($profile_data);?>
 
@@ -14,12 +15,9 @@
 		    <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
 			    <div class="row">
-			        <div class="col-md-12">
-			        	<div class="form-settings">
-
+			        <div class="col-md-6">
 							<!--Start form-->
-							<?php $attributes = array('id' =>'sign_up_form',
-													  'class' => 'form-horizontal'); ?>
+							<?php $attributes = array('id' =>'sign_up_form','class' => 'form-horizontal'); ?>
 							<?php echo form_open('profile/validate_settings', $attributes); ?>
 							
 							<!--Field: Username-->
@@ -263,13 +261,10 @@
 							?>
 												
 							<?php echo form_button($data); ?>
-							
 							</p>
-
 							</br>
 							<?php echo form_close(); ?>
-
-					</div>
+					</div><!-- /.col-md-6 -->
 			    </div><!-- /.row -->
 			</div><!-- /.page-content inset -->
 		</div><!-- /.page-content-wrapper --> 

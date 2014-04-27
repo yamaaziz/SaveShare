@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php
-//SaveShare 2014
+//Save Share 2014
 class Economy extends CI_Controller{
 	
 	public function __construct()
@@ -11,11 +11,11 @@ class Economy extends CI_Controller{
 	   
 	public function index(){
 		//Load Data
-		$data['economy_data']	=	$this->collect_economyinfo();
+		$data['economy_data']=$this->collect_economyinfo();
 		//Load Views
-    	$this->load->view('templates/header');
+    	$this->load->view('profile/templates/header');
     	$this->load->view('economy/add_economy', $data);
-    	$this->load->view('templates/footer');    	       
+    	$this->load->view('profile/templates/footer');    	       
 	}
 	
 		
@@ -44,9 +44,9 @@ class Economy extends CI_Controller{
 		if($this->form_validation->run() == FALSE){		
 				$data['economy_data']	=	$this->collect_economyinfo();
 												
-				$this->load->view('templates/header');
+				$this->load->view('profile/templates/header');
 				$this->load->view('economy/add_economy', $data);
-				$this->load->view('templates/footer');
+				$this->load->view('profile/templates/footer');
 				}
 		else
 		{
@@ -55,18 +55,18 @@ class Economy extends CI_Controller{
 			{
 				redirect('profile');
 			}
-           else
-           {
-           //Skriv ut fel meddelande
-           }
+			else
+			{
+				//Skriv ut fel meddelande
+			}
                
 		}	
 	}
 	
-	public function collect_economyinfo() {
+	private function collect_economyinfo() {
 		$id = $this->session->userdata('user_id');
 		return $this->economy_model->get_economydata($id);
-    }
+	}
 			
 }	
 /* End of file economy.php */

@@ -1,4 +1,5 @@
 <?php
+//Save Share 2014
 class Economy_model extends CI_Model{
 	
 	public function __construct()

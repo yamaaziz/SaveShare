@@ -1,5 +1,5 @@
 <?php
-class User_model extends CI_Model{
+class Account_model extends CI_Model{
 	
 	public function __construct()
 	{
@@ -80,5 +80,5 @@ class User_model extends CI_Model{
 
 	}
 }
-/*End of file user_model.php*/
-/*Location: ./application/models/user_model.php */
+/*End of file account_model.php*/
+/*Location: ./application/models/account_model.php */

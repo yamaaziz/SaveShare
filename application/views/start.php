@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<!-- Save Share 2014 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +61,7 @@
 	        <h4 class="modal-title" id="sign_up">Sign up</h4>
 	      </div>
 	      <div class="modal-body">     
-	     <?php $this->load->view('users/sign_up'); ?> 
+	     <?php $this->load->view('account/sign_up'); ?> 
 	      	        
 	      </div>
 	    </div>
@@ -77,7 +78,7 @@
 	        <h4 class="modal-title" id="sign_in">Sign in</h4>
 	      </div>
 	      <div class="modal-body">     
-	      <?php $this->load->view('users/sign_in'); ?> 	        
+	      <?php $this->load->view('account/sign_in'); ?> 	        
 	      </div>
 	    </div>
 	  </div><!--/modal-dialog-->
