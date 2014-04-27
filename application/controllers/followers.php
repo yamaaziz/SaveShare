@@ -9,7 +9,6 @@ class Followers extends CI_Controller{
 		// Your own constructor code           
 	}
 
-<<<<<<< HEAD
     public function index(){
     
     	if(!$this->is_signed_in()){
@@ -53,6 +52,7 @@ class Followers extends CI_Controller{
     	$following_id2 = get_object_vars($following_id1);
     	return $this->follower_model->get_following_username2($following_id2);
     }
+    
 
     public function collect_followersname() {
     	$id = $this->session->userdata('user_id');
@@ -66,6 +66,7 @@ class Followers extends CI_Controller{
     	return $this->follower_model->get_follower_username2($follower_id2);
     }
     
+    
     public function count_no_of_followers() {
     	$id = $this->session->userdata('user_id');
     	return $this->follower_model->count_followers($id);
@@ -74,44 +75,7 @@ class Followers extends CI_Controller{
     public function count_no_of_followings() {
     	$id = $this->session->userdata('user_id');
     	return $this->follower_model->count_followings($id);
-    }
-=======
-	public function index(){
-	
-		if(!$this->is_signed_in()){
-			redirect('users/sign_in');
-			//set session data 'need login' och skriv ut felmeddelande
-			//redirect('users/login');
-		}
-		else {
-			//Load Data
-			$data['following_info1'] = $this->collect_followers();
-			$data['following_info2'] = $this->collect_following();
-			//Load Views
-			$this->load->view('profile/templates/header');
-			$this->load->view('profile/economy/show_followers', $data);
-			$this->load->view('profile/templates/footer');
-			}
-		}
-
-	public function collect_following() {
-		$id = $this->session->userdata('user_id');
-		return $this->follower_model->get_followingdata($id);
-	}
-	public function collect_followers() {
-		$id = $this->session->userdata('user_id');
-		return $this->follower_model->get_followersdata($id);
-	}
-
-	public function collect_followingname() {
-		$name = $this->session->userdata('username');
-		return $this->follower_model->get_following_username($id);
-	}
-
-	public function collect_followersname() {
-		$name = $this->session->userdata('username');
-		return $this->follower_model->get_follower_username($id);
-	}
+    } 
 
 	public function show_followersname() {
 		//Load Data
@@ -122,7 +86,6 @@ class Followers extends CI_Controller{
 		$this->load->view('profile/economy/show_followers', $data28);
 		$this->load->view('profile/templates/footer');
 	}
->>>>>>> yamas-gren
 
 	private function is_signed_in() {
 	
