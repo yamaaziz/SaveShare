@@ -109,7 +109,7 @@ class Follower_model extends CI_Model{
 			");
 
 		$this->db->from('users');
-		$this->db->where('users.id', array_values($follower_id)[$index]);
+		$this->db->where('users.id', array_values($result_array)[$index]);
 		$query = $this->db->get();
 		$subresultat = $query->row();
 		array_push($resultat, $subresultat); /*lägg resultatet längst bak i en array*/
