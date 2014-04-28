@@ -25,9 +25,9 @@ class Followers extends CI_Controller{
     	$data28['no_of_followers'] = $this->count_no_of_followers();
     	$data28['no_of_followings'] = $this->count_no_of_followings();
     	//Load Views
-    	$this->load->view('templates/header');
+    	$this->load->view('profile/templates/header');
     	$this->load->view('profile/followers/show_followers', $data28);
-    	$this->load->view('templates/footer');
+    	$this->load->view('profile/templates/footer');
 	    	    	}
     }
 
