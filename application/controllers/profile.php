@@ -14,6 +14,7 @@ class Profile extends CI_Controller{
     	if(!$this->is_signed_in()){
 	    	redirect('account/sign_in');
     	}
+    	else{
     		//Load Data
     		$id = $this->get_id();
     		$data1['user_info']		= 	$this->collect_userinfo($id);
@@ -21,7 +22,8 @@ class Profile extends CI_Controller{
     		//Load Views
     		$this->load->view('profile/templates/header');
 	    	$this->load->view('profile/profile_layout', $data1);
-	    	$this->load->view('profile/templates/footer');    	    
+	    	$this->load->view('profile/templates/footer');
+	    }    	    
     }
     
     private function collect_userinfo($id) {	

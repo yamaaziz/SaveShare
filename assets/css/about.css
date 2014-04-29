@@ -1,0 +1,43 @@
+body {
+	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+}
+
+.navbar{
+	height: 50px
+}
+.breadcrumb{
+	margin-top: 7px;
+}
+
+/* change the URL to a picture of your choice - the higher quality the better! */
+.business-header {
+	height: 400px;
+	background: url(http://placehold.it/1920x400) center center no-repeat;
+	background-size: cover;
+}
+
+/* adjust the color and text shadow to optimize legibility once you have an image set - you can also change the vertical positioning if desired  */
+.tagline {
+	color: #fff;
+	text-shadow: 0 0 10px #000;
+}
+
+footer {
+	margin: 50px 0;
+}
+#footer {
+   position:relative;
+   width: 100%;
+   /*indenta texten 20px om du vill ha den till vänster. Detta för att aligna den med page content wrapper*/
+   text-align: center;
+   word-spacing:5px;
+}
+
+footer a {
+   color: #999;
+}
+footer a:hover {
+	color: #999;
+	text-decoration: underline;
+}
+

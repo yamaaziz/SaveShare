@@ -206,6 +206,9 @@
 }
 
 }
+footer{
+	margin: 50px 0;
+}
 #footer {
    position:relative;
    width: 100%;
@@ -220,5 +223,4 @@ footer a {
 footer a:hover {
 	color: #999;
 	text-decoration: underline;
-   /*color: #f0f0f0;*/
 }

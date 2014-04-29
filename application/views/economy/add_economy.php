@@ -17,6 +17,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<h2>Savings</h2>
+						<!-- Start form -->
 						<?php echo form_open('economy/submit_economy', $attributes); ?>
 							<!--Field: Funds-->
 							<p>
@@ -28,9 +29,7 @@
 											'style' 		=> 'width:100%'			
 										);
 							?>
-							
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('funds',$economy_data_['funds'])
@@ -46,12 +45,9 @@
 							}
 							
 							?>
-							
 							<!--Display field errors-->
 							<?php echo form_error('funds'); ?>
 							</p>                
-							
-							
 							<!--Field: Shares-->
 							<p>
 							<?php echo form_label('Shares'); ?>
@@ -62,9 +58,7 @@
 											'style' 		=> 'width:100%'				
 										 );
 							?>
-							
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('shares', $economy_data_['shares'])
@@ -78,14 +72,10 @@
 							else{
 							echo form_input($data);
 							}
-							
 							?>
-							
 							<!--Display field errors-->
 							<?php echo form_error('shares'); ?>
 							</p>
-	                     
-							
 							<!--Field: Bonds-->
 							<p>
 							<?php echo form_label('Bonds'); ?>
@@ -96,9 +86,7 @@
 											'style' 		=> 'width:100%'				
 										);
 							?>
-							
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('bonds', $economy_data_['bonds'])
@@ -111,15 +99,10 @@
 							else{
 							echo form_input($data);
 							}
-							
 							?>
-							
 							<!--Display field errors-->
 							<?php echo form_error('bonds'); ?>
 							</p>		                                       
-									                                     	                                       
-									
-							
 							<!--Field: Commodities-->
 							<p>
 							<?php echo form_label('Commodities'); ?>
@@ -131,7 +114,6 @@
 										);
 							?>
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('commodities', $economy_data_['commodities'])
@@ -144,14 +126,10 @@
 							else{
 							echo form_input($data);
 							}
-							
 							?>
-							
-							
 							<!--Display field errors-->
 							<?php echo form_error('commodities'); ?>
 							</p>
-							
 							<!--Field: Properties-->
 							<p>
 							<?php echo form_label('Properties'); ?>
@@ -163,7 +141,6 @@
 										);
 							?>
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('properties', $economy_data_['properties'])
@@ -176,14 +153,10 @@
 							else{
 							echo form_input($data);
 							}
-							
 							?>
-							
-							
 							<!--Display field errors-->
 							<?php echo form_error('properties'); ?>
 							</p>	
-							
 							<!--Field: Saving account-->
 							<p>
 							<?php echo form_label('Saving account'); ?>
@@ -195,7 +168,6 @@
 										);
 							?>
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('saving_account', $economy_data_['saving_account'])
@@ -208,14 +180,10 @@
 							else{
 							echo form_input($data);
 							}
-							
 							?>
-							
 							<!--Display field errors-->
 							<?php echo form_error('saving_account'); ?>
 							</p>
-							
-							
 							<!--Field: Other savings-->
 							<p>
 							<?php echo form_label('Other savings'); ?>
@@ -226,9 +194,7 @@
 											'style' 		=> 'width:100%'
 										);
 							?>
-							
 							<?php 
-							
 							if(isset($economy_data)){
 							$value = array(
 											'value'	=>	set_value('other_savings',$economy_data_['other_savings'])
@@ -243,12 +209,10 @@
 							}
 							
 							?>
-							
 							<!--Display field errors-->
 							<?php echo form_error('other_savings'); ?>
 							</p>
 					</div><!--./col-lg-6-->
-					
 					<div class="col-lg-6">
 						<h2>Liabilities</h2>
 						<!--Field: Housing loan-->
@@ -262,7 +226,6 @@
 									);
 						?>
 						<?php 
-						
 						if(isset($economy_data)){
 						$value = array(
 										'value'	=>	set_value('housing_loan',$economy_data_['housing_loan'])
@@ -275,15 +238,10 @@
 						else{
 						echo form_input($data);
 						}
-						
 						?>
-						
-						
 						<!--Display field errors-->
 						<?php echo form_error('housing_loan'); ?>
 						</p>                
-						
-						
 						<!--Field: Construction loan-->
 						<p>
 						<?php echo form_label('Construction loan'); ?>
@@ -295,7 +253,6 @@
 									);
 						?>
 						<?php 
-						
 						if(isset($economy_data)){
 						$value = array(
 										'value'	=>	set_value('construction_loan',$economy_data_['construction_loan'])
@@ -308,14 +265,10 @@
 						else{
 						echo form_input($data);
 						}
-						
 						?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('construction_loan'); ?>
 						</p>
-						                                  
-						
 						<!--Field: Private loan-->
 						<p>
 						<?php echo form_label('Private loan'); ?>
@@ -327,7 +280,6 @@
 									);
 						?>
 						<?php 
-						
 						if(isset($economy_data)){
 						$value = array(
 										'value'	=>	set_value('private_loan',$economy_data_['private_loan'])
@@ -340,15 +292,10 @@
 						else{
 						echo form_input($data);
 						}
-						
 						?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('private_loan'); ?>
 						</p>		                                       
-								                                     	                                       
-								
-						
 						<!--Field: Student loan-->
 						<p>
 						<?php echo form_label('Student loan'); ?>
@@ -360,7 +307,6 @@
 									);
 						?>
 						<?php 
-						
 						if(isset($economy_data)){
 						$value = array(
 										'value'	=>	set_value('student_loan',$economy_data_['student_loan'])
@@ -373,13 +319,10 @@
 						else{
 						echo form_input($data);
 						}
-						
 						?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('student_loan'); ?>
 						</p>
-						
 						<!--Field: Senior loan-->
 						<p>
 						<?php echo form_label('Senior loan'); ?>
@@ -391,7 +334,6 @@
 									);
 						?>
 						<?php 
-						
 						if(isset($economy_data)){
 						$value = array(
 										'value'	=>	set_value('senior_loan',$economy_data_['senior_loan'])
@@ -404,13 +346,10 @@
 						else{
 						echo form_input($data);
 						}
-						
 						?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('senior_loan'); ?>
-						</p>																																								
-						
+						</p>										
 						<!--Field: other loan-->
 						<p>
 						<?php echo form_label('Other loan'); ?>
@@ -422,7 +361,6 @@
 									);
 						?>
 						<?php 
-						
 						if(isset($economy_data)){
 						$value = array(
 										'value'	=>	set_value('other_loan',$economy_data_['other_loan'])
@@ -435,9 +373,7 @@
 						else{
 						echo form_input($data);
 						}
-						
 						?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('other_loan'); ?>
 						</p>

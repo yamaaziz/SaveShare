@@ -113,6 +113,13 @@ footer a:hover{
   color: #000000;
 }
 
+#footer {
+   position:relative;
+   width: 100%;
+   text-align: center;
+   word-spacing:5px;
+}
+
 .top-scroll {
   margin-top: 50px;
 }

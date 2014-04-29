@@ -77,8 +77,17 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="sign_in">Sign in</h4>
 	      </div>
-	      <div class="modal-body">     
-	      <?php $this->load->view('account/sign_in'); ?> 	        
+	      <div class="modal-body">
+			<?php 
+			if($this->session->flashdata('sign_up_succeeded'))
+			{
+			echo '<div class="alert alert-success alert-dismissable">';
+				echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+				echo '<strong>' .$this->session->flashdata('sign_up_succeeded') .'</strong>';
+			echo '</div>'; 
+			}
+			?>
+			<?php $this->load->view('account/sign_in'); ?> 	        
 	      </div>
 	    </div>
 	  </div><!--/modal-dialog-->
@@ -141,7 +150,7 @@
         </div>
     </div>
     <!-- /Services -->
-
+	
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -159,7 +168,9 @@
                         <a href="#top"><i class="fa fa-arrow-circle-o-up fa-4x"></i></a>
                     </div>
                     <hr>
-                    <p>Copyright &copy; SaveShare 2014</p>
+	                	<div id="footer">
+	                		<h5><a href="<?php echo base_url();?>start/about">About</a></h5>
+	                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +203,15 @@
         });
     });
     </script>
-
+    <!-- Custom JavaScript for the Alert messages -->
+	<script>
+    window.setTimeout(function()
+    {
+    	$(".alert").fadeTo(500, 0).slideUp(500, function(){
+    		$(this).remove();
+    	});
+    }, 1500);
+	</script>
 </body>
 
 </html>

@@ -27,6 +27,7 @@ class Account extends CI_Controller{
 		}
 		
 		else{
+			$this->session->set_flashdata('sign_in_succeeded', 'You were successfully signed in.');
 			redirect('profile');
 		}
 		
@@ -53,9 +54,7 @@ class Account extends CI_Controller{
 		{
            if($this->account_model->create_user())
            {
-           		//Skriv ut ett meddelande. 'Registrering lyckades. Logga in.'
- 
-		   		
+		   		$this->session->set_flashdata('sign_up_succeeded', 'You were successfully signed up.');
                 redirect('account/sign_in');
            }
            else
@@ -64,7 +63,6 @@ class Account extends CI_Controller{
            }
 		}	
 	}
-	
 	public function sign_out(){
 		//Unset user data
 		$this->session->unset_userdata('logged_in');
@@ -75,7 +73,8 @@ class Account extends CI_Controller{
 		$this->session->set_flashdata('logged_out', 'You have been logged out');
 		redirect('start');
     }
-    	public function profile_settings(){
+	
+    public function profile_settings(){
 		//Load Profile Data
 	    $id = $this->session->userdata('user_id');
 	    $data['profile_data'] = $this->account_model->get_userdata($id);	
@@ -84,7 +83,6 @@ class Account extends CI_Controller{
 		$this->load->view('account/settings/profile_settings', $data);
 		$this->load->view('profile/templates/footer');
 	}
-	
     public function validate_settings(){
     	//Load Data
     	$id = $this->session->userdata('user_id');
@@ -126,9 +124,11 @@ class Account extends CI_Controller{
 		else
 		{
 			if($this->account_model->change_settings()){
-				$this->session->set_flashdata('settings_changed', 'Your settings has been successfully changed');
-				
-				redirect('account/profile_settings');
+				//Flashdata is shown in the view after a HTTP (location) redirect. It may work with a refresh as well.
+				//If you load a view after setting flashdata, the message is shown the next time you load the page, therefore
+				//you must use redirect() with flashdata. You can use set_message together with load();
+				$this->session->set_flashdata('settings_succeeded', 'Your settings was successfully changed.');
+				redirect('profile');
 			}
 			else{
 				//Unsuccessful update
@@ -177,7 +177,7 @@ class Account extends CI_Controller{
 		}
 		else{
 			//This is almost an ugly solution. Still uncertain on how the callback function works, but it prints
-			//'Invalid username or password' if you leave the username field empy. Implying that is checked the DB
+			//'Invalid username or password' if you leave the username field empy. Implying that it checked the DB
 			//against an empy string as username, which is clearly wrong procedure. Not sure if this is the case,
 			//but the below code will fix the error message.
 			
@@ -233,16 +233,17 @@ class Account extends CI_Controller{
 			return FALSE;
 		}
 	}
-	
 		
 	//**********************************************************************************************************************************//
 	//This custom script will trigger the sign in modal on the start page to show. The filename is saved in the variable $data that		//		
-	//is passed on to start. In start, the variable $trigger_modal will load the variable $data and a php echo function will echo ""; 	//
-	//the full pathway to the script, which will then execute and trigger the modal to show. This is neccessary do to because of 		//
-	//the way the sign in component is built. The sign in modal is a external view that is loaded on the start page by CLICKING a 		//
+	//is passed on to start. In start, the variable $trigger_modal will load the variable $data and a php echo function will echo   	//
+	//the full pathway to the script, which will then execute and trigger the modal to show. This is neccessary to do because of 		//
+	//the way the sign in component is built. The sign in modal is an external view that is loaded on the start page by CLICKING a 		//
 	//button. This button triggers the modal to show. And this is exactly what this custom javascript replicates. It artificially 		//
 	//CLICKS the button.																												//
 	//**********************************************************************************************************************************//
+	
+	//I realize now that this is overkill. I can simply put the pathway in the view withtin the if statement, but this is more bad ass.
 	
 	public function load_modal($option){
 	
