@@ -1,7 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- Save Share 2014 -->
 <!-- PHP Code Here -->
-<?php $profile_data_ = get_object_vars($profile_data);?>
+<?php global $profile_data_;
+ $profile_data_ = get_object_vars($profile_data);?>
 
 		<!-- Page content -->
 	    <div id="page-content-wrapper">
@@ -9,23 +10,31 @@
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
 	                Settings
-				</h1>
-	                       
+				</h1> 
 	        </div><!-- content-header-->
+	        
 		    <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
+				
+					<?php if($this->session->flashdata('settings_changed')) : ?>
+						<?php echo '<div class="alert alert-success alert-dismissable">'; ?>
+							<?php echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'; ?>
+							<?php echo '<strong>' .$this->session->flashdata('settings_changed') .'</strong>'; ?>
+							<?php echo '</div>   '; ?>
+					<?php endif; ?>
+				
 			    <div class="row">
 			        <div class="col-md-6">
 							<!--Start form-->
 							<?php $attributes = array('id' =>'sign_up_form','class' => 'form-horizontal'); ?>
-							<?php echo form_open('profile/validate_settings', $attributes); ?>
+							<?php echo form_open('account/validate_settings', $attributes); ?>
 							
 							<!--Field: Username-->
 							<p>
 							<?php echo form_label('Username *'); ?>
 							<?php
 							$data = array(
-											'name' 			=>'username',
+											'name' 			=>'username_',
 											'placeholder' 	=> 'Enter Username',
 											'style' 		=> 'width:100%',
 											'value'			=> set_value('username', $profile_data_['username'])
@@ -35,7 +44,7 @@
 							<?php echo form_input($data); ?>
 							
 							<!--Display field errors-->
-							<?php echo form_error('username'); ?>
+							<?php echo form_error('username_'); ?>
 							</p>
 							
 							<!--Field: Email-->
@@ -82,7 +91,7 @@
 							
 							$data= array_combine($keys,$values);
 							
-							echo form_dropdown('birth_year', $data);
+							echo form_dropdown('birth_year', $data, $profile_data_['birth_year']);
 							?>
 							
 							
@@ -97,20 +106,16 @@
 							<?php
 							$data = array(
 											'name'	=>	'gender',
-											'style'	=>	'margin:10px;',
-											'value'	=>	set_value('gender', $profile_data_['gender'])
-											
+											'style'	=>	'margin:10px;'
 										);
 							?>
 							
 							<?php
-							
 							function is_male()
 							{	
-								global $profile_data_;
-								$gender = $profile_data_['gender'];
-								
-								if($gender === 'male'){
+							global $profile_data_;
+							
+								if($profile_data_['gender'] === 'male'){
 
 									return TRUE;
 								}
@@ -118,15 +123,27 @@
 								{
 									return FALSE;
 								}
-								
+							}
+							function is_female()
+							{	
+							global $profile_data_;
+							
+								if($profile_data_['gender'] === 'female'){
+
+									return TRUE;
+								}
+								else
+								{
+									return FALSE;
+								}
 							}
 							?>
 							
 							<?php			
 							
-							echo form_radio($data, 'male', is_male() );
+							echo form_radio($data, 'male', is_male());
 							echo 'Male';
-							echo form_radio($data, 'female', is_male());
+							echo form_radio($data, 'female', is_female());
 							echo 'Female' 
 							
 							?>
@@ -139,7 +156,6 @@
 							<p>
 							<?php echo form_label('City'); ?>
 							<?php
-							$gender = $profile_data_['gender'];
 							$data = array(
 											'name' 			=>'city',
 											'placeholder' 	=> 'Enter City',
@@ -209,16 +225,15 @@
 							<?php echo form_label('Password'); ?>
 							<?php
 							$data = array(
-											'name'			=> 'password',
+											'name'			=> 'password_',
 											'placeholder' 	=> 'Enter Password',
 											'style' 		=> 'width:100%',
-											'value'			=> set_value('password') //ta bort sen
 										);
 							?>
 							<?php echo form_password($data); ?>
 							
 							<!--Display field errors-->
-							<?php echo form_error('password'); ?>
+							<?php echo form_error('password_'); ?>
 							</p>
 							
 							<!--Field: Confirm password-->
@@ -229,7 +244,6 @@
 											'name'			=> 'password_confirmation',
 											'placeholder' 	=> 'Confirm password',
 											'style' 		=> 'width:100%',
-											'value'			=> set_value('password_confirmation') //ta bort sen
 										);
 							?>
 							<?php echo form_password($data); ?>
