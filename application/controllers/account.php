@@ -83,7 +83,14 @@ class Account extends CI_Controller{
 		$this->load->view('account/settings/profile_settings', $data);
 		$this->load->view('profile/templates/footer');
 	}
-    public function validate_settings(){
+    public function security_settings(){
+		$this->load->view('profile/templates/header');
+		$this->load->view('account/settings/security_settings');
+		$this->load->view('profile/templates/footer');
+    	
+	    
+    }
+    public function validate_profile_settings(){
     	//Load Data
     	$id = $this->session->userdata('user_id');
 	    $profile_data = get_object_vars($this->account_model->get_userdata($id));
@@ -97,8 +104,7 @@ class Account extends CI_Controller{
     		$this->form_validation->set_rules('username_','Username','required|min_length[4]|max_length[12]|trim|xss_clean');	
     	}
     	
-		$this->form_validation->set_rules('password_','Password','required|min_length[4]|max_length[128]|trim|xss_clean|callback_verify_settings_password');
-		$this->form_validation->set_rules('password_confirmation','Password Confirmation','required|min_length[4]|max_length[128]|matches[password_]|trim|xss_clean');
+		$this->form_validation->set_rules('password_','Password','required|min_length[4]|max_length[128]|trim|xss_clean|callback_verify_profile_settings_password');
 		
 		if($this->input->post('email') != $profile_data['email'])
 		{
@@ -123,11 +129,11 @@ class Account extends CI_Controller{
 		}
 		else
 		{
-			if($this->account_model->change_settings()){
+			if($this->account_model->change_profile_settings()){
 				//Flashdata is shown in the view after a HTTP (location) redirect. It may work with a refresh as well.
 				//If you load a view after setting flashdata, the message is shown the next time you load the page, therefore
 				//you must use redirect() with flashdata. You can use set_message together with load();
-				$this->session->set_flashdata('settings_succeeded', 'Your settings was successfully changed.');
+				$this->session->set_flashdata('profile_settings_succeeded', 'Your profile settings was successfully changed.');
 				redirect('profile');
 			}
 			else{
@@ -148,6 +154,25 @@ class Account extends CI_Controller{
 			
 		}	
 	}
+    public function validate_security_settings(){
+    	$this->form_validation->set_rules('old_password','Old Password','required|min_length[4]|max_length[128]|trim|xss_clean|callback_verify_security_settings_password');
+		$this->form_validation->set_rules('new_password','New Password','required|min_length[4]|max_length[128]|trim|xss_clean');
+		$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->security_settings();
+		}
+		else{
+			$new_password = $this->input->post('new_password');
+			
+			if($this->account_model->change_security_settings($new_password)){
+		
+			$this->session->set_flashdata('security_settings_succeeded', 'Your security settings was successfully changed.');
+			redirect('profile');
+				
+			}
+		}
+    }
 	
 	//**********************************************************************************************************************************// 
 	// 	This function is called by the callback rule from set_rules for password. verify_sign_in either returns TRUE or FALSE. This	//
@@ -193,8 +218,7 @@ class Account extends CI_Controller{
 		}
 			
 	}
-	
-	public function verify_settings_password(){
+	public function verify_profile_settings_password(){
 		//Load Data
     	$id = $this->session->userdata('user_id');
 	    $profile_data = get_object_vars($this->account_model->get_userdata($id));
@@ -223,15 +247,41 @@ class Account extends CI_Controller{
 			//but the below code will fix the error message.
 			
 			if ($username !=''){
-				$this->form_validation->set_message('verify_settings_password', 'Invalid username or password');
+				$this->form_validation->set_message('verify_profile_settings_password', 'Invalid password.');
 				
 			}
 			else{
-				$this->form_validation->set_message('verify_settings_password', '');
+				$this->form_validation->set_message('verify_profile_settings_password', '');
 				
 			}
 			return FALSE;
 		}
+	}
+	public function verify_security_settings_password(){
+		$username = $this->session->userdata('username');
+		$password = $this->input->post('old_password');
+		
+		$user_id = $this->account_model->login_user($username,$password);
+		
+		if($user_id){
+			return TRUE;
+		}
+		else{
+		//This is almost an ugly solution. Still uncertain on how the callback function works, but it prints
+		//'Invalid username or password' if you leave the username field empy. Implying that is checked the DB
+		//against an empy string as username, which is clearly wrong procedure. Not sure if this is the case,
+		//but the below code will fix the error message.
+			if ($username !=''){
+				$this->form_validation->set_message('verify_profile_settings_password', 'Invalid password.');
+				
+			}
+			else{
+				$this->form_validation->set_message('verify_profile_settings_password', '');
+				
+			}
+		return FALSE;
+		}
+		
 	}
 		
 	//**********************************************************************************************************************************//

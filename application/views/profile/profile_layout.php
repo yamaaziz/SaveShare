@@ -37,12 +37,20 @@
 							echo '<strong>' .$this->session->flashdata('economy_succeeded') .'</strong>';
 						echo '</div>'; 
 						}
-						//Settings success
-						elseif($this->session->flashdata('settings_succeeded'))
+						//Profile settings success
+						elseif($this->session->flashdata('profile_settings_succeeded'))
 						{
 						echo '<div class="alert alert-success alert-dismissable">';
 							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-							echo '<strong>' .$this->session->flashdata('settings_succeeded') .'</strong>';
+							echo '<strong>' .$this->session->flashdata('profile_settings_succeeded') .'</strong>';
+						echo '</div>'; 
+						}
+						//Security settings success
+						elseif($this->session->flashdata('security_settings_succeeded'))
+						{
+						echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<strong>' .$this->session->flashdata('security_settings_succeeded') .'</strong>';
 						echo '</div>'; 
 						}
 						?>

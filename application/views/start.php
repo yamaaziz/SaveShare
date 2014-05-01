@@ -107,7 +107,6 @@
         </div>
     </div>
     <!-- /Intro -->
-    
     <!-- Services -->
     <div id="services" class="services">
         <div class="container">
@@ -150,26 +149,37 @@
         </div>
     </div>
     <!-- /Services -->
-	
+    <div class="marketing">
+		<div class="container">
+	        <div class="row">
+	            <div class="col-sm-4">
+	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+	                <h2>Marketing Box #1</h2>
+	                <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
+	            </div>
+	            <div class="col-sm-4">
+	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+	                <h2>Marketing Box #2</h2>
+	                <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+	            </div>
+	            <div class="col-sm-4">
+	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+	                <h2>Marketing Box #3</h2>
+	                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+	            </div>
+	        </div>
+	    </div><!-- /container -->
+    </div><!-- /marketing -->
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
-                    <ul class="list-inline">
-                        <li><a><i class="fa fa-facebook fa-3x"></i></a>
-                        </li>
-                        <li><a><i class="fa fa-twitter fa-3x"></i></a>
-                        </li>
-                        <li><a><i class="fa fa-dribbble fa-3x"></i></a>
-                        </li>
-                    </ul>
-                    <div class="top-scroll">
+					<div class="top-scroll">
                         <a href="#top"><i class="fa fa-arrow-circle-o-up fa-4x"></i></a>
                     </div>
-                    <hr>
 	                	<div id="footer">
-	                		<h5><a href="<?php echo base_url();?>start/about">About</a></h5>
+	                		<p>Save Share &copy; 2014</p>
 	                    </div>
                 </div>
             </div>

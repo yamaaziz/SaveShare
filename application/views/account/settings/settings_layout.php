@@ -12,10 +12,8 @@
 			<div class="page-content inset">
 			    <div class="row">
 			        <div class="col-md-12">
-			        	<div class="form-settings">
-			        		<p><a href="<?php echo base_url();?>account/profile_settings">Change profile settings</a></p>
-			        	</div>
-			            <p><a href="#" >Change password</a></p>    
+			        	<p><a href="<?php echo base_url();?>account/profile_settings">Change profile settings</a></p>
+			            <p><a href="<?php echo base_url();?>account/security_settings" >Change security settings</a></p>    
 			        </div>
 			    </div><!-- /.row -->
 			</div><!-- /.page-content inset -->

@@ -46,7 +46,7 @@ $data = array(
 <?php
 $data = array(
 				'name'			=> 'password_confirmation',
-				'placeholder' 	=> 'Confirm password',
+				'placeholder' 	=> 'Confirm Password',
 				'style' 		=> 'width:100%',
 				'value'			=> set_value('password_confirmation') //ta bort sen
 			);

@@ -26,7 +26,6 @@ class Account_model extends CI_Model{
 		
 		
 	}
-	
 	public function create_user(){
 		
 		$optional = array(
@@ -63,10 +62,9 @@ class Account_model extends CI_Model{
 		}
 		
 		return $insert;
-		}
-		
-	public function change_settings(){
+		}	
 	
+	public function change_profile_settings(){
 		$id = $this->session->userdata('user_id');		
 		$optional = array(
 			'birth_year'	=>		$this->input->post('birth_year'),                    
@@ -90,6 +88,17 @@ class Account_model extends CI_Model{
 		$insert = $this->db->update('users', $user);
 		
         return $insert;
+	}
+	public function change_security_settings($new_password){
+		$id = $this->session->userdata('user_id');
+		
+		$this->db->where('id', $id);
+		$new_password_hash = array('password'	=>	password_hash($new_password, PASSWORD_DEFAULT));
+		$insert = $this->db->update('users', $new_password_hash);
+		
+		return $insert;
+		
+		
 	}
 	
 	//Save this function for later where you search for other users
@@ -122,8 +131,6 @@ class Account_model extends CI_Model{
 				return $query->row();
 				}
 	}
-
-	
 	public function set_NULL($optional){
 	
 		foreach($optional as $key=>$value){

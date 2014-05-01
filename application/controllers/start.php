@@ -18,10 +18,6 @@ class Start extends CI_Controller{
 	    	$this->load->view('start');
     	}
 	}
-	public function about(){
-		$this->load->view('about');
-	}
-	
 	private function is_signed_in(){
 	
 		if($this->session->userdata('logged_in')){

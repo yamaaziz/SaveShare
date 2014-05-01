@@ -18,9 +18,8 @@
 			    <div class="row">
 			        <div class="col-md-6">
 			        	<!--Start form-->
-						<?php $attributes = array('id' =>'sign_up_form','class' => 'form-horizontal'); ?>
-						<?php echo form_open('account/validate_settings', $attributes); ?>
-						
+						<?php $attributes = array('id' =>'profile_settings_form','class' => 'form-horizontal'); ?>
+						<?php echo form_open('account/validate_profile_settings', $attributes); ?>
 						<!--Field: Username-->
 						<p>
 						<?php echo form_label('Username *'); ?>
@@ -34,11 +33,9 @@
 									);
 						?>
 						<?php echo form_input($data); ?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('username_'); ?>
 						</p>
-						
 						<!--Field: Email-->
 						<p>
 						<?php echo form_label('Email *'); ?>
@@ -55,8 +52,6 @@
 						<!--Display field errors-->
 						<?php echo form_error('email'); ?>
 						</p>
-						
-						
 						<!--Field: Birthyear-->
 						<p>
 						<?php echo form_label('Birth year'); ?>
@@ -68,7 +63,6 @@
 										'value'			=> set_value('birth_year', $profile_data_['birth_year'])
 									);
 						?>
-						
 						<?php
 						//This creates a empty default value for the birthyear dropdown.
 						//It is merged in front of the birthyears.
@@ -85,13 +79,9 @@
 						
 						echo form_dropdown('birth_year', $data, $profile_data_['birth_year']);
 						?>
-						
-						
 						<!--Display field errors-->
 						<?php echo form_error('birth_year'); ?>
 						</p>
-						
-						
 						<!--Field: Gender-->
 						<p>
 						<?php echo form_label('Gender'); ?>
@@ -101,7 +91,6 @@
 										'style'	=>	'margin:10px;'
 									);
 						?>
-						
 						<?php
 						function is_male()
 						{	
@@ -130,20 +119,15 @@
 							}
 						}
 						?>
-						
 						<?php			
-						
 						echo form_radio($data, 'male', is_male());
 						echo 'Male';
 						echo form_radio($data, 'female', is_female());
-						echo 'Female' 
-						
+						echo 'Female'; 
 						?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('gender'); ?>
 						</p>
-						
 						<!--Field: City-->
 						<p>
 						<?php echo form_label('City'); ?>
@@ -161,9 +145,6 @@
 						<!--Display field errors-->
 						<?php echo form_error('city'); ?>
 						</p>
-						
-						
-						
 						<!--Field: Occupation-->
 						<p>
 						<?php echo form_label('Occupation'); ?>
@@ -177,12 +158,9 @@
 									);
 						?>
 						<?php echo form_input($data); ?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('occupation'); ?>
 						</p>
-						
-						
 						<!--Field: Income-->
 						<p>
 						<?php echo form_label('Income'); ?>
@@ -196,21 +174,17 @@
 									);
 						?>
 						<?php echo form_input($data); ?>
-						
 						<!--Display field errors-->
 						<?php echo form_error('income'); ?>
 						</p>
-						<br/>
-						
+						<br/>					
 						<p>
 						<?php echo '* marked fields are required.';?>
 						</p>
-						<br/>
-						
+						<br/>						
 						<p>
 						<?php echo '<strong>Enter your password to continue</strong>';?>
-						</p>
-													
+						</p>													
 						<!--Field: Enter password to save -->
 						<!--Field: Password-->
 						<p>
@@ -222,28 +196,10 @@
 										'style' 		=> 'width:100%',
 									);
 						?>
-						<?php echo form_password($data); ?>
-						
+						<?php echo form_password($data); ?>					
 						<!--Display field errors-->
 						<?php echo form_error('password_'); ?>
-						</p>
-						
-						<!--Field: Confirm password-->
-						<p>
-						<?php echo form_label('Password confirmation'); ?>
-						<?php
-						$data = array(
-										'name'			=> 'password_confirmation',
-										'placeholder' 	=> 'Confirm password',
-										'style' 		=> 'width:100%',
-									);
-						?>
-						<?php echo form_password($data); ?>
-						
-						
-						<!--Display field errors-->
-						<?php echo form_error('password_confirmation'); ?>
-						</p>
+						</p>					
 						</br>
 						<p>
 						<!--Submit Buttons-->
@@ -255,7 +211,6 @@
 											);
 						?>
 						<?php echo form_submit($data); ?>
-						
 						<?php $data = array(
 											    'name' => 'reset',
 											    'id' => 'reset_button',
@@ -264,8 +219,7 @@
 											    'content' => 'Reset',
 											    'class'	=>	'btn btn-danger'
 											);
-						?>
-											
+						?>				
 						<?php echo form_button($data); ?>
 						</p>
 						</br>
