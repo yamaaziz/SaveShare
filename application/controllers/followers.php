@@ -23,6 +23,7 @@ class Followers extends CI_Controller{
     	$follow_data['no_of_followers'] = $this->count_no_of_followers();
     	$follow_data['no_of_followings'] = $this->count_no_of_followings();
     	$follow_data['testar'] = $this->testar();
+    	$follow_data['testar2'] = $this->testar2();
     	//Load Views
     	$this->load->view('templates/header');
     	$this->load->view('profile/followers/show_followers', $follow_data);
@@ -57,6 +58,15 @@ class Followers extends CI_Controller{
     	$id = $this->session->userdata('user_id');
     	return $this->follower_model->get_followersid2($id);
     	}
+
+    public function testar2() {
+    	$id = $this->session->userdata('user_id'); /*id på den som är inloggad*/
+		$id_array = $this->follower_model->get_followersid2($id);
+		/*$id_array = array(array(1), array(2), array(3));*/
+		$name_array = $this->follower_model->get_follower_username2($id_array);
+		return $name_array;
+		/*return array('hej1', 'hej2', 'hej3');*/
+	}
 
     //you should extend Start so this function is included 
     private function is_signed_in() {

@@ -57,7 +57,7 @@ class Follower_model extends CI_Model{
 				}
 	}
 
-	public function count_followers($id) {
+	public function count_followings($id) { 
 		$this->db->select("
 			followers.follower_id
 			");
@@ -68,7 +68,7 @@ class Follower_model extends CI_Model{
 		return $query->num_rows();
 	}
 	
-	public function count_followings($id) {
+	public function count_followers($id) { /*Man måste ju kolla hur många gånger man själv förekommer i motsatt kolumn*/
 		$this->db->select("
 			followers.user_id
 			");
@@ -78,7 +78,9 @@ class Follower_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
+
 /*ARRAY*/
+
 	public function get_followersid2($id) {
 		$this->db->select("
 			followers.follower_id,
@@ -87,6 +89,7 @@ class Follower_model extends CI_Model{
 		$this->db->from('followers');
 		$this->db->where('followers.user_id', $id);
 		$query = $this->db->get();
+		/*return array_column($query, 'user_id');*/ /*mysql_fetch_array*/
 		return $query->result_array(); /*Returnerar en array? eller array i array? eller array med nycklar?*/
 	}
 
@@ -98,24 +101,29 @@ class Follower_model extends CI_Model{
 		$this->db->from('followers');
 		$this->db->where('followers.follower_id', $id);
 		$query = $this->db->get();
-		return $query->result_array(); /*Returnerar en array?*/
+		return $query->result_array(); /*Returnerar arrayer i arrayer?*/
 	}
-	
-	public function get_follower_username2($result_array) { /*Denna ska kunna ta en array.*/
+
+	public function get_follower_username2($id_array) { /*Denna ska kunna ta en array med index men nu tar den arrayer i arrayer.*/
 		$resultat = array();
-		foreach (range(0, count($result_array)) as $index) {  /*For index in range som i python.*/
+		$index = 0;
+		$antal = count($id_array);
+		foreach (range(0, $antal-1) as $whatever) {/*For index in range som i python. Behövs en till for-loop om det är arrayer i arrayer? nej för det */
     		$this->db->select("
 			users.username
 			");
 
-		$this->db->from('users');
-		$this->db->where('users.id', array_values($result_array)[$index]);
-		$query = $this->db->get();
-		$subresultat = $query->row();
-		array_push($resultat, $subresultat); /*lägg resultatet längst bak i en array*/
+			$this->db->from('users');
+			$this->db->where('users.id', array_values(array_values($id_array)[$index])[0]);
+			$query = $this->db->get();/*om den får flera träffar kanske det inte går. man kanke behöver en if-sats?*/
+				$subresultat = $query->result_array();
+				array_push($resultat, $subresultat);/*lägg resultatet längst bak i en array*/
+				$index = $index + 1;
+				}
 		return $resultat;
 		}
-	}
+
 }
+
 /*End of file follower_model.php*/
 /*Location: ./application/models/follower_model.php */

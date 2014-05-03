@@ -9,6 +9,7 @@
 	<?php $no_of_followers = $no_of_followers; ?>
 	<?php $no_of_followings = $no_of_followings; ?>
 	<?php $testar = $testar; ?>
+	<?php $testar2 = $testar2; ?>
 
 	    <div id="page-content-wrapper">
 	        <div class="content-header">
@@ -35,12 +36,11 @@
 		                        </div>
 		                        	<div class="panel-body">
 										<ul class="list-group">
-											<?php $username = 'username'; ?>
-											<li class="list-group-item"><a href="#"><?php echo ucfirst($following[$username]); ?></a></li>
-											<li class="list-group-item"><a href="#">Username2</a></li>
-											<li class="list-group-item"><a href="#">Username3</a></li>
-											<li class="list-group-item"><a href="#">Username4</a></li>
-											<li class="list-group-item"><a href="#">Username5</a></li>
+											<?php $index = 'username'; ?>
+											<?php foreach (range(0, $no_of_followings-1) as $whatever) { ?>
+												<li class="list-group-item"><a href="#"><?php echo ucfirst($following[$index]); ?></a></li>
+											<?php } ?>
+
 										</ul>
 									</div>
 									<!-- /.panel-body -->
@@ -60,13 +60,11 @@
 		                        </div>
 		                        	<div class="panel-body">
 										<ul class="list-group">
-											<li class="list-group-item"><a href="#"><?php echo ucfirst($followers['username']); ?></a></li>
-											<li class="list-group-item"><a href="#">Follower2</a></li>
-											<li class="list-group-item"><a href="#">Follower3</a></li>
-											<li class="list-group-item"><a href="#">Follower4</a></li>
-											<li class="list-group-item"><a href="#">
-												<?php echo array_values(array_values($testar)[1])[0]; ?> 
-											<!--detta visar att followers verkligen hamnar i en array! Den innersta siffran är den man måste variera -->											
+											<?php $index3 = 0; ?>
+											<?php foreach (range(0, $no_of_followers-1) as $whatever) { ?>  
+												<li class="list-group-item"><a href="#"><?php echo ucfirst(array_values(array_values(array_values($testar2)[$index3])[0])[0]); ?></a></li>
+												<?php $index3 = $index3 + 1;?>
+											<?php } ?>											
 											</a></li>
 										</ul>
 									</div>
