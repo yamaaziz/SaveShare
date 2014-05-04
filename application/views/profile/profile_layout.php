@@ -3,8 +3,9 @@
 <?php
 	$session_data = $this->session->all_userdata();
 	if(isset($economy_info)){
-		$economy = get_object_vars($economy_info);
+		$economy = get_object_vars($economy_info);	
 	} 
+	$var = get_object_vars($user_info);
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -12,7 +13,7 @@
 	        <div class="content-header">
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
-	                Profile
+	                <?php echo ucfirst($var['username']); ?> 
 	            </h1>	            
 	        </div><!-- content-header-->
 	    	 <!-- Keep all page content within the page-content inset div! -->
@@ -20,7 +21,8 @@
 			
 			    <div class="row">
 			        <div class="col-md-12">
-			            <p class="lead">User Info</p>
+			            <p class="lead">User Info  <?php echo ucfirst($var['username']); ?> 
+						</p>
 			        </div>
 			    </div>
 			    

@@ -90,7 +90,7 @@
 					
 					
 					<!--Display field errors-->
-					<?php echo form_error('birthyear'); ?>
+					<?php echo form_error('age'); ?>
 					</p>
 					
 					<!--Field: Properties-->

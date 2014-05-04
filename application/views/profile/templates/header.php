@@ -152,12 +152,46 @@
 				            </li>
 					</ul>
 					
-						<form class="navbar-form navbar-left" role="search">
+			<!-- Search button -->
+			<?php $attributes = array('id' =>'search_form','class' => 'form-horizontal'); ?>
+					<?php echo form_open('search/validate_search', $attributes); ?>
+			<?php echo form_open(); ?>
+					<!--Field: Total savings-->
+					<p>
+					<?php echo form_label(); ?>
+					<?php
+					$data = array(
+									
+									'placeholder' 	=> 'Search',
+									'style' 		=> 'width:10%',
+									'value'			=> set_value('search')
+								);
+					?>
+					<?php echo form_input($data); ?>
+					<!--Display field errors-->
+					<?php echo form_error('search'); ?>
+					</p>
+					
+							<!--Submit Buttons-->
+					<?php $data = array(
+											"value" => "Search",
+											"name"	=> "submit", 
+											"class"	=> "btn btn-primary"
+										);
+					?>
+					<?php echo form_submit($data); ?>
+					</p>
+					<?php echo form_close(); ?>
+					
+					
+					<!--	<form class="navbar-form navbar-left" role="search">
 			            	<div class="form-group">
 			                	<input type="text" class="form-control" placeholder="Search">
 			            	</div>
 			            	<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"> </i></button>
-			        	</form>
+			        	</form> -->
+			        	
+			        	
 			        	
 			        	<ul class = "advanced-search">
  			            	<a href="<?php echo base_url(); ?>search/advanced_search">

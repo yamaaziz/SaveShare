@@ -27,11 +27,17 @@ class Search extends CI_Controller{
 		else
 		{	if($id = $this->search_model->adv_search())
 			{
+			
+				$this->load->view('profile/templates/header');
+				//foreach ($id as $idn) {
+								
 				$data1['user_info']		= 	$this->collect_userinfo($id);
 				$data1['economy_info']	=	$this->collect_economyinfo($id);
 				//Load Views
-				$this->load->view('profile/templates/header');
-				$this->load->view('search/search_result', $data1);
+				
+				$this->load->view('search/search_result', $data1);							
+				//}
+				
 				$this->load->view('profile/templates/footer'); 
 			}
 			else
@@ -49,6 +55,37 @@ class Search extends CI_Controller{
     private function collect_economyinfo($id) {
 		return $this->economy_model->get_economydata($id);
     }
+    
+	public function validate_search(){ 
+    	$this->form_validation->set_rules('search','Search','trim|xss_clean');
+    	
+    	$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+		
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->advanced_search();
+		}
+		else
+		{	if($id = $this->search_model->search())
+			{
+												
+				$data1['user_info']		= 	$this->collect_userinfo($id);
+				$data1['economy_info']	=	$this->collect_economyinfo($id);
+				//Load Views
+				
+				$this->load->view('profile/templates/header');
+				$this->load->view('profile/profile_layout', $data1);							
+				$this->load->view('profile/templates/footer'); 
+			}
+			else
+			{
+				$this->load->view('profile/templates/header');
+				$this->load->view('search/no_find');
+				$this->load->view('profile/templates/footer');
+			}
+		}
+
+  }
 }
 /* End of file search.php */
 /* Location: ./application/controllers//search.php */
