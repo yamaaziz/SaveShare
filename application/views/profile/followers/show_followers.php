@@ -4,12 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<?php $followers = get_object_vars($followers_name); ?>
-	<?php $following = get_object_vars($following_name); ?>
-	<?php $no_of_followers = $no_of_followers; ?>
-	<?php $no_of_followings = $no_of_followings; ?>
-	<?php $testar = $testar; ?>
-	<?php $testar2 = $testar2; ?>
+	<?php $followers = $followers_name; ?>
+	<?php $following = $following_name; ?>
 
 	    <div id="page-content-wrapper">
 	        <div class="content-header">
@@ -28,19 +24,19 @@
 		                <div class="col-lg-6">
 		                    <div class="panel panel-default">
 		                        <div class="panel-heading">
-		                        <?php if ($no_of_followings>1) { ?>
-		                        <?php echo 'You are following '; echo $no_of_followings; echo ' people';?>
+		                        <?php if (count($following)>1) { ?>
+		                        <?php echo 'You are following '; echo count($following); echo ' people';?>
 		                        <?php } else {?>
-		                        <?php echo 'You are following '; echo $no_of_followings; echo ' person';?>
+		                        <?php echo 'You are following '; echo count($following); echo ' person';?>
 		                        <?php } ?>
 		                        </div>
 		                        	<div class="panel-body">
 										<ul class="list-group">
-											<?php $index = 'username'; ?>
-											<?php foreach (range(0, $no_of_followings-1) as $whatever) { ?>
-												<li class="list-group-item"><a href="#"><?php echo ucfirst($following[$index]); ?></a></li>
+											<?php $index = 0; ?>
+											<?php foreach (range(0, count($following)-1) as $whatever) { ?>
+												<li class="list-group-item"><a href="#"><?php echo ucfirst(array_values(array_values(array_values($following)[$index])[0])[0]); ?></a></li>
+												<?php $index = $index + 1;?>
 											<?php } ?>
-
 										</ul>
 									</div>
 									<!-- /.panel-body -->
@@ -52,18 +48,18 @@
 						<div class="col-lg-6">
 		                    <div class="panel panel-default">
 		                        <div class="panel-heading">
-		                        <?php if ($no_of_followers>1) { ?>
-		                        <?php echo 'There are '; echo $no_of_followers; echo ' people following you';?>
+		                        <?php if (count($followers)>1) { ?>
+		                        <?php echo 'There are '; echo count($followers); echo ' people following you';?>
 		                        <?php } else {?>
-		                        <?php echo 'There is '; echo $no_of_followers; echo ' person following you';?>
+		                        <?php echo 'There is '; echo count($followers); echo ' person following you';?>
 		                        <?php } ?>
 		                        </div>
 		                        	<div class="panel-body">
 										<ul class="list-group">
-											<?php $index3 = 0; ?>
-											<?php foreach (range(0, $no_of_followers-1) as $whatever) { ?>  
-												<li class="list-group-item"><a href="#"><?php echo ucfirst(array_values(array_values(array_values($testar2)[$index3])[0])[0]); ?></a></li>
-												<?php $index3 = $index3 + 1;?>
+											<?php $index2 = 0; ?>
+											<?php foreach (range(0, count($followers)-1) as $whatever) { ?>  
+												<li class="list-group-item"><a href="#"><?php echo ucfirst(array_values(array_values(array_values($followers)[$index2])[0])[0]); ?></a></li>
+												<?php $index2 = $index2 + 1;?>
 											<?php } ?>											
 											</a></li>
 										</ul>
@@ -71,6 +67,4 @@
 								</div>
 							</div>
 						</div>
-
-
 </html>

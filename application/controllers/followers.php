@@ -18,54 +18,27 @@ class Followers extends CI_Controller{
     	}
     	else {
     	//Load Data
-    	$follow_data['followers_name'] = $this->collect_followersname();
-    	$follow_data['following_name'] = $this->collect_followingname();
-    	$follow_data['no_of_followers'] = $this->count_no_of_followers();
-    	$follow_data['no_of_followings'] = $this->count_no_of_followings();
-    	$follow_data['testar'] = $this->testar();
-    	$follow_data['testar2'] = $this->testar2();
+    	$follow_data['followers_name'] = $this->get_followernames();
+    	$follow_data['following_name'] = $this->get_followingnames();
     	//Load Views
     	$this->load->view('templates/header');
     	$this->load->view('profile/followers/show_followers', $follow_data);
     	$this->load->view('templates/footer');
 	    	    	}
     }
-    public function collect_followersname() {
-    	$id = $this->session->userdata('user_id');
-    	$follower_id1 = $this->follower_model->get_followersid($id);
-    	$follower_id2 = get_object_vars($follower_id1);
-    	return $this->follower_model->get_follower_username($follower_id2);
-    }
-
-    public function collect_followingname() {
-    	$id = $this->session->userdata('user_id');
-    	$following_id1 = $this->follower_model->get_followingid($id);
-    	$following_id2 = get_object_vars($following_id1);
-    	return $this->follower_model->get_following_username($following_id2);
-    }
-
-    public function count_no_of_followers() {
-    	$id = $this->session->userdata('user_id');
-    	return $this->follower_model->count_followers($id);
-    }
-
-    public function count_no_of_followings() {
-    	$id = $this->session->userdata('user_id');
-    	return $this->follower_model->count_followings($id);
-    }
     
-    public function testar() {
+    public function get_followernames() {
     	$id = $this->session->userdata('user_id');
-    	return $this->follower_model->get_followersid2($id);
-    	}
-
-    public function testar2() {
-    	$id = $this->session->userdata('user_id'); /*id på den som är inloggad*/
-		$id_array = $this->follower_model->get_followersid2($id);
-		/*$id_array = array(array(1), array(2), array(3));*/
-		$name_array = $this->follower_model->get_follower_username2($id_array);
+		$id_array = $this->follower_model->get_followersid($id);
+		$name_array = $this->follower_model->get_follower_username($id_array);
 		return $name_array;
-		/*return array('hej1', 'hej2', 'hej3');*/
+	}
+	
+	public function get_followingnames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followingid($id);
+		$name_array = $this->follower_model->get_following_username($id_array);
+		return $name_array;
 	}
 
     //you should extend Start so this function is included 
