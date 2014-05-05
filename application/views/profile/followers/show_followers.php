@@ -1,9 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
 	<!-- START PAGE -->
-<!DOCTYPE html>
-<html lang="en">
-
 	<?php $followers = $followers_name; ?>
 	<?php $following = $following_name; ?>
 
@@ -71,4 +68,3 @@
 								</div>
 							</div>
 						</div>
-</html>

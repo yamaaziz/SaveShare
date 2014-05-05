@@ -1,16 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
 <?php
-<<<<<<< HEAD
 	$session_data = $this->session->all_userdata();
-	if(isset($economy_info)){
-		$economy = get_object_vars($economy_info);	
+	if(isset($economy_info) && isset($user_info)){
+		$economy = get_object_vars($economy_info);
+		$var = get_object_vars($user_info);	
 	} 
-=======
-	$session_data = $this->session->all_userdata(); 
-	$economy = get_object_vars($economy_info);
->>>>>>> Johannas-gren2
-	$var = get_object_vars($user_info);
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -70,27 +65,15 @@
 
 			        </div>
 			        <div class="col-md-6" >
-<<<<<<< HEAD
-			        <?php 
-=======
-			            <p class="well"> Extra space. Follow-button? Send private message-button? </p>
 			            	<?php 
->>>>>>> Johannas-gren2
 							if($session_data['username']!= $var['username'])
 							{						
 							$this->load->view('profile/extra');								
 							}
-							?>
-<<<<<<< HEAD
-			        
+							?>       
 			      <!--      <p class="well"> Extra space. Follow-button? Send private message-button? </p>	-->
-			      
-=======
-
->>>>>>> Johannas-gren2
 			        </div>
 			    </div>
-
 				<div class="row">
 					<div class="col-md-6">
 						<p class="lead" >Savings Chart</p>		
@@ -159,7 +142,6 @@
 						<?php echo $this->load->view('economy/show_savings'); ?>
 					</div><!--./col-md-6-->
 				</div><!--./row-->
-				
 				<div class="row">
 					<div class="col-md-6">
 						<p class="lead"> Liabilities Chart</p>
