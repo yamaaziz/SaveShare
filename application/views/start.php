@@ -99,9 +99,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
-                    <h2>The World's Best Web Application</h2>
-                    <p class="lead">Sign up today and start saving. You can even look up how much money your annoying neighbour 			 makes.</p>
-                    
+                    <h2>The World's Best Economy Service</h2>
+                    <p class="lead">Are you tired of constantly going broke? Do you have no idea of where your money goes? Are your pockets an empty, bottomless pit of guilt, doubt and self-pity? Sign up today and start saving.</p>
                 </div>
             </div>
         </div>
@@ -112,64 +111,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center">
-                    <h2>Our Services</h2>
+                    <h2>The Team</h2>
                     <hr>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 col-md-offset-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-money"></i>
-                        <h4>Money</h4>
-                        <p>You can win 1 000 000$ just by signing up </p>
-                    </div>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-globe"></i>
-                        <h4>Connect</h4>
-                        <p>Find friends!</p>
-                    </div>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-users"></i>
-                        <h4>Profiles</h4>
-                        <p>Cool user features!</p>
-                    </div>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-lock"></i>
-                        <h4>Security</h4>
-                        <p>Trust me, I have everything under controll. Your data is safe with us.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /Services -->
-    <div class="marketing">
-		<div class="container">
-	        <div class="row">
-	            <div class="col-sm-4">
-	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
-	                <h2>Marketing Box #1</h2>
-	                <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
-	            </div>
-	            <div class="col-sm-4">
+        		<div class="col-md-4">
+        			<img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+					<h2>Marketing Box #1</h2>
+					<p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
+					</div>
+					<div class="col-md-4">
 	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
 	                <h2>Marketing Box #2</h2>
 	                <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-	            </div>
-	            <div class="col-sm-4">
-	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
-	                <h2>Marketing Box #3</h2>
-	                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-	            </div>
-	        </div>
-	    </div><!-- /container -->
-    </div><!-- /marketing -->
+				</div>
+				<div class="col-md-4">
+					<img class="img-circle img-responsive" src="http://i.imgur.com/lGDxYba.jpg?1">
+					<h2>Yama Aziz</h2>
+					<p></p>
+				</div>
+            </div><!-- ./row -->
+        </div><!-- ./container -->
+    </div>
     <!-- Footer -->
     <footer>
         <div class="container">

@@ -55,8 +55,7 @@
 						echo '</div>'; 
 						}
 						?>
-			            <p class="lead">User Info  <?php echo ucfirst($var['username']); ?> 
-						</p>
+			            <p class="lead">User Info</p>
 			        </div>
 			    </div>
 			    <div class = "row">
@@ -212,3 +211,4 @@
 				</div><!-- /.row -->
 			</div><!-- /.page-content inset -->
 		</div><!-- /.page-content-wrapper --> 
+w
