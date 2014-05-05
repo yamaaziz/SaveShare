@@ -57,7 +57,7 @@ class Search extends CI_Controller{
     }
     
 	public function validate_search(){ 
-    	$this->form_validation->set_rules('search','Search','trim|xss_clean');
+    	$this->form_validation->set_rules('search','Search','required|trim|xss_clean');
     	
     	$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
 		

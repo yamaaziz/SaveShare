@@ -153,16 +153,16 @@
 					</ul>
 					
 			<!-- Search button -->
-			<div
-			<?php $attributes = array('id' =>'search_form','class' => 'form-horizontal'); ?>
+	
+			<?php $attributes = array('id' =>'search_formm','class' => 'form-horizontal'); ?>
 					<?php echo form_open('search/validate_search', $attributes); ?>
 			<?php echo form_open(); ?>
-					<!--Field: Total savings-->
+					<!--Field: Search-->
 					<p>
 					<?php echo form_label(); ?>
 					<?php
 					$data = array(
-									
+									'name'			=> 'search',
 									'placeholder' 	=> 'Search',
 									'style' 		=> 'width:10%',
 									'value'			=> set_value('search')
@@ -174,6 +174,7 @@
 					</p>
 					
 							<!--Submit Buttons-->
+					<p>
 					<?php $data = array(
 											"value" => "Search",
 											"name"	=> "submit", 
@@ -184,7 +185,7 @@
 					</p>
 					<?php echo form_close(); ?>
 					
-					</div>
+			
 					
 					<!--	<form class="navbar-form navbar-left" role="search">
 			            	<div class="form-group">
