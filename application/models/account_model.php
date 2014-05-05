@@ -26,7 +26,6 @@ class Account_model extends CI_Model{
 		
 		
 	}
-	
 	public function create_user(){
 		
 		$optional = array(
@@ -62,13 +61,76 @@ class Account_model extends CI_Model{
 			$this->economy_model->create_economy($query->row(0));
 		}
 		
-		//Kalla på user model
+		return $insert;
+		}	
+	
+	public function change_profile_settings(){
+		$id = $this->session->userdata('user_id');		
+		$optional = array(
+			'birth_year'	=>		$this->input->post('birth_year'),                    
+			'gender'		=>		$this->input->post('gender'),
+			'city'			=>		$this->input->post('city'),
+			'occupation'	=>		$this->input->post('occupation'),
+			'income'		=>		$this->input->post('income')
+			);
+			
+		$optional_clean = $this->set_NULL($optional);
 		
-		//returnera värden
+		$essential = array(
+			'username'		=>		$this->input->post('username_'),
+			//'password'		=>		password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+			'email'			=>		$this->input->post('email')
+			);
+		
+		$user = $essential+$optional_clean;	
+				
+		$this->db->where('id', $id);
+		$insert = $this->db->update('users', $user);
+		
+        return $insert;
+	}
+	public function change_security_settings($new_password){
+		$id = $this->session->userdata('user_id');
+		
+		$this->db->where('id', $id);
+		$new_password_hash = array('password'	=>	password_hash($new_password, PASSWORD_DEFAULT));
+		$insert = $this->db->update('users', $new_password_hash);
 		
 		return $insert;
-		}
 		
+		
+	}
+	
+	//Save this function for later where you search for other users
+	public function get_id($username){
+	
+		$this->db->select("users.id");
+		$this->db->from('users');
+		$this->db->where('users.id', $username);
+		
+		$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				return $query->row(0)->id;
+				}
+	}
+	public function get_userdata($id) {
+		$this->db->select("
+			users.username,
+			users.email,
+			users.birth_year,
+			users.gender,
+			users.city,
+			users.occupation,
+			users.income
+			");
+
+		$this->db->from('users');
+		$this->db->where('users.id', $id);
+		$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				return $query->row();
+				}
+	}
 	public function set_NULL($optional){
 	
 		foreach($optional as $key=>$value){

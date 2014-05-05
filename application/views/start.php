@@ -77,8 +77,17 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="sign_in">Sign in</h4>
 	      </div>
-	      <div class="modal-body">     
-	      <?php $this->load->view('account/sign_in'); ?> 	        
+	      <div class="modal-body">
+			<?php 
+			if($this->session->flashdata('sign_up_succeeded'))
+			{
+			echo '<div class="alert alert-success alert-dismissable">';
+				echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+				echo '<strong>' .$this->session->flashdata('sign_up_succeeded') .'</strong>';
+			echo '</div>'; 
+			}
+			?>
+			<?php $this->load->view('account/sign_in'); ?> 	        
 	      </div>
 	    </div>
 	  </div><!--/modal-dialog-->
@@ -98,7 +107,6 @@
         </div>
     </div>
     <!-- /Intro -->
-    
     <!-- Services -->
     <div id="services" class="services">
         <div class="container">
@@ -141,25 +149,38 @@
         </div>
     </div>
     <!-- /Services -->
-
+    <div class="marketing">
+		<div class="container">
+	        <div class="row">
+	            <div class="col-sm-4">
+	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+	                <h2>Marketing Box #1</h2>
+	                <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
+	            </div>
+	            <div class="col-sm-4">
+	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+	                <h2>Marketing Box #2</h2>
+	                <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+	            </div>
+	            <div class="col-sm-4">
+	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
+	                <h2>Marketing Box #3</h2>
+	                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+	            </div>
+	        </div>
+	    </div><!-- /container -->
+    </div><!-- /marketing -->
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
-                    <ul class="list-inline">
-                        <li><a><i class="fa fa-facebook fa-3x"></i></a>
-                        </li>
-                        <li><a><i class="fa fa-twitter fa-3x"></i></a>
-                        </li>
-                        <li><a><i class="fa fa-dribbble fa-3x"></i></a>
-                        </li>
-                    </ul>
-                    <div class="top-scroll">
+					<div class="top-scroll">
                         <a href="#top"><i class="fa fa-arrow-circle-o-up fa-4x"></i></a>
                     </div>
-                    <hr>
-                    <p>Copyright &copy; SaveShare 2014</p>
+	                	<div id="footer">
+	                		<p>Save Share &copy; 2014</p>
+	                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +213,15 @@
         });
     });
     </script>
-
+    <!-- Custom JavaScript for the Alert messages -->
+	<script>
+    window.setTimeout(function()
+    {
+    	$(".alert").fadeTo(500, 0).slideUp(500, function(){
+    		$(this).remove();
+    	});
+    }, 1500);
+	</script>
 </body>
 
 </html>

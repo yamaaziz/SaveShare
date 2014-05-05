@@ -1,17 +1,25 @@
+body{
+	background: white;
+}
 #wrapper {
-  padding-left: 200px;
+  padding-top: 10px;
+  padding-left: 250px;
+  padding-right: 100px;
   transition: all 0.4s ease 0s;
   min-height: 100%;
+  width: 100%;
+  background: white;
 }
 
 /* navbar */
-
-.advanced-search {
-	margin-top: 15px;
-}
-
 .navbar{
 	background: white;
+	margin-left: -100px;
+	margin-right: 120px;
+	left: 200px;
+}
+.navbar a{
+	font-size: small;
 }
 
 #logo{
@@ -72,22 +80,27 @@
     right: 0;
     left: auto;
 }
+.advanced-search {
+	margin-top: 15px;
+}
 
 
 /* sidebar */
 #sidebar-wrapper {
-  margin-top: 0px;
-  margin-left: -200px;
+  margin-top: 41px;
+  margin-left: -100px;
   left: 200px;
-  width: 200px;
-  background: #ffffff;
+  width: 150px;
+  background: white;
   position: fixed;
   height: 100%;
   overflow-y: auto;
   z-index: 1000;
   transition: all 0.4s ease 0s;
 }
-
+#sidebar-wrapper a{
+	font-size: small;
+}
 #page-content-wrapper {
   margin-top: 60px;
   width: 100%;
@@ -95,8 +108,8 @@
 
 .sidebar-nav {
   position: absolute;
-  top: 20px;
-  width: 200px;
+  top: 38px;
+  width: 150px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -104,7 +117,7 @@
 
 .sidebar-nav li {
   line-height: 40px;
-  text-indent: 20px;
+  text-indent: 10px;
 }
 
 .sidebar-nav li a {
@@ -115,8 +128,8 @@
 
 /*Custom: colors the hover over sidebar*/
 .sidebar-nav li a:hover {
-  color: rgb(42,100,150);
-  /*background: rgba(255,255,255,0.2);*/
+  color: rgba(42,101,151,1);
+  background: rgba(255,255,255,0.2);
   text-decoration: none;
 }
 
@@ -206,19 +219,18 @@
 }
 
 }
-#footer {
-   position:relative;
-   width: 100%;
-   /*indenta texten 20px om du vill ha den till vänster. Detta för att aligna den med page content wrapper*/
-   text-align: center;
-   word-spacing:5px;
+footer{
+	margin: 50px 0;
+	position:relative;
+	width: 100%;
+	font-size: smaller;
+    text-align: center;
+	
 }
-
 footer a {
    color: #999;
 }
 footer a:hover {
 	color: #999;
 	text-decoration: underline;
-   /*color: #f0f0f0;*/
 }

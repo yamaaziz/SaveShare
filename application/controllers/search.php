@@ -44,7 +44,7 @@ class Search extends CI_Controller{
 	}
 	
 	private function collect_userinfo($id) {	
-    	return $this->profile_model->get_userdata($id);
+    	return $this->account_model->get_userdata($id);
     }
     private function collect_economyinfo($id) {
 		return $this->economy_model->get_economydata($id);

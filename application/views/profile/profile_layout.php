@@ -17,9 +17,43 @@
 	        </div><!-- content-header-->
 	    	 <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
-			
 			    <div class="row">
 			        <div class="col-md-12">
+			        <!-- Display success messages -->
+					<?php 
+						//Sign in success
+						if($this->session->flashdata('sign_in_succeeded'))
+						{
+						echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<strong>' .$this->session->flashdata('sign_in_succeeded') .'</strong>';
+						echo '</div>'; 
+						}
+						//Economy success
+						elseif($this->session->flashdata('economy_succeeded'))
+						{
+						echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<strong>' .$this->session->flashdata('economy_succeeded') .'</strong>';
+						echo '</div>'; 
+						}
+						//Profile settings success
+						elseif($this->session->flashdata('profile_settings_succeeded'))
+						{
+						echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<strong>' .$this->session->flashdata('profile_settings_succeeded') .'</strong>';
+						echo '</div>'; 
+						}
+						//Security settings success
+						elseif($this->session->flashdata('security_settings_succeeded'))
+						{
+						echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<strong>' .$this->session->flashdata('security_settings_succeeded') .'</strong>';
+						echo '</div>'; 
+						}
+						?>
 			            <p class="lead">User Info</p>
 			        </div>
 			    </div>

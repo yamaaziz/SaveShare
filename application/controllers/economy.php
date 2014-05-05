@@ -52,7 +52,7 @@ class Economy extends CI_Controller{
 		{
 			$id = $this->session->userdata('user_id');
 			if($this->economy_model->set_economy($id))
-			{
+			{	$this->session->set_flashdata('economy_succeeded', 'Your economy was successfully submitted.');
 				redirect('profile');
 			}
 			else

@@ -4,8 +4,7 @@
 		<footer>
 			<div id="footer">
 				<hr>
-				<h5><a href="<?php echo base_url();?>about">About</a>
-				<a href="<?php echo base_url();?>contact">Contact</a></h5>
+				<p><a href="#">Contact</a></p>
 			</div>
 		</footer>
 		</div> <!-- /.wrapper -->		
@@ -28,6 +27,15 @@
 	        $("#wrapper").toggleClass("active");
 	    });
 	    </script>
+	    <!-- Custom JavaScript for Alert messages -->
+	    <script>
+	    window.setTimeout(function()
+	    {
+	    	$(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    		$(this).remove();
+	    	});
+	    }, 3000);
+		</script>
 	</body>
 	
 </html>

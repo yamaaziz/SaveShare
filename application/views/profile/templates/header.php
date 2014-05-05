@@ -44,7 +44,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile">Save Share</a>
+			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile">Save Share Logo</a>
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">
 			        <ul class="nav navbar-nav">
@@ -165,8 +165,7 @@
 								<i class="fa fa-angle-right"></i>
 		        			</a>
 		        		</ul>
-			    </div>
-
+			    </div> <!--./navbar-header -->
 			</nav>
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
