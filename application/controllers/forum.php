@@ -12,11 +12,11 @@ class Forum extends CI_Controller{
 	public function index(){		
 		//Load Views
     	$this->load->view('profile/templates/header');
-    	$this->load->view('forum/forum');
+    	$this->load->view('forum/forum_layout');
     	$this->load->view('profile/templates/footer');    	       
 	}	
 
 			
 }	
-/* End of file economy.php */
-/* Location: ./application/controllers//economy.php */
+/* End of file forum.php */
+/* Location: ./application/controllers/forum.php */

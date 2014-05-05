@@ -15,7 +15,7 @@
 		<div class="page-content inset">
 			<div class="row">
 		        <div class="col-md-6">
-		            <p class="lead">Here will be a forum eventually</p>
+		            <p class="lead">There will be a forum here some day...</p>
 		            
 		        </div>
 		    </div>
