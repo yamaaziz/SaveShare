@@ -169,30 +169,7 @@
 					<!--Display field errors-->
 					<?php echo form_error('search'); ?>
 					<!--Submit Buttons-->
-					
-<<<<<<< HEAD
-						<form class="navbar-form navbar-left" role="search">
-			            	<div class="form-group">
-			                	<input type="text" class="form-control" placeholder="Search">
-			            	</div>
-			            	<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"> </i></button>
-			        	</form>
-			        	
-			        	<ul class = "advanced-search">
- 			            	<a href="<?php echo base_url(); ?>search/advanced_search">
-								<small><em>Advanced search</em></small>
-								<i class="fa fa-angle-right"></i>
-		        			</a>
-		        		</ul>
-			    </div> <!--./navbar-header -->
-=======
-					<?php $data = array(
-											"value" => "",
-											"name"	=> "submit", 
-											"class"	=> "btn btn-default"					
-										);
-					?>
-					<?php echo form_submit($data); ?>
+					<!-- DELETED -->
 					<?php echo form_close(); ?>
 		        	<ul class = "advanced-search">
 			            	<a href="<?php echo base_url(); ?>search/advanced_search">
@@ -201,8 +178,6 @@
 	        			</a>
 	        		</ul>
 			    </div>
-
->>>>>>> Sosso-gren
 			</nav>
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">

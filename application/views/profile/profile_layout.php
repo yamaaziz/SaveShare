@@ -20,7 +20,6 @@
 			<div class="page-content inset">
 			    <div class="row">
 			        <div class="col-md-12">
-<<<<<<< HEAD
 			        <!-- Display success messages -->
 					<?php 
 						//Sign in success
@@ -56,14 +55,10 @@
 						echo '</div>'; 
 						}
 						?>
-			            <p class="lead">User Info</p>
-=======
 			            <p class="lead">User Info  <?php echo ucfirst($var['username']); ?> 
 						</p>
->>>>>>> Sosso-gren
 			        </div>
 			    </div>
-			    
 			    <div class = "row">
 					<div class="col-md-6" >
 			            <?php $this->load->view('profile/user_info'); ?>
@@ -213,7 +208,6 @@
 						<?php echo $this->load->view('economy/show_lias'); ?>
 					</div><!--./col-md-6-->
 				</div><!--./row-->
-
 				<div class="row">
 					<div class="col-md-12">
 						<p class="well"> Session data </p>
