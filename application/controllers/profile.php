@@ -35,12 +35,7 @@ class Profile extends CI_Controller{
 	private function collect_economyinfo($id) {
 		return $this->economy_model->get_economydata($id);
     }
-    	
- 	private function get_id(){
-	 	return $id = $this->session->userdata('user_id');
- 	}
- 	
- 	public function get_followernames() {
+    public function get_followernames() {
     	$id = $this->session->userdata('user_id');
 		$id_array = $this->follower_model->get_followersid($id);
 		$name_array = $this->follower_model->get_follower_username($id_array);
@@ -53,6 +48,10 @@ class Profile extends CI_Controller{
 		$name_array = $this->follower_model->get_following_username($id_array);
 		return $name_array;
 	}
+    	
+ 	private function get_id(){
+	 	return $id = $this->session->userdata('user_id');
+ 	}
 
     private function is_signed_in() {
 	
@@ -64,9 +63,6 @@ class Profile extends CI_Controller{
 			return FALSE;
 		}
 	}
-
-
-
 }
 /* End of file profile.php */
 /* Location: ./application/controllers//profile.php */

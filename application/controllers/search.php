@@ -55,6 +55,19 @@ class Search extends CI_Controller{
     private function collect_economyinfo($id) {
 		return $this->economy_model->get_economydata($id);
     }
+    public function get_followernames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followersid($id);
+		$name_array = $this->follower_model->get_follower_username($id_array);
+		return $name_array;
+	}
+	
+	public function get_followingnames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followingid($id);
+		$name_array = $this->follower_model->get_following_username($id_array);
+		return $name_array;
+	}
     
 	public function validate_search(){ 
     	$this->form_validation->set_rules('search','Search','trim|xss_clean');
@@ -71,6 +84,9 @@ class Search extends CI_Controller{
 												
 				$data1['user_info']		= 	$this->collect_userinfo($id);
 				$data1['economy_info']	=	$this->collect_economyinfo($id);
+				$data1['followers_name']		=	$this->get_followernames();
+				$data1['following_name']		= 	$this->get_followingnames();
+				
 				//Load Views
 				
 				$this->load->view('profile/templates/header');
