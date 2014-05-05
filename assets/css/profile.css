@@ -221,15 +221,12 @@ body{
 }
 footer{
 	margin: 50px 0;
+	position:relative;
+	width: 100%;
+	font-size: smaller;
+    text-align: center;
+	
 }
-#footer {
-   position:relative;
-   width: 100%;
-   /*indenta texten 20px om du vill ha den till vänster. Detta för att aligna den med page content wrapper*/
-   text-align: center;
-   word-spacing:5px;
-}
-
 footer a {
    color: #999;
 }
