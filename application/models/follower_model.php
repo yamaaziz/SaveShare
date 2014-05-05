@@ -33,17 +33,19 @@ class Follower_model extends CI_Model{
 		$resultat = array();
 		$index = 0;
 		$antal = count($id_array);
-		foreach (range(0, $antal-1) as $whatever) {
-    		$this->db->select("
-			users.username
-			");
-
-			$this->db->from('users');
-			$this->db->where('users.id', array_values(array_values($id_array)[$index])[0]);
-			$query = $this->db->get();
-				$subresultat = $query->result_array();
-				array_push($resultat, $subresultat);
-				$index = $index + 1;
+		if ($antal != 0) {
+			foreach (range(0, $antal-1) as $whatever) {
+    			$this->db->select("
+				users.username
+				");
+	
+				$this->db->from('users');
+				$this->db->where('users.id', array_values(array_values($id_array)[$index])[0]);
+				$query = $this->db->get();
+					$subresultat = $query->result_array();
+					array_push($resultat, $subresultat);
+					$index = $index + 1;
+					}
 				}
 		return $resultat;
 		}
@@ -52,17 +54,19 @@ class Follower_model extends CI_Model{
 		$resultat = array();
 		$index = 0;
 		$antal = count($id_array);
-		foreach (range(0, $antal-1) as $whatever) {
-    		$this->db->select("
-			users.username
-			");
-
-			$this->db->from('users');
-			$this->db->where('users.id', array_values(array_values($id_array)[$index])[0]);
-			$query = $this->db->get();
-				$subresultat = $query->result_array();
-				array_push($resultat, $subresultat);
-				$index = $index + 1;
+		if ($antal != 0) {
+			foreach (range(0, $antal-1) as $whatever) {
+    			$this->db->select("
+				users.username
+				");
+	
+				$this->db->from('users');
+				$this->db->where('users.id', array_values(array_values($id_array)[$index])[0]);
+				$query = $this->db->get();
+					$subresultat = $query->result_array();
+					array_push($resultat, $subresultat);
+					$index = $index + 1;
+					}
 				}
 		return $resultat;
 		}
