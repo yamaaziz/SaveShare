@@ -19,6 +19,8 @@ class Profile extends CI_Controller{
     		$id = $this->get_id();
     		$data1['user_info']		= 	$this->collect_userinfo($id);
     		$data1['economy_info']	=	$this->collect_economyinfo($id);
+    		$data1['followers_name'] = $this->get_followernames();
+    		$data1['following_name'] = $this->get_followingnames();
     		//Load Views
     		$this->load->view('profile/templates/header');
 	    	$this->load->view('profile/profile_layout', $data1);
@@ -37,6 +39,20 @@ class Profile extends CI_Controller{
  	private function get_id(){
 	 	return $id = $this->session->userdata('user_id');
  	}
+ 	
+ 	public function get_followernames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followersid($id);
+		$name_array = $this->follower_model->get_follower_username($id_array);
+		return $name_array;
+	}
+	
+	public function get_followingnames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followingid($id);
+		$name_array = $this->follower_model->get_following_username($id_array);
+		return $name_array;
+	}
 
     private function is_signed_in() {
 	
