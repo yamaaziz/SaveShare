@@ -18,13 +18,10 @@ class Followers extends CI_Controller{
     	}
     	else {
     	//Load Data
-        $data28['following_info1'] = $this->collect_followers();
-    	$data28['following_info2'] = $this->collect_following();
-    	$data28['following_info3'] = $this->collect_followersname2();
-    	$data28['following_info4'] = $this->collect_followingname2();
-    	$data28['no_of_followers'] = $this->count_no_of_followers();
-    	$data28['no_of_followings'] = $this->count_no_of_followings();
+    	$follow_data['followers_name'] = $this->get_followernames();
+    	$follow_data['following_name'] = $this->get_followingnames();
     	//Load Views
+<<<<<<< HEAD
     	$this->load->view('profile/templates/header');
     	$this->load->view('profile/followers/show_followers', $data28);
     	$this->load->view('profile/templates/footer');
@@ -68,12 +65,24 @@ class Followers extends CI_Controller{
     
     
     public function count_no_of_followers() {
-    	$id = $this->session->userdata('user_id');
-    	return $this->follower_model->count_followers($id);
+=======
+    	$this->load->view('templates/header');
+    	$this->load->view('profile/followers/show_followers', $follow_data);
+    	$this->load->view('templates/footer');
+	    	    	}
     }
     
-    public function count_no_of_followings() {
+    public function get_followernames() {
+>>>>>>> Johannas-gren2
     	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followersid($id);
+		$name_array = $this->follower_model->get_follower_username($id_array);
+		return $name_array;
+	}
+	
+	public function get_followingnames() {
+    	$id = $this->session->userdata('user_id');
+<<<<<<< HEAD
     	return $this->follower_model->count_followings($id);
     } 
 
@@ -85,6 +94,11 @@ class Followers extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view('profile/economy/show_followers', $data28);
 		$this->load->view('profile/templates/footer');
+=======
+		$id_array = $this->follower_model->get_followingid($id);
+		$name_array = $this->follower_model->get_following_username($id_array);
+		return $name_array;
+>>>>>>> Johannas-gren2
 	}
 
 	private function is_signed_in() {
