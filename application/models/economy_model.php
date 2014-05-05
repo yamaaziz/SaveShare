@@ -28,12 +28,10 @@ class Economy_model extends CI_Model{
         );
 
 		$insert = $this->db->insert('economy', $economy);
-        return $insert;
-	    
+        return $insert; 
     }
 	
 	public function set_economy($id){
-		
 		$economy = array(
 			'funds'				=>		$this->input->post('funds'),
 			'shares'			=>		$this->input->post('shares'),
@@ -52,12 +50,9 @@ class Economy_model extends CI_Model{
         
         $this->db->where('economy.e_id', $id);
 		$insert = $this->db->update('economy', $economy);
-        return $insert;
-				     
+        return $insert;	     
 	}
-	
-	
-		public function get_economydata($id) {
+	public function get_economydata($id) {
 		$this->db->select("
 			economy.e_id,
 			economy.funds,
@@ -74,17 +69,13 @@ class Economy_model extends CI_Model{
 			economy.senior_loan,
 			economy.other_loan
 			");
-		
 		$this->db->from('economy');
 		$this->db->where('economy.e_id', $id);
 		$query = $this->db->get();
 			if ($query->num_rows() == 1) {
 				return $query->row();
 				}
-	}
-	
-
-		
+	}	
 }
 /*End of file economy_model.php*/
 /*Location: ./application/models/economy_model.php */
