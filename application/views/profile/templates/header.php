@@ -64,7 +64,7 @@
 			                                	<em>Yesterday</em>
 											</span>
 										</div>
-										<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+										<div> This function is not active in the current state</div>
 									</a>
 								</li>
 								<li class="divider"></li>
@@ -141,8 +141,6 @@
 				                	<i class="fa fa-user fa-fw"></i><?php echo ' '.$username.' '; ?><i class="fa fa-caret-down"></i>
 				                </a>
 				                <ul class="dropdown-menu dropdown-user">
-				                	<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-									</li>
 									<li><a href="<?php echo base_url(); ?>account"><i class="fa fa-gear fa-fw"></i> Settings</a>
 									</li>
 									<li class="divider"></li>
@@ -192,7 +190,7 @@
 			        	<a href="<?php echo base_url(); ?>followers"><i class="fa fa-heart"></i> Followers</a>
 			        </li>
 					<li>
-			        	<a href="#"><i class="fa fa-comment-o"></i> Forum</a>
+			        	<a href="<?php echo base_url();?>forum"><i class="fa fa-comment-o"></i> Forum</a>
 			        </li>   
 			    </ul>
 			</div>

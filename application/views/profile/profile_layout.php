@@ -204,7 +204,7 @@
 						<?php echo $this->load->view('economy/show_lias'); ?>
 					</div><!--./col-md-6-->
 				</div><!--./row-->
-				<div class="row">
+		<!--		<div class="row">
 					<div class="col-md-12">
 						<p class="well"> Session data </p>
 						<? foreach ($session_data as $key => $value){ echo "$key: $value\n".'<br/>';}?>
