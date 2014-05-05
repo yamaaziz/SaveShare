@@ -192,7 +192,7 @@ class Account extends CI_Controller{
 		if($user_id){
 			//Create array of user data
 			$user_data = array(
-				'user_id'	=>	$user_id,
+				'user_id'	=>	strtolower($user_id),
 				'username'	=>	$username,
 				'logged_in'	=>	TRUE
 			);
