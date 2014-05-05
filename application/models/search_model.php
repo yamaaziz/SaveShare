@@ -18,7 +18,7 @@ class Search_model extends CI_Model{
 		$this->db->like('username', $username);
 		//$this->db->where('birth_year', $birth_year);
 		//$this->db->where('gender', $gender); 
-		//$this->db->like('city', $city);
+		//$this->db->or_like('city', $city);
 		//$this->db->or_like('occupation', $occupation);
 		//$this->db->or_like('income', $income);
 		 
