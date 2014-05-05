@@ -69,8 +69,7 @@
 							{						
 							$this->load->view('profile/extra');								
 							}
-							?>       
-			      <!--      <p class="well"> Extra space. Follow-button? Send private message-button? </p>	-->
+							?> 
 			        </div>
 			    </div>
 				<div class="row">
