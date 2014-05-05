@@ -3,6 +3,7 @@
 <?php
 	$session_data = $this->session->all_userdata(); 
 	$economy = get_object_vars($economy_info);
+	$var = get_object_vars($user_info);
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -29,6 +30,13 @@
 			        </div>
 			        <div class="col-md-6" >
 			            <p class="well"> Extra space. Follow-button? Send private message-button? </p>
+			            	<?php 
+							if($session_data['username']!= $var['username'])
+							{						
+							$this->load->view('profile/extra');								
+							}
+							?>
+
 			        </div>
 			    </div>
 
