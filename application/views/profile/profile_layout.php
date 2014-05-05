@@ -3,8 +3,9 @@
 <?php
 	$session_data = $this->session->all_userdata();
 	if(isset($economy_info)){
-		$economy = get_object_vars($economy_info);
+		$economy = get_object_vars($economy_info);	
 	} 
+	$var = get_object_vars($user_info);
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -12,13 +13,14 @@
 	        <div class="content-header">
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
-	                Profile
+	                <?php echo ucfirst($var['username']); ?> 
 	            </h1>	            
 	        </div><!-- content-header-->
 	    	 <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
 			    <div class="row">
 			        <div class="col-md-12">
+<<<<<<< HEAD
 			        <!-- Display success messages -->
 					<?php 
 						//Sign in success
@@ -55,6 +57,10 @@
 						}
 						?>
 			            <p class="lead">User Info</p>
+=======
+			            <p class="lead">User Info  <?php echo ucfirst($var['username']); ?> 
+						</p>
+>>>>>>> Sosso-gren
 			        </div>
 			    </div>
 			    
@@ -64,7 +70,15 @@
 
 			        </div>
 			        <div class="col-md-6" >
-			            <p class="well"> Extra space. Follow-button? Send private message-button? </p>
+			        <?php 
+							if($session_data['username']!= $var['username'])
+							{						
+							$this->load->view('profile/extra');								
+							}
+							?>
+			        
+			      <!--      <p class="well"> Extra space. Follow-button? Send private message-button? </p>	-->
+			      
 			        </div>
 			    </div>
 
