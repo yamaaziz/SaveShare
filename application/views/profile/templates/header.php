@@ -151,57 +151,39 @@
 				                </ul>
 				            </li>
 					</ul>
-					
-			<!-- Search button -->
-	
-			<?php $attributes = array('id' =>'search_formm','class' => 'form-horizontal'); ?>
+					<!-- Start search form -->
+					<?php $attributes = array('id' =>'search_form','class' => 'navbar-form navbar-left'); ?>
 					<?php echo form_open('search/validate_search', $attributes); ?>
-			<?php echo form_open(); ?>
+					<?php echo form_open(); ?>
 					<!--Field: Search-->
-					<p>
 					<?php echo form_label(); ?>
 					<?php
 					$data = array(
 									'name'			=> 'search',
 									'placeholder' 	=> 'Search',
-									'style' 		=> 'width:10%',
+									'class'			=> 'form-control',
 									'value'			=> set_value('search')
 								);
 					?>
 					<?php echo form_input($data); ?>
 					<!--Display field errors-->
 					<?php echo form_error('search'); ?>
-					</p>
+					<!--Submit Buttons-->
 					
-							<!--Submit Buttons-->
-					<p>
 					<?php $data = array(
-											"value" => "Search",
+											"value" => "",
 											"name"	=> "submit", 
-											"class"	=> "btn btn-primary"					
+											"class"	=> "btn btn-default"					
 										);
 					?>
 					<?php echo form_submit($data); ?>
-					</p>
 					<?php echo form_close(); ?>
-					
-			
-					
-					<!--	<form class="navbar-form navbar-left" role="search">
-			            	<div class="form-group">
-			                	<input type="text" class="form-control" placeholder="Search">
-			            	</div>
-			            	<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"> </i></button>
-			        	</form> -->
-			        	
-			        	
-			        	
-			        	<ul class = "advanced-search">
- 			            	<a href="<?php echo base_url(); ?>search/advanced_search">
-								<small><em>Advanced search</em></small>
-								<i class="fa fa-angle-right"></i>
-		        			</a>
-		        		</ul>
+		        	<ul class = "advanced-search">
+			            	<a href="<?php echo base_url(); ?>search/advanced_search">
+							<small><em>Advanced search</em></small>
+							<i class="fa fa-angle-right"></i>
+	        			</a>
+	        		</ul>
 			    </div>
 
 			</nav>
