@@ -21,9 +21,9 @@ class Followers extends CI_Controller{
     	$follow_data['followers_name'] = $this->get_followernames();
     	$follow_data['following_name'] = $this->get_followingnames();
     	//Load Views
-    	$this->load->view('templates/header');
+    	$this->load->view('profile/templates/header');
     	$this->load->view('profile/followers/show_followers', $follow_data);
-    	$this->load->view('templates/footer');
+    	$this->load->view('profile/templates/footer');
 	    	    	}
     }
     

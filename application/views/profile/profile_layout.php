@@ -66,7 +66,7 @@
 			        </div>
 			        <div class="col-md-6" >
 			            	<?php 
-							if($session_data['username']!= $var['username'])
+							if($session_data['username'] != $var['username'])
 							{						
 							$this->load->view('profile/extra');								
 							}
