@@ -32,7 +32,15 @@
 
 			        </div>
 			        <div class="col-md-6" >
-			            <p class="well"> Extra space. Follow-button? Send private message-button? </p>
+			        <?php 
+							if($session_data['username']!= $var['username'])
+							{						
+							$this->load->view('profile/extra');								
+							}
+							?>
+			        
+			      <!--      <p class="well"> Extra space. Follow-button? Send private message-button? </p>	-->
+			      
 			        </div>
 			    </div>
 

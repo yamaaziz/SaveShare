@@ -153,6 +153,7 @@
 					</ul>
 					
 			<!-- Search button -->
+			<div
 			<?php $attributes = array('id' =>'search_form','class' => 'form-horizontal'); ?>
 					<?php echo form_open('search/validate_search', $attributes); ?>
 			<?php echo form_open(); ?>
@@ -176,13 +177,14 @@
 					<?php $data = array(
 											"value" => "Search",
 											"name"	=> "submit", 
-											"class"	=> "btn btn-primary"
+											"class"	=> "btn btn-primary"					
 										);
 					?>
 					<?php echo form_submit($data); ?>
 					</p>
 					<?php echo form_close(); ?>
 					
+					</div>
 					
 					<!--	<form class="navbar-form navbar-left" role="search">
 			            	<div class="form-group">
