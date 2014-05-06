@@ -2,6 +2,9 @@
 <!-- PHP Code Here -->
 	<!-- START PAGE -->
 <!DOCTYPE html>
+
+
+	<?php	$today = getdate(); ?>
 <html lang="en">
 	<head>
 	    <meta charset="utf-8">
@@ -175,6 +178,14 @@
 							<i class="fa fa-angle-right"></i>
 	        			</a>
 	        		</ul>
+	        		
+	        		
+	        	
+
+
+							
+	            	            
+	            
 			    </div>
 			</nav>
 			<!-- Sidebar -->
@@ -192,5 +203,9 @@
 					<li>
 			        	<a href="<?php echo base_url();?>forum"><i class="fa fa-comment-o"></i> Forum</a>
 			        </li>   
+			        
+			        <li>
+			        	<a href="# "></i> Date: <?php echo ucfirst($today['mon']); echo '/'; echo ucfirst($today['mday']); echo '/'; echo ucfirst($today['year']);?></a>
+			        </li>  
 			    </ul>
 			</div>
