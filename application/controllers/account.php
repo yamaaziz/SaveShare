@@ -12,7 +12,6 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view("account/settings/settings_layout");
 		$this->load->view('profile/templates/footer');
-		
 	}
 
 
@@ -30,7 +29,6 @@ class Account extends CI_Controller{
 			$this->session->set_flashdata('sign_in_succeeded', 'You were successfully signed in.');
 			redirect('profile');
 		}
-		
 	}
 	public function sign_up(){
 		$this->form_validation->set_rules('username','Username','required|min_length[4]|max_length[12]|is_unique[users.username]|trim|xss_clean');
@@ -72,6 +70,39 @@ class Account extends CI_Controller{
 		//Set message
 		$this->session->set_flashdata('logged_out', 'You have been logged out');
 		redirect('start');
+    }
+	public function forgot_password(){
+		$this->form_validation->set_rules('email_fp','Email','required|max_length[60]|valid_email|trim|xss_clean|callback_verify_forgot_password');
+		$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+
+		if($this->form_validation->run() == FALSE){
+			$this->load_modal($option = 'forgot_password');			
+		}
+		else{
+			$this->session->set_flashdata('forgot_password_succeeded', 'A new password has been emailed to you. Check your junk mail!');
+			redirect('account/sign_in');
+		}
+    	/*$this->load->library('email');
+    	$config = Array(
+				    'protocol' 	=> 'smtp',
+				    'smtp_host' => 'ssl://smtp.googlemail.com',
+				    'smtp_port' => 465,
+				    'smtp_user' => 'savesharee@gmail.com',
+				    'smtp_pass' => 'k7M-GED-Gft-qZF',
+				    'mailtype'  => 'html', 
+				    'charset'   => 'iso-8859-1'
+				);
+				
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		
+		$this->email->from('savesharee@gmail.com', 'Save Share');
+		$this->email->to('yama.aziz@me.com'); 
+
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');	
+		// Set to, from, message, etc.
+		$result = $this->email->send();*/
     }
 	
     public function profile_settings(){
@@ -272,16 +303,35 @@ class Account extends CI_Controller{
 		//against an empy string as username, which is clearly wrong procedure. Not sure if this is the case,
 		//but the below code will fix the error message.
 			if ($username !=''){
-				$this->form_validation->set_message('verify_profile_settings_password', 'Invalid password.');
+				$this->form_validation->set_message('verify_security_settings_password', 'Invalid password.');
 				
 			}
 			else{
-				$this->form_validation->set_message('verify_profile_settings_password', '');
+				$this->form_validation->set_message('verify_security_settings_password', '');
 				
 			}
 		return FALSE;
 		}
 		
+	}
+	public function verify_forgot_password(){
+		//get the email
+		$email=$this->input->post('email_fp');
+		//check the email against the DB
+		if($this->account_model->find_email($email)){
+			//create a new password if the email is in the DB
+			$password = 'password';
+			$this->account_model->change_security_settings($password);
+			//email the password to the user
+		
+			return TRUE;
+			
+		}
+		else{
+			//return not found email and error message else
+			$this->form_validation->set_message('verify_forgot_password', 'Your email is not in our database');
+			return FALSE;
+		}	
 	}
 		
 	//**********************************************************************************************************************************//
@@ -300,13 +350,15 @@ class Account extends CI_Controller{
 		if($option == 'sign_in'){
 			$data['pathway'] = $option . '.js';
 			$this->load->view('start',$data);
-			
 		}
 		
-		if($option == 'sign_up'){
+		elseif($option == 'sign_up'){
 			$data['pathway'] = $option . '.js';
 			$this->load->view('start',$data);
-		
+		}
+		elseif($option == 'forgot_password'){
+			$data['pathway'] = $option . '.js';
+			$this->load->view('start',$data);
 		}	
 	}
 }	

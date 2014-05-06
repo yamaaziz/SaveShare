@@ -97,8 +97,6 @@ class Account_model extends CI_Model{
 		$insert = $this->db->update('users', $new_password_hash);
 		
 		return $insert;
-		
-		
 	}
 	
 	//Save this function for later where you search for other users
@@ -106,11 +104,20 @@ class Account_model extends CI_Model{
 	
 		$this->db->select("users.id");
 		$this->db->from('users');
-		$this->db->where('users.id', $username);
+		$this->db->where('users.username', $username);
 		
 		$query = $this->db->get();
 			if ($query->num_rows() == 1) {
 				return $query->row(0)->id;
+				}
+	}
+	public function find_email($email){
+		$this->db->select("users.email, users.id");
+		$this->db->from('users');
+		$this->db->where('users.email', $email);
+		$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				return $query->row();
 				}
 	}
 	public function get_userdata($id) {

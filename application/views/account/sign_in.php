@@ -13,7 +13,7 @@ $data = array(
 				'name' 			=>'username_',
 				'placeholder' 	=> 'Enter Username',
 				'style' 		=> 'width:100%',
-				'value'			=> set_value('username')
+				'value'			=> set_value('username_')
 				
 			);
 ?>
@@ -30,8 +30,7 @@ $data = array(
 $data = array(
 				'name'			=> 'password_',
 				'placeholder' 	=> 'Enter Password',
-				'style' 		=> 'width:100%',
-				'value'			=> set_value('password') //ta bort sen
+				'style' 		=> 'width:100%'
 			);
 ?>
 <?php echo form_password($data); ?>
@@ -42,7 +41,6 @@ $data = array(
 </p>
 
 <br/>
-
 <p>
 <!--Submit Buttons-->
 <?php $data = array(
