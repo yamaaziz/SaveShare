@@ -86,9 +86,14 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view('account/settings/security_settings');
 		$this->load->view('profile/templates/footer');
-    	
-	    
     }
+    
+    public function privacy_settings() {
+    	$this->load->view('profile/templates/header');
+    	$this->load->view('account/settings/privacy_settings');
+    	$this->load->view('profile/templates/footer');
+    }
+    
     public function validate_profile_settings(){
     	//Load Data
     	$id = $this->session->userdata('user_id');

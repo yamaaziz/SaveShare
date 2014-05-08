@@ -13,7 +13,8 @@
 			    <div class="row">
 			        <div class="col-md-12">
 			        	<p><a href="<?php echo base_url();?>account/profile_settings">Change profile settings</a></p>
-			            <p><a href="<?php echo base_url();?>account/security_settings" >Change security settings</a></p>    
+			        	<p><a href="<?php echo base_url();?>account/privacy_settings" >Change privacy settings</a></p>
+			            <p><a href="<?php echo base_url();?>account/security_settings" >Change security settings</a></p>
 			        </div>
 			    </div><!-- /.row -->
 			</div><!-- /.page-content inset -->

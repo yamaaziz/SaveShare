@@ -83,6 +83,6 @@ class Profile extends CI_Controller{
 			return FALSE;
 		}
 	}
-}
+	}
 /* End of file profile.php */
 /* Location: ./application/controllers//profile.php */
