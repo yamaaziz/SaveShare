@@ -89,8 +89,8 @@ class Account_model extends CI_Model{
 		
         return $insert;
 	}
-	public function change_security_settings($new_password){
-		$id = $this->session->userdata('user_id');
+	public function change_security_settings($new_password, $id){
+		
 		
 		$this->db->where('id', $id);
 		$new_password_hash = array('password'	=>	password_hash($new_password, PASSWORD_DEFAULT));
@@ -117,7 +117,9 @@ class Account_model extends CI_Model{
 		$this->db->where('users.email', $email);
 		$query = $this->db->get();
 			if ($query->num_rows() == 1) {
-				return $query->row();
+				$query = $query->row();
+				$query_array = get_object_vars($query);	
+				return $query_array;
 				}
 	}
 	public function get_userdata($id) {

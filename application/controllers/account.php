@@ -82,27 +82,6 @@ class Account extends CI_Controller{
 			$this->session->set_flashdata('forgot_password_succeeded', 'A new password has been emailed to you. Check your junk mail!');
 			redirect('account/sign_in');
 		}
-    	/*$this->load->library('email');
-    	$config = Array(
-				    'protocol' 	=> 'smtp',
-				    'smtp_host' => 'ssl://smtp.googlemail.com',
-				    'smtp_port' => 465,
-				    'smtp_user' => 'savesharee@gmail.com',
-				    'smtp_pass' => 'k7M-GED-Gft-qZF',
-				    'mailtype'  => 'html', 
-				    'charset'   => 'iso-8859-1'
-				);
-				
-		$this->email->initialize($config);
-		$this->email->set_newline("\r\n");
-		
-		$this->email->from('savesharee@gmail.com', 'Save Share');
-		$this->email->to('yama.aziz@me.com'); 
-
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');	
-		// Set to, from, message, etc.
-		$result = $this->email->send();*/
     }
 	
     public function profile_settings(){
@@ -194,14 +173,10 @@ class Account extends CI_Controller{
 			$this->security_settings();
 		}
 		else{
-			$new_password = $this->input->post('new_password');
-			
-			if($this->account_model->change_security_settings($new_password)){
-		
 			$this->session->set_flashdata('security_settings_succeeded', 'Your security settings was successfully changed.');
 			redirect('profile');
 				
-			}
+		
 		}
     }
 	
@@ -295,6 +270,9 @@ class Account extends CI_Controller{
 		$user_id = $this->account_model->login_user($username,$password);
 		
 		if($user_id){
+			$new_password = $this->input->post('new_password');
+			$id = $this->session->userdata('user_id');
+			$this->account_model->change_security_settings($new_password, $id);
 			return TRUE;
 		}
 		else{
@@ -315,14 +293,18 @@ class Account extends CI_Controller{
 		
 	}
 	public function verify_forgot_password(){
-		//get the email
+
 		$email=$this->input->post('email_fp');
-		//check the email against the DB
-		if($this->account_model->find_email($email)){
-			//create a new password if the email is in the DB
+		$check_email_get_id=$this->account_model->find_email($email);
+
+		if($check_email_get_id){
+		
 			$password = 'password';
-			$this->account_model->change_security_settings($password);
-			//email the password to the user
+			$id = $check_email_get_id['id'];
+			$email = $check_email_get_id['email'];
+			
+			$this->account_model->change_security_settings($password, $id);
+			$this->email_password($email,$password);
 		
 			return TRUE;
 			
@@ -332,6 +314,30 @@ class Account extends CI_Controller{
 			$this->form_validation->set_message('verify_forgot_password', 'Your email is not in our database');
 			return FALSE;
 		}	
+	}
+	public function email_password($email,$password){
+		$this->load->library('email');
+    	$config = Array(
+				    'protocol' 	=> 'smtp',
+				    'smtp_host' => 'ssl://smtp.googlemail.com',
+				    'smtp_port' => 465,
+				    'smtp_user' => 'savesharee@gmail.com',
+				    'smtp_pass' => 'k7M-GED-Gft-qZF',
+				    'mailtype'  => 'html', 
+				    'charset'   => 'iso-8859-1'
+				);
+				
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		
+		$this->email->from('savesharee@gmail.com', 'Save Share');
+		$this->email->to("$email"); 
+
+		$this->email->subject('SaveShare password reset');
+		$this->email->message("Your new password is: $password");	
+		// Set to, from, message, etc.
+		$result = $this->email->send();
+		
 	}
 		
 	//**********************************************************************************************************************************//
