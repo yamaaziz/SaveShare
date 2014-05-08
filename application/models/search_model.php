@@ -30,15 +30,11 @@ class Search_model extends CI_Model{
 			$query = $query->row();
 			$query_array = get_object_vars($query);	
 			return $query_array['id'];
-			
 		}
-
 	}
-	
-	public function search(){		
 
+	public function search() {
 		$username	=	$this->input->post('search');
-				
 		$this->db->like('username', $username);		 
 		$this->db->select('id');
 		$query = $this->db->get('users');
@@ -50,7 +46,4 @@ class Search_model extends CI_Model{
 			return $query_array['id'];			
 		}
 	}
-
-
-
 }

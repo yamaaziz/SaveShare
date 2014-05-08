@@ -73,7 +73,7 @@ class Account_model extends CI_Model{
 			'occupation'	=>		$this->input->post('occupation'),
 			'income'		=>		$this->input->post('income')
 			);
-			
+
 		$optional_clean = $this->set_NULL($optional);
 		
 		$essential = array(
@@ -89,6 +89,7 @@ class Account_model extends CI_Model{
 		
         return $insert;
 	}
+
 	public function change_security_settings($new_password){
 		$id = $this->session->userdata('user_id');
 		
@@ -97,22 +98,22 @@ class Account_model extends CI_Model{
 		$insert = $this->db->update('users', $new_password_hash);
 		
 		return $insert;
-		
-		
 	}
 	
 	//Save this function for later where you search for other users
+	//säg till Johanna om dessa flyttas, då ska vägen i profile-funktionerna ändras också
 	public function get_id($username){
 	
 		$this->db->select("users.id");
 		$this->db->from('users');
-		$this->db->where('users.id', $username);
+		$this->db->where('users.username', $username);
 		
 		$query = $this->db->get();
 			if ($query->num_rows() == 1) {
 				return $query->row(0)->id;
 				}
 	}
+	
 	public function get_userdata($id) {
 		$this->db->select("
 			users.username,
@@ -131,6 +132,7 @@ class Account_model extends CI_Model{
 				return $query->row();
 				}
 	}
+	
 	public function set_NULL($optional){
 	
 		foreach($optional as $key=>$value){

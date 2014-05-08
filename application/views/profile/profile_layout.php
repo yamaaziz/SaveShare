@@ -69,7 +69,7 @@
 							{						
 							$this->load->view('profile/extra');								
 							}
-							?> 
+							?>
 			        </div>
 			    </div>
 				<div class="row">

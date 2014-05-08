@@ -12,9 +12,7 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view("account/settings/settings_layout");
 		$this->load->view('profile/templates/footer');
-		
 	}
-
 
 	public function sign_in(){
 		$this->form_validation->set_rules('username_','Username','required|min_length[4]|trim|xss_clean|');
@@ -82,6 +80,7 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view('account/settings/profile_settings', $data);
 		$this->load->view('profile/templates/footer');
+		
 	}
     public function security_settings(){
 		$this->load->view('profile/templates/header');

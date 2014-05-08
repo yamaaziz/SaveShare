@@ -68,7 +68,7 @@ class Search extends CI_Controller{
 		$name_array = $this->follower_model->get_following_username($id_array);
 		return $name_array;
 	}
-    
+
 	public function validate_search(){ 
     	$this->form_validation->set_rules('search','Search','trim|xss_clean');
     	
@@ -80,15 +80,13 @@ class Search extends CI_Controller{
 		}
 		else
 		{	if($id = $this->search_model->search())
-			{
-												
+			{									
 				$data1['user_info']		= 	$this->collect_userinfo($id);
 				$data1['economy_info']	=	$this->collect_economyinfo($id);
 				$data1['followers_name']		=	$this->get_followernames();
 				$data1['following_name']		= 	$this->get_followingnames();
 				
 				//Load Views
-				
 				$this->load->view('profile/templates/header');
 				$this->load->view('profile/profile_layout', $data1);							
 				$this->load->view('profile/templates/footer'); 
