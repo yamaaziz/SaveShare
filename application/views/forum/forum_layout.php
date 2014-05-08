@@ -15,12 +15,11 @@
 		<div class="page-content inset">
 			<div class="row">
 		        <div class="col-md-6">
-		            <p class="lead">There will be a forum here some day...</p>
+		            <p class="lead">Start your own discussion about saving money!</p>
 		            
 		        </div>
 		    </div>
-		    
-		    				
+    				
 		<div class="col-lg-12"> 
 		<div class="panel-body">
                             <div id="morris-area-chart"></div>
@@ -50,26 +49,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php foreach ($thread as $news_item): ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td><a href="<?php echo base_url();?>profile"> Investing in shares</a></td>
-                                                    <td>Sofia</td>
-                                                    <td>17/11/2013</td>
+                                                    <td><?php echo $news_item['t_id'] ?></td>
+                                                    <td><a href="forum/<?php echo $news_item['slug'] ?>"> <?php echo $news_item['topic'] ?></a></td>
+                                                    <td><?php echo $news_item['creator_id'] ?> </td>
+                                                    <td> <?php echo $news_item['date_started'] ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>PPM savings</td>
-                                                    <td>Johanna</td>
-                                                    <td>05/02/2014</td>
-                                                </tr>
-                                            
-                                         
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Random topic</td>
-                                                    <td>Anonymous</td>
-                                                    <td>17/04/2014</td>
-                                                </tr>
+                                                
+                                                <?php endforeach ?>
+                                           
                                             </tbody>
                                         </table>
                                     </div>
@@ -99,8 +88,7 @@
 		            
 		        </div>
 		    </div>
-		
-		
+			
 		
 					<!--Field: Topic-->
 					<p>

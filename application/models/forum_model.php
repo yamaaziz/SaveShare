@@ -9,38 +9,61 @@ class Forum_model extends CI_Model{
 	
 	
 	public function create_thread($id){
+				
 		
-		//$session_data = $this->session->userdata();
-		$today = getdate();
+		$slug = url_title($this->input->post('topic'), 'dash', TRUE);
 		
 		$thread = array(
 			'topic'			=>		$this->input->post('topic'),                    
-			//'date_started'	=>		$today['year'],
-			//'day'			=>		$today['mday'],
-			//'mon'			=>		$today['mon'],
-			//'year'		=>		$today['year'],	
-			'creator_id'	=>		$id		
+			'creator_id'	=>		$id,
+			'slug'			=>		$slug
 			);
 		
 		$insert = $this->db->insert('thread', $thread);
-		
-		
-		$thread_id = $this->db->select('thread', $id);
-		
-			$message = array(
-			't_id'				=>		$this->input->post('topic'),                    
-			'sender'			=>		$id,
-			'content'			=>		$this->input->post('message'),
-			//'date_posted'		=>		$today['year'],	
-			);	
 	
-	
-		//$this->session->userdata('userid');
-		
-		
 		return $insert;
 		}	
 	
+	
+	public function create_message($id){
+		
+		$topic = $this->input->post('topic');
+		
+		$this->db->where('topic', $topic);
+		$this->db->select('t_id');
+		$t_id = $this->db->get('thread');
+		
+		$t_id = $t_id->row();
+		$t_id = get_object_vars($t_id);	
+		$t_id = $t_id['t_id'];
+		
+		$message = array(
+					't_id' 		=> $t_id,
+					'content' 	=> $this->input->post('message'),
+					'sender' 	=> $id
+					);
+							
+		$insert_message = $this->db->insert('message', $message);
+		
 	}
+	
+		public function get_threads($slug=FALSE){
+	
+		if ($slug === FALSE)
+		{
+			$query = $this->db->get('thread');
+			return $query->result_array();
+	
+		}
+			$query = $this->db->get_where('thread', array('slug' => $slug));
+			return $query->row_array();
+		}
+		
+		
+
+
+	}
+	
+	
 /*End of file account_model.php*/
 /*Location: ./application/models/account_model.php */
