@@ -35,8 +35,7 @@ class Forum extends CI_Controller{
 		           
 	           		//$this->forum_model->create_message($id);
 			   		//$this->session->set_flashdata('start_thread_succeeded', 'You did successfully start a thread.');
-	                $this->index();
-		           }
+			   		redirect('forum');		           }
 		           else
 		           {
 			           //Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
@@ -56,7 +55,8 @@ class Forum extends CI_Controller{
 			
 			else {
 					$id = $this->session->userdata('user_id');
-					$this->forum_model->create_message($id);				
+					$this->forum_model->create_message($id);
+					redirect('forum');			
 			}
 		}
 		

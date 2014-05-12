@@ -7,32 +7,28 @@ $topic_id = $news_item['t_id'];
 //echo $slug;
 ?>
 
-	        </div>    
-	        	
+	        </div>    	        	
   </div>
   
- <?php foreach ($messages as $message): ?>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><?php echo $message['sender'] ?></h3>
-       <h1 class="panel-title"><?php echo $message['date_posted'] ?></h1>
-  </div>
-  <div class="panel-body">
-    <?php echo $message['content'] ?>
-  </div>
-</div>
-	    
-   <?php endforeach ?>  
+		 <?php foreach ($messages as $message): ?>
+		
+		<div class="panel panel-info">
+		  <div class="panel-heading"> <h3 class="panel-title" id = "message" > User: <?php echo $message['sender'] ?> Date posted: <?php echo $message['date_posted']?></h3>
+		   
+		  </div>
+		  <div class="panel-body">
+		    <?php echo $message['content'] ?>
+		  </div>
+		</div>
+			    
+		   <?php endforeach ?>  
 	        
 	        
 	         <div class="col-md-6">
 					<?php $attributes = array('id' =>'message_form','class' => 'form-horizontal'); ?>
 					<?php echo form_open('forum/validate_message', $attributes); ?>
 		
-		<p>
-		
-		</p>
+	
 		
 		
 		<div class="row">

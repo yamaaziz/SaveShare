@@ -153,6 +153,11 @@ body{
   background: none;
 }
 
+
+.panel-title{
+	word-spacing: 200px;
+}
+
 .content-header {
   height: 65px;
   line-height: 65px;

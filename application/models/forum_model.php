@@ -48,7 +48,6 @@ class Forum_model extends CI_Model{
 		$this->db->update('thread', $slug);
 		
 		return $insert;
-
 		
 		}	
 		
@@ -56,16 +55,17 @@ class Forum_model extends CI_Model{
 	
 	public function create_message($id){
 			
-			$slug = $t_id;
+			//$t_id = $slug;
 			$message = array(
-					't_id' 		=> $t_id,
+					//'t_id' 		=> $t_id,
+					't_id' 		=> '12', //provisorisk siffra
 					'content' 	=> $this->input->post('answer'),
 					'sender' 	=> $id
 					);
 							
 		$insert_message = $this->db->insert('message', $message);
 	
-				
+		return $insert_message;
 		
 	}
 	

@@ -27,9 +27,9 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-comment-o"></i> Forum
+                           <h3 class="panel-title">Forum</h3>
                             <div class="pull-right">
                                
                             </div>
@@ -44,7 +44,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Topic</th>
-                                                    <th>Author</th>
+                                                    <th>Creator</th>
                                                     <th>Start date</th>
                                                 </tr>
                                             </thead>
@@ -53,7 +53,7 @@
                                                 <tr>
                                                     <td><?php echo $news_item['t_id'] ?></td>
                                                     <td><a href="forum/<?php echo $news_item['slug'] ?>"> <?php echo $news_item['topic'] ?></a></td>
-                                                    <td><?php echo $news_item['creator_id'] ?> </td>
+                                                    <td> <a href="#"> <?php echo $news_item['creator_id'] ?> </td>
                                                     <td> <?php echo $news_item['date_started'] ?></td>
                                                 </tr>
                                                 
