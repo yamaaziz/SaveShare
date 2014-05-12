@@ -21,6 +21,7 @@ class Profile extends CI_Controller{
     		$data1['economy_info']	=	$this->collect_economyinfo($id);
     		$data1['followers_name'] = $this->get_followernames();
     		$data1['following_name'] = $this->get_followingnames();
+    		$data1['privacy'] = $this->account_model->get_privacy_data($id);
 
     		//Load Views
     		$this->load->view('profile/templates/header');
