@@ -30,7 +30,7 @@
 	    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 	    
 	    <!-- PHP Code Here -->
-	    <?php $username = ucfirst($this->session->userdata['username']); ?>
+	    <?php $username = $this->session->userdata['username']; ?>
 
 	</head>
 
@@ -44,7 +44,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile">Save Share Logo</a>
+			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile<?php echo "/$username" ?>">Save Share Logo</a>
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">
 			        <ul class="nav navbar-nav">
@@ -138,7 +138,7 @@
 					        </li>
 				            <li class="dropdown">
 				            	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				                	<i class="fa fa-user fa-fw"></i><?php echo ' '.$username.' '; ?><i class="fa fa-caret-down"></i>
+				                	<i class="fa fa-user fa-fw"></i><?php echo ' '.ucfirst($username.' '); ?><i class="fa fa-caret-down"></i>
 				                </a>
 				                <ul class="dropdown-menu dropdown-user">
 									<li><a href="<?php echo base_url(); ?>account"><i class="fa fa-gear fa-fw"></i> Settings</a>
@@ -181,7 +181,7 @@
 			<div id="sidebar-wrapper">
 			    <ul class="sidebar-nav">
 			        <li>
-			        	<a href="<?php echo base_url();?>profile"><i class="fa fa-truck"></i> Profile</a>
+			        	<a href="<?php echo base_url();?>profile<?php echo "/$username" ?>"><i class="fa fa-truck"></i> Profile</a>
 			        </li>
 			        <li>
 			        	<a href="<?php echo base_url(); ?>economy"><i class="fa fa-table"></i> Economy</a>

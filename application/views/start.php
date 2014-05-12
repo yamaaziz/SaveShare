@@ -151,8 +151,8 @@
 	                <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				</div>
 				<div class="col-md-4">
-					<img class="img-circle img-responsive" src="http://i.imgur.com/lGDxYba.jpg?1">
-					<h2>Yama Aziz</h2>
+					<img class="img-circle img-responsive" src="http://placehold.it/300x300">
+					<h2>Marketing Box #3</h2>
 					<p></p>
 				</div>
             </div><!-- ./row -->
