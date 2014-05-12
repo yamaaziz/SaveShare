@@ -9,14 +9,19 @@ class Profile extends CI_Controller{
             // Your own constructor code           
     }
 
-    public function index(){
+    public function index($slug = ''){
     
     	if(!$this->is_signed_in()){
 	    	redirect('account/sign_in');
     	}
     	else{
+    		if (empty($slug))
+			{
+			show_404();
+			}
     		//Load Data
-    		$id = $this->get_id();
+    		//convert username to id
+    		$id = $this->account_model->get_id($slug);
     		$data1['user_info']		= 	$this->collect_userinfo($id);
     		$data1['economy_info']	=	$this->collect_economyinfo($id);
     		$data1['followers_name'] = $this->get_followernames();

@@ -1,0 +1,1 @@
+$('#forgot_password_modal').modal('show');

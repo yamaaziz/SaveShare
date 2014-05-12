@@ -72,7 +72,7 @@
 							{						
 							$this->load->view('profile/extra');								
 							}
-							?> 
+							?>
 			        </div>
 			    </div>
 				<div class="row">
@@ -205,7 +205,7 @@
 						<?php echo $this->load->view('economy/show_lias'); ?>
 					</div><!--./col-md-6-->
 				</div><!--./row-->
-		<!--		<div class="row">
+				<div class="row">
 					<div class="col-md-12">
 						<p class="well"> Session data </p>
 						<? foreach ($session_data as $key => $value){ echo "$key: $value\n".'<br/>';}?>
@@ -213,4 +213,3 @@
 				</div><!-- /.row -->
 			</div><!-- /.page-content inset -->
 		</div><!-- /.page-content-wrapper --> 
-w

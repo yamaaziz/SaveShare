@@ -12,7 +12,6 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view("account/settings/settings_layout");
 		$this->load->view('profile/templates/footer');
-		
 	}
 
 
@@ -28,9 +27,9 @@ class Account extends CI_Controller{
 		
 		else{
 			$this->session->set_flashdata('sign_in_succeeded', 'You were successfully signed in.');
-			redirect('profile');
+			$username = $this->get_username();
+			redirect("profile/$username");
 		}
-		
 	}
 	public function sign_up(){
 		$this->form_validation->set_rules('username','Username','required|min_length[4]|max_length[12]|is_unique[users.username]|trim|xss_clean');
@@ -72,6 +71,18 @@ class Account extends CI_Controller{
 		//Set message
 		$this->session->set_flashdata('logged_out', 'You have been logged out');
 		redirect('start');
+    }
+	public function forgot_password(){
+		$this->form_validation->set_rules('email_fp','Email','required|max_length[60]|valid_email|trim|xss_clean|callback_verify_forgot_password');
+		$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+
+		if($this->form_validation->run() == FALSE){
+			$this->load_modal($option = 'forgot_password');			
+		}
+		else{
+			$this->session->set_flashdata('forgot_password_succeeded', 'A new password has been emailed to you. Check your junk mail!');
+			redirect('account/sign_in');
+		}
     }
 	
     public function profile_settings(){
@@ -134,7 +145,8 @@ class Account extends CI_Controller{
 				//If you load a view after setting flashdata, the message is shown the next time you load the page, therefore
 				//you must use redirect() with flashdata. You can use set_message together with load();
 				$this->session->set_flashdata('profile_settings_succeeded', 'Your profile settings was successfully changed.');
-				redirect('profile');
+				$username = $this->get_username();
+				redirect("profile/$username");
 			}
 			else{
 				//Unsuccessful update
@@ -163,14 +175,11 @@ class Account extends CI_Controller{
 			$this->security_settings();
 		}
 		else{
-			$new_password = $this->input->post('new_password');
-			
-			if($this->account_model->change_security_settings($new_password)){
-		
 			$this->session->set_flashdata('security_settings_succeeded', 'Your security settings was successfully changed.');
-			redirect('profile');
+			$username = $this->get_username();
+			redirect("profile/$username");
 				
-			}
+		
 		}
     }
 	
@@ -264,6 +273,9 @@ class Account extends CI_Controller{
 		$user_id = $this->account_model->login_user($username,$password);
 		
 		if($user_id){
+			$new_password = $this->input->post('new_password');
+			$id = $this->session->userdata('user_id');
+			$this->account_model->change_security_settings($new_password, $id);
 			return TRUE;
 		}
 		else{
@@ -272,16 +284,137 @@ class Account extends CI_Controller{
 		//against an empy string as username, which is clearly wrong procedure. Not sure if this is the case,
 		//but the below code will fix the error message.
 			if ($username !=''){
-				$this->form_validation->set_message('verify_profile_settings_password', 'Invalid password.');
+				$this->form_validation->set_message('verify_security_settings_password', 'Invalid password.');
 				
 			}
 			else{
-				$this->form_validation->set_message('verify_profile_settings_password', '');
+				$this->form_validation->set_message('verify_security_settings_password', '');
 				
 			}
 		return FALSE;
 		}
 		
+	}
+	public function verify_forgot_password(){
+
+		$email=$this->input->post('email_fp');
+		$check_email_get_id=$this->account_model->find_email($email);
+
+		if($check_email_get_id){
+		
+			$password = $this->random_password();
+			$id = $check_email_get_id['id'];
+			$email = $check_email_get_id['email'];
+			
+			$this->account_model->change_security_settings($password, $id);
+			$this->email_password($email,$password);
+		
+			return TRUE;
+			
+		}
+		else{
+			//return not found email and error message else
+			$this->form_validation->set_message('verify_forgot_password', 'Your email is not in our database');
+			return FALSE;
+		}	
+	}
+	public function email_password($email,$password){
+		$this->load->library('email');
+    	$config = Array(
+				    'protocol' 	=> 'smtp',
+				    'smtp_host' => 'ssl://smtp.googlemail.com',
+				    'smtp_port' => 465,
+				    'smtp_user' => 'savesharee@gmail.com',
+				    'smtp_pass' => 'k7M-GED-Gft-qZF',
+				    'mailtype'  => 'html', 
+				    'charset'   => 'iso-8859-1'
+				);
+				
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		
+		$this->email->from('savesharee@gmail.com', 'Save Share');
+		$this->email->to("$email"); 
+
+		$this->email->subject('SaveShare password reset');
+		$this->email->message("Your new password is: $password");	
+		// Set to, from, message, etc.
+		$result = $this->email->send();
+		
+	}
+	public function random_password($length = 6){
+		/**
+		 * Generate random pronounceable words
+		 *
+		 * @param int $length Word length
+		 * @return string Random word
+		 *
+		 * shout out to the random dude on the internet for creating this function
+		 * Link: http://ozh.in/vh
+		 *
+		 * I added the random numbers and the end of the word.
+		 */
+
+		    // consonant sounds
+		    $cons = array(
+		        // single consonants. Beware of Q, it's often awkward in words
+		        'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
+		        'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z',
+		        // possible combinations excluding those which cannot start a word
+		        'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh',
+		    );
+		   
+		    // consonant combinations that cannot start a word
+		    $cons_cant_start = array(
+		        'ck', 'cm',
+		        'dr', 'ds',
+		        'ft',
+		        'gh', 'gn',
+		        'kr', 'ks',
+		        'ls', 'lt', 'lr',
+		        'mp', 'mt', 'ms',
+		        'ng', 'ns',
+		        'rd', 'rg', 'rs', 'rt',
+		        'ss',
+		        'ts', 'tch',
+		    );
+		   
+		    // wovels
+		    $vows = array(
+		        // single vowels
+		        'a', 'e', 'i', 'o', 'u', 'y',
+		        // vowel combinations your language allows
+		        'ee', 'oa', 'oo',
+		    );
+		   
+		    // start by vowel or consonant ?
+		    $current = ( mt_rand( 0, 1 ) == '0' ? 'cons' : 'vows' );
+		   
+		    $word = '';
+		       
+		    while( strlen( $word ) < $length ) {
+		   
+		        // After first letter, use all consonant combos
+		        if( strlen( $word ) == 2 )
+		            $cons = array_merge( $cons, $cons_cant_start );
+		 
+		         // random sign from either $cons or $vows
+		        $rnd = ${$current}[ mt_rand( 0, count( ${$current} ) -1 ) ];
+		       
+		        // check if random sign fits in word length
+		        if( strlen( $word . $rnd ) <= $length ) {
+		            $word .= $rnd;
+		            // alternate sounds
+		            $current = ( $current == 'cons' ? 'vows' : 'cons' );
+		        }
+		    }
+		   
+		    $random = rand(1,10);
+			$numbers = str_shuffle('0123456789');
+			$numbers_split = str_split($numbers, $random);
+	
+			return $word . $numbers_split[ceil(10/$random)-1];
+						
 	}
 		
 	//**********************************************************************************************************************************//
@@ -300,14 +433,20 @@ class Account extends CI_Controller{
 		if($option == 'sign_in'){
 			$data['pathway'] = $option . '.js';
 			$this->load->view('start',$data);
-			
 		}
 		
-		if($option == 'sign_up'){
+		elseif($option == 'sign_up'){
 			$data['pathway'] = $option . '.js';
 			$this->load->view('start',$data);
-		
+		}
+		elseif($option == 'forgot_password'){
+			$data['pathway'] = $option . '.js';
+			$this->load->view('start',$data);
 		}	
+	}
+	private function get_username(){
+	 	$username = $this->session->userdata('username');
+	 	return $username;
 	}
 }	
 /* End of file account.php */

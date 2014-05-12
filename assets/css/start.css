@@ -42,6 +42,10 @@ body {
   margin-top: 0px;
   
 }
+#forgot_password_modal{
+  margin-top: 170px;
+  
+}
 /*Custom: Reduces modal width size*/
 /*#sign_in_modal .modal-dialog {
   width: 300px;
@@ -50,7 +54,9 @@ body {
 .text-error {
   color: red;
 }
-
+#forgot_password{
+	font-size: small;
+}
 /* Full Page Image Header Area */
 
 .header {

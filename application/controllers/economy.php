@@ -53,7 +53,8 @@ class Economy extends CI_Controller{
 			$id = $this->session->userdata('user_id');
 			if($this->economy_model->set_economy($id))
 			{	$this->session->set_flashdata('economy_succeeded', 'Your economy was successfully submitted.');
-				redirect('profile');
+				$username = $this->get_username();
+				redirect("profile/$username");
 			}
 			else
 			{
@@ -66,6 +67,10 @@ class Economy extends CI_Controller{
 	private function collect_economyinfo() {
 		$id = $this->session->userdata('user_id');
 		return $this->economy_model->get_economydata($id);
+	}
+	private function get_username(){
+	 	$username = $this->session->userdata('username');
+	 	return $username;
 	}
 			
 }	

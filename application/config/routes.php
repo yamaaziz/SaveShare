@@ -41,9 +41,14 @@
 //$route['(:any)'] = "pages/view/$1"; //matches any request using the wildcard string (:any). and passes the parameter to the view() method of the pages class.
 $route['default_controller'] = "start";
 $route['404_override'] = '';
+<<<<<<< HEAD
 $route['forum/validate_forum'] = 'forum/validate_forum';
 $route['forum/(:any)'] = 'forum/view/$1';
 $route['thread'] = 'thread';
+=======
+$route['profile/(:any)'] = 'profile/index/$1';
+
+>>>>>>> yama
 
 
 /* End of file routes.php */

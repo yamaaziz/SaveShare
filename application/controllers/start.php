@@ -12,7 +12,8 @@ class Start extends CI_Controller{
 	public function index(){
 
 		if($this->is_signed_in()){
-	    	redirect('profile');
+			$username = $this->get_username();
+	    	redirect("profile/$username");
     	}
     	else{
 	    	$this->load->view('start');
@@ -27,6 +28,10 @@ class Start extends CI_Controller{
 		else{
 			return FALSE;
 		}
+	}
+	private function get_username(){
+	 	$username = $this->session->userdata('username');
+	 	return $username;
 	}
 }
 /*End of file start.php*/

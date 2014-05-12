@@ -60,6 +60,7 @@ class Forum extends CI_Controller{
 		$this->load->view('profile/templates/header', $data);
 		$this->load->view('forum/view', $data);
 		$this->load->view('profile/templates/footer');
+		
 		}
 
 			

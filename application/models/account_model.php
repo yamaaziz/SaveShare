@@ -92,16 +92,14 @@ class Account_model extends CI_Model{
 		
         return $insert;
 	}
-	public function change_security_settings($new_password){
-		$id = $this->session->userdata('user_id');
+	public function change_security_settings($new_password, $id){
+		
 		
 		$this->db->where('id', $id);
 		$new_password_hash = array('password'	=>	password_hash($new_password, PASSWORD_DEFAULT));
 		$insert = $this->db->update('users', $new_password_hash);
 		
 		return $insert;
-		
-		
 	}
 	
 	//Save this function for later where you search for other users
@@ -109,11 +107,22 @@ class Account_model extends CI_Model{
 	
 		$this->db->select("users.id");
 		$this->db->from('users');
-		$this->db->where('users.id', $username);
+		$this->db->where('users.username', $username);
 		
 		$query = $this->db->get();
 			if ($query->num_rows() == 1) {
 				return $query->row(0)->id;
+				}
+	}
+	public function find_email($email){
+		$this->db->select("users.email, users.id");
+		$this->db->from('users');
+		$this->db->where('users.email', $email);
+		$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				$query = $query->row();
+				$query_array = get_object_vars($query);	
+				return $query_array;
 				}
 	}
 	public function get_userdata($id) {
