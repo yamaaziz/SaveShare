@@ -27,20 +27,15 @@ class Forum extends CI_Controller{
 			if($this->form_validation->run() == FALSE)
 			{
 				$this->index();
-<<<<<<< HEAD
-				}
-=======
+
 			}
->>>>>>> origin/Sofia-gren3
-			
 			else {
-					$id = $this->session->userdata('user_id');
-					if($this->forum_model->create_thread($id))
-		           {
+				$id = $this->session->userdata('user_id');
+				if($this->forum_model->create_thread($id)){
 		           
-		           		//$this->forum_model->create_message($id);
-				   		//$this->session->set_flashdata('start_thread_succeeded', 'You did successfully start a thread.');
-		                $this->index();
+	           		//$this->forum_model->create_message($id);
+			   		//$this->session->set_flashdata('start_thread_succeeded', 'You did successfully start a thread.');
+	                $this->index();
 		           }
 		           else
 		           {
@@ -48,7 +43,6 @@ class Forum extends CI_Controller{
 		           }
 				
 			}
-			
 		}
 		
 	public function validate_message(){ 
@@ -56,8 +50,7 @@ class Forum extends CI_Controller{
 	    	
 	    	$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
 			
-			if($this->form_validation->run() == FALSE)
-			{
+			if($this->form_validation->run() == FALSE){
 				$this->index();
 			}
 			
@@ -65,7 +58,6 @@ class Forum extends CI_Controller{
 					$id = $this->session->userdata('user_id');
 					$this->forum_model->create_message($id);				
 			}
-			
 		}
 		
 	public function view($slug){
