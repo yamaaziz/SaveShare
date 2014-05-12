@@ -58,6 +58,7 @@ class Account_model extends CI_Model{
 		if ($query->num_rows() == 1)
 		{
 			$this->economy_model->create_economy($query->row(0));
+			$this->account_model->create_privacy($query->row(0));
 		}
 		
 		return $insert;
@@ -196,6 +197,25 @@ class Account_model extends CI_Model{
 				return $query->row();
 				}
  		}
+ 		
+ 		public function create_privacy($data){
+    	$data1 = get_object_vars($data);
+    	$privacy = array(
+    		'privacy.p_id'			=>	$data1['id'],
+			'privacy.p_age'			=>	0,
+			'privacy.p_gender'		=>	0,
+			'privacy.p_city'		=>	0,
+			'privacy.p_occupation'	=>	0,                    
+			'p_income'				=>	0,
+			'p_savings'				=>	0,
+			'p_lias'				=>	0,
+			'p_following'			=>	0,
+			'p_search'				=>	0		
+        );
+
+		$insert = $this->db->insert('privacy', $privacy);
+        return $insert; 
+    }
 }
 /*End of file account_model.php*/
 /*Location: ./application/models/account_model.php */

@@ -8,9 +8,10 @@ class Account extends CI_Controller{
 		// Your own constructor code
 	}
 	public function index(){
+		$data['economy_data']=$this->collect_economyinfo();
 		//Load Views
 		$this->load->view('profile/templates/header');
-		$this->load->view("account/settings/settings_layout");
+		$this->load->view("account/settings/settings_layout", $data);
 		$this->load->view('profile/templates/footer');
 	}
 
@@ -225,6 +226,11 @@ class Account extends CI_Controller{
 			}
 			}
     	}
+    	
+    private function collect_economyinfo() {
+		$id = $this->session->userdata('user_id');
+		return $this->economy_model->get_economydata($id);
+	}
 	
 	//**********************************************************************************************************************************// 
 	// 	This function is called by the callback rule from set_rules for password. verify_sign_in either returns TRUE or FALSE. This	//
