@@ -88,22 +88,13 @@ class Account_model extends CI_Model{
 		
         return $insert;
 	}
-<<<<<<< HEAD
-	public function change_security_settings($new_password, $id){
-		
-=======
 
-	public function change_security_settings($new_password){
-		$id = $this->session->userdata('user_id');
->>>>>>> origin/Johanna4
-		
-		$this->db->where('id', $id);
+	public function change_security_settings($new_password, $id){
 		$new_password_hash = array('password'	=>	password_hash($new_password, PASSWORD_DEFAULT));
+		$this->db->where('id', $id);
 		$insert = $this->db->update('users', $new_password_hash);
 		
 		return $insert;
-<<<<<<< HEAD
-=======
 	}
 	
 	public function change_privacy_settings() {
@@ -124,8 +115,8 @@ class Account_model extends CI_Model{
 				
 		$this->db->where('p_id', $id);
 		$insert = $this->db->update('privacy', $optional_clean);
+		
         return $insert;
->>>>>>> origin/Johanna4
 	}
 	
 	//Save this function for later where you search for other users
@@ -141,7 +132,7 @@ class Account_model extends CI_Model{
 				return $query->row(0)->id;
 				}
 	}
-<<<<<<< HEAD
+
 	public function find_email($email){
 		$this->db->select("users.email, users.id");
 		$this->db->from('users');
@@ -153,9 +144,7 @@ class Account_model extends CI_Model{
 				return $query_array;
 				}
 	}
-=======
-	
->>>>>>> origin/Johanna4
+
 	public function get_userdata($id) {
 		$this->db->select("
 			users.username,
