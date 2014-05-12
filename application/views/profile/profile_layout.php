@@ -57,14 +57,22 @@
 							echo '<strong>' .$this->session->flashdata('security_settings_succeeded') .'</strong>';
 						echo '</div>'; 
 						}
+						//Privacy settings success
+						elseif($this->session->flashdata('privacy_settings_succeeded'))
+						{
+						echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<strong>' .$this->session->flashdata('privacy_settings_succeeded') .'</strong>';
+						echo '</div>'; 
+						}
+						
 						?>
 			            <p class="lead">User Info</p>
 			        </div>
 			    </div>
 			    <div class = "row">
-					<div class="col-md-6" >
+					<div class="col-md-6" >				
 			            <?php $this->load->view('profile/user_info'); ?>
-
 			        </div>
 			        <div class="col-md-6" >
 			            	<?php 

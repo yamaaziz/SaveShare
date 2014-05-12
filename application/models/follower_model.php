@@ -70,7 +70,28 @@ class Follower_model extends CI_Model{
 				}
 		return $resultat;
 		}
-	}
+		
+	public function unfollow($id, $profile_id) {
+		$follow_data = array(
+			'follower_id'	=>		$id,                    
+			'user_id'		=>		$profile_id,
+						);	
+		$delete = $this->db->delete('followers', $follow_data);
+		return $delete;
+		}	
+	
+	
+	public function follow($id, $profile_id) {
+		$follow_data = array(
+			'follower_id'	=>		$id,                    
+			'user_id'		=>		$profile_id,
+						);	
+		$insert = $this->db->insert('followers', $follow_data);
+		return $insert;
+		}
+		
+
+}
 
 /*End of file follower_model.php*/
 /*Location: ./application/models/follower_model.php */

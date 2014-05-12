@@ -14,7 +14,6 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/footer');
 	}
 
-
 	public function sign_in(){
 		$this->form_validation->set_rules('username_','Username','required|min_length[4]|trim|xss_clean|');
 		$this->form_validation->set_rules('password_','Password','required|min_length[4]|max_length[128]|trim|xss_clean|callback_verify_sign_in');
@@ -93,14 +92,25 @@ class Account extends CI_Controller{
 		$this->load->view('profile/templates/header');
 		$this->load->view('account/settings/profile_settings', $data);
 		$this->load->view('profile/templates/footer');
+		
 	}
     public function security_settings(){
 		$this->load->view('profile/templates/header');
 		$this->load->view('account/settings/security_settings');
 		$this->load->view('profile/templates/footer');
-    	
-	    
     }
+    
+    public function privacy_settings() {
+		//Load Profile Data
+		$id = $this->session->userdata('user_id');
+    	$data['profile_data'] = $this->account_model->get_userdata($id);
+    	$data['privacy'] = $this->account_model->get_privacy_data($id);
+    	//View data
+    	$this->load->view('profile/templates/header');
+    	$this->load->view('account/settings/privacy_settings', $data);
+    	$this->load->view('profile/templates/footer');
+    }
+    
     public function validate_profile_settings(){
     	//Load Data
     	$id = $this->session->userdata('user_id');
@@ -166,6 +176,7 @@ class Account extends CI_Controller{
 			
 		}	
 	}
+	
     public function validate_security_settings(){
     	$this->form_validation->set_rules('old_password','Old Password','required|min_length[4]|max_length[128]|trim|xss_clean|callback_verify_security_settings_password');
 		$this->form_validation->set_rules('new_password','New Password','required|min_length[4]|max_length[128]|trim|xss_clean');
@@ -182,6 +193,38 @@ class Account extends CI_Controller{
 		
 		}
     }
+    
+    public function validate_privacy_settings() {
+    	$id = $this->session->userdata('user_id');
+	    $privacy_data = get_object_vars($this->account_model->get_privacy_data($id));
+	    $this->form_validation->set_rules('gender','gender','trim|xss_clean');
+	    $this->form_validation->set_rules('age','age','trim|xss_clean');
+	    $this->form_validation->set_rules('city','city','trim|xss_clean');
+	    $this->form_validation->set_rules('occupation','occupation','trim|xss_clean');
+	    $this->form_validation->set_rules('income','income','trim|xss_clean');
+	    $this->form_validation->set_rules('savings','savings','trim|xss_clean');
+	    $this->form_validation->set_rules('lias','lias','trim|xss_clean');
+	    //$this->form_validation->set_rules('following','following','trim|xss_clean');
+	    //$this->form_validation->set_rules('search','search','trim|xss_clean');
+	    
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->privacy_settings();
+		}
+		else 
+		{
+			if($this->account_model->change_privacy_settings()){
+				//Flashdata is shown in the view after a HTTP (location) redirect. It may work with a refresh as well.
+				//If you load a view after setting flashdata, the message is shown the next time you load the page, therefore
+				//you must use redirect() with flashdata. You can use set_message together with load();
+				$this->session->set_flashdata('privacy_settings_succeeded', 'Your privacy settings was successfully changed.');
+				redirect('profile');
+			}
+			else{
+				//Unsuccessful update
+			}
+			}
+    	}
 	
 	//**********************************************************************************************************************************// 
 	// 	This function is called by the callback rule from set_rules for password. verify_sign_in either returns TRUE or FALSE. This	//

@@ -133,7 +133,7 @@
 						<?php echo form_label('City'); ?>
 						<?php
 						$data = array(
-										'name' 			=>'city',
+										'name' 			=> 'city',
 										'placeholder' 	=> 'Enter City',
 										'style' 		=> 'width:100%',
 										'value'			=> set_value('city', $profile_data_['city'])
@@ -150,7 +150,7 @@
 						<?php echo form_label('Occupation'); ?>
 						<?php
 						$data = array(
-										'name' 			=>'occupation',
+										'name' 			=> 'occupation',
 										'placeholder' 	=> 'Enter Occupation',
 										'style' 		=> 'width:100%',
 										'value'			=> set_value('occupation', $profile_data_['occupation'])
@@ -166,7 +166,7 @@
 						<?php echo form_label('Income'); ?>
 						<?php
 						$data = array(
-										'name' 			=>'income',
+										'name' 			=> 'income',
 										'placeholder' 	=> 'Enter Income',
 										'style' 		=> 'width:100%',
 										'value'			=> set_value('income', $profile_data_['income'])

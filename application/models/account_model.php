@@ -23,9 +23,8 @@ class Account_model extends CI_Model{
 		else{
 			return FALSE;
 		}
-		
-		
 	}
+	
 	public function create_user(){
 		
 		$optional = array(
@@ -73,7 +72,7 @@ class Account_model extends CI_Model{
 			'occupation'	=>		$this->input->post('occupation'),
 			'income'		=>		$this->input->post('income')
 			);
-			
+
 		$optional_clean = $this->set_NULL($optional);
 		
 		$essential = array(
@@ -89,17 +88,48 @@ class Account_model extends CI_Model{
 		
         return $insert;
 	}
+<<<<<<< HEAD
 	public function change_security_settings($new_password, $id){
 		
+=======
+
+	public function change_security_settings($new_password){
+		$id = $this->session->userdata('user_id');
+>>>>>>> origin/Johanna4
 		
 		$this->db->where('id', $id);
 		$new_password_hash = array('password'	=>	password_hash($new_password, PASSWORD_DEFAULT));
 		$insert = $this->db->update('users', $new_password_hash);
 		
 		return $insert;
+<<<<<<< HEAD
+=======
+	}
+	
+	public function change_privacy_settings() {
+		$id = $this->session->userdata('user_id');		
+		$optional = array(
+			'p_gender'		=>		$this->input->post('birth_year'),                    
+			'p_age'			=>		$this->input->post('gender'),
+			'p_city'		=>		$this->input->post('city'),
+			'p_occupation'	=>		$this->input->post('occupation'),
+			'p_income'		=>		$this->input->post('income'),
+			'p_savings'		=>		$this->input->post('savings'),
+			'p_lias'		=>		$this->input->post('lias'),
+			'p_following'	=>		$this->input->post('following'),
+			'p_search'		=>		$this->input->post('search')
+			);
+
+		$optional_clean = $this->set_NULL($optional);	
+				
+		$this->db->where('p_id', $id);
+		$insert = $this->db->update('privacy', $optional_clean);
+        return $insert;
+>>>>>>> origin/Johanna4
 	}
 	
 	//Save this function for later where you search for other users
+	//säg till Johanna om dessa flyttas, då ska vägen i profile-funktionerna ändras också
 	public function get_id($username){
 	
 		$this->db->select("users.id");
@@ -111,6 +141,7 @@ class Account_model extends CI_Model{
 				return $query->row(0)->id;
 				}
 	}
+<<<<<<< HEAD
 	public function find_email($email){
 		$this->db->select("users.email, users.id");
 		$this->db->from('users');
@@ -122,6 +153,9 @@ class Account_model extends CI_Model{
 				return $query_array;
 				}
 	}
+=======
+	
+>>>>>>> origin/Johanna4
 	public function get_userdata($id) {
 		$this->db->select("
 			users.username,
@@ -140,6 +174,7 @@ class Account_model extends CI_Model{
 				return $query->row();
 				}
 	}
+	
 	public function set_NULL($optional){
 	
 		foreach($optional as $key=>$value){
@@ -150,6 +185,28 @@ class Account_model extends CI_Model{
 		return $optional;
 
 	}
+ 	
+ 	public function get_privacy_data($id) {
+ 		$this->db->select("
+ 			privacy.p_id,
+ 			privacy.p_age,
+ 			privacy.p_gender,
+ 			privacy.p_city,
+ 			privacy.p_occupation,
+ 			privacy.p_income,
+ 			privacy.p_savings,
+ 			privacy.p_lias,
+ 			privacy.p_following,
+ 			privacy.p_search
+ 			");
+ 			
+ 		$this->db->from('privacy');
+ 		$this->db->where('privacy.p_id', $id);
+ 		$query = $this->db->get();
+ 		if ($query->num_rows() == 1) {
+				return $query->row();
+				}
+ 		}
 }
 /*End of file account_model.php*/
 /*Location: ./application/models/account_model.php */

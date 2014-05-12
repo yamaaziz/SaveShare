@@ -26,6 +26,8 @@ class Profile extends CI_Controller{
     		$data1['economy_info']	=	$this->collect_economyinfo($id);
     		$data1['followers_name'] = $this->get_followernames();
     		$data1['following_name'] = $this->get_followingnames();
+    		$data1['privacy'] = $this->account_model->get_privacy_data($id);
+
     		//Load Views
     		$this->load->view('profile/templates/header');
 	    	$this->load->view('profile/profile_layout', $data1);
@@ -53,7 +55,26 @@ class Profile extends CI_Controller{
 		$name_array = $this->follower_model->get_following_username($id_array);
 		return $name_array;
 	}
-    	
+	
+	public function follow() {
+		$id = $this->session->userdata('user_id');
+		$profile_id = 7;
+		$this->follower_model->follow($id, $profile_id);
+		redirect('profile');
+	}
+	
+	public function unfollow() {
+		$id = $this->session->userdata('user_id');
+		$profile_id = 7;
+		$this->follower_model->unfollow($id, $profile_id);
+		redirect('profile');
+	}
+	
+	public function get_visiting_id() {
+		$username = $this->
+		$this->account_model->get_id($username);
+	}
+
  	private function get_id(){
 	 	return $id = $this->session->userdata('user_id');
  	}
@@ -68,6 +89,6 @@ class Profile extends CI_Controller{
 			return FALSE;
 		}
 	}
-}
+	}
 /* End of file profile.php */
 /* Location: ./application/controllers//profile.php */
