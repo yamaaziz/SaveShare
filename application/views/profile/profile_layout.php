@@ -5,6 +5,7 @@
 	if(isset($economy_info) && isset($user_info)){
 		$economy = get_object_vars($economy_info);
 		$var = get_object_vars($user_info);	
+		$today = getdate();
 	} 
 	?>
 	<!-- START PAGE -->
@@ -14,6 +15,8 @@
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
 	                <?php echo ucfirst($var['username']); ?> 
+	  
+	        
 	            </h1>	            
 	        </div><!-- content-header-->
 	    	 <!-- Keep all page content within the page-content inset div! -->

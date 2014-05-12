@@ -38,10 +38,13 @@ class Account_model extends CI_Model{
 			
 		$optional_clean = $this->set_NULL($optional);
 		
+		$slug = url_title($this->input->post('username'), 'dash', TRUE);
+
 		$essential = array(
 		'username'		=>		$this->input->post('username'),
 		'password'		=>		password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-		'email'			=>		$this->input->post('email')
+		'email'			=>		$this->input->post('email'),
+		'slug'			=>		$slug
 		);
 		
 		$new_user = $essential+$optional_clean;			
