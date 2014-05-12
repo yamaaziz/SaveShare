@@ -27,14 +27,18 @@ class Forum extends CI_Controller{
 			if($this->form_validation->run() == FALSE)
 			{
 				$this->index();
+<<<<<<< HEAD
 				}
+=======
+			}
+>>>>>>> origin/Sofia-gren3
 			
 			else {
 					$id = $this->session->userdata('user_id');
 					if($this->forum_model->create_thread($id))
 		           {
 		           
-		           		$this->forum_model->create_message($id);
+		           		//$this->forum_model->create_message($id);
 				   		//$this->session->set_flashdata('start_thread_succeeded', 'You did successfully start a thread.');
 		                $this->index();
 		           }
@@ -47,15 +51,36 @@ class Forum extends CI_Controller{
 			
 		}
 		
+	public function validate_message(){ 
+	    	$this->form_validation->set_rules('answer','Answer','xss_clean');
+	    	
+	    	$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
+			
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->index();
+			}
+			
+			else {
+					$id = $this->session->userdata('user_id');
+					$this->forum_model->create_message($id);				
+			}
+			
+		}
+		
 	public function view($slug){
 		$data['news_item'] = $this->forum_model->get_threads($slug);
-	
+		$data['messages'] = $this->forum_model->get_messages($slug);
+		$data['slug'] = $slug;
+		
+		//$data[] = $this->forum_model->get_username();
+
 		if (empty($data['news_item']))
 		{
 			show_404();
 		}
 	
-		$data['topic'] = $data['news_item']['topic'];
+		//$data['topic'] = $data['news_item']['topic'];
 	
 		$this->load->view('profile/templates/header', $data);
 		$this->load->view('forum/view', $data);

@@ -11,22 +11,18 @@ class Forum_model extends CI_Model{
 	public function create_thread($id){
 				
 		
-		$slug = url_title($this->input->post('topic'), 'dash', TRUE);
+		//$slug = url_title($this->input->post('topic'), 'dash', TRUE);
 		
 		$thread = array(
 			'topic'			=>		$this->input->post('topic'),                    
 			'creator_id'	=>		$id,
-			'slug'			=>		$slug
+			//'slug'			=>		$slug
 			);
 		
 		$insert = $this->db->insert('thread', $thread);
 	
-		return $insert;
-		}	
-	
-	
-	public function create_message($id){
 		
+		//Create message
 		$topic = $this->input->post('topic');
 		
 		$this->db->where('topic', $topic);
@@ -44,6 +40,32 @@ class Forum_model extends CI_Model{
 					);
 							
 		$insert_message = $this->db->insert('message', $message);
+	
+		$slug = array(
+					'slug' 		=> $t_id,
+					);
+		$this->db->where('t_id', $t_id);
+		$this->db->update('thread', $slug);
+		
+		return $insert;
+
+		
+		}	
+		
+	
+	
+	public function create_message($id){
+			
+			$slug = $t_id;
+			$message = array(
+					't_id' 		=> $t_id,
+					'content' 	=> $this->input->post('answer'),
+					'sender' 	=> $id
+					);
+							
+		$insert_message = $this->db->insert('message', $message);
+	
+				
 		
 	}
 	
@@ -60,6 +82,26 @@ class Forum_model extends CI_Model{
 		}
 		
 		
+		public function get_messages($topic_id){			
+			
+			$this->db->where('t_id', $topic_id);
+			$query = $this->db->get('message');
+			return $query->result_array();
+			
+		}
+		
+	//	public function get_username($sender);
+		
+	//	$this->db->select("users.username");
+	//	$this->db->from('users');
+	//	$this->db->where('users.id', $sender);
+			
+	//		$query = $this->db->get();
+	//		if ($query->num_rows() == 1) {
+	//			return $query->row(0)->username;
+	//			}
+		
+	
 
 
 	}
