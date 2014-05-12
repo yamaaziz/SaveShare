@@ -21,6 +21,10 @@ body{
 .navbar a{
 	font-size: small;
 }
+.head_text {
+	font-size: small;
+	padding-right: 10px; 
+}
 
 #logo{
 	font-weight: bold;

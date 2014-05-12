@@ -47,13 +47,19 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile<?php echo "/$username" ?>">Save Share Logo</a>
+			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile<?php echo "/$username" ?>">
+			       		<img src="<?php echo base_url(); ?>assets/img/pacman.png"></img>
+			        </a>
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">
 			        <ul class="nav navbar-nav">
 			            <!-- Put more content in here in lists -->
 			        </ul>
 			        <ul class="nav navbar-top-links navbar-right">
+			        	<li class="head_text">
+			        		Date: <?php echo ucfirst($today['mon']); echo '/'; echo ucfirst($today['mday']);
+			        		echo '/'; echo ucfirst($today['year']);?> 
+			            </li>
 				    	<li class="dropdown">
 			        		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -203,9 +209,5 @@
 					<li>
 			        	<a href="<?php echo base_url();?>forum"><i class="fa fa-comment-o"></i> Forum</a>
 			        </li>   
-			        
-			        <li>
-			        	<a href="# "></i> Date: <?php echo ucfirst($today['mon']); echo '/'; echo ucfirst($today['mday']); echo '/'; echo ucfirst($today['year']);?></a>
-			        </li>  
 			    </ul>
 			</div>
