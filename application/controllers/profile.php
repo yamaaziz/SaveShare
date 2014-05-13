@@ -42,6 +42,7 @@ class Profile extends CI_Controller{
 	private function collect_economyinfo($id) {
 		return $this->economy_model->get_economydata($id);
     }
+    
     public function get_followernames() {
     	$id = $this->session->userdata('user_id');
 		$id_array = $this->follower_model->get_followersid($id);
@@ -58,21 +59,28 @@ class Profile extends CI_Controller{
 	
 	public function follow() {
 		$id = $this->session->userdata('user_id');
-		$profile_id = 7;
+		$profile_id = $this->get_visiting_id();
+		//$profile_id = 20;
+		echo '????????????????????????????????????????????????????????????';
 		$this->follower_model->follow($id, $profile_id);
-		redirect('profile');
+		echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
+		$username = $this->session->userdata('username');
+		redirect('profile/$username');
 	}
 	
 	public function unfollow() {
 		$id = $this->session->userdata('user_id');
-		$profile_id = 7;
+		$profile_id = $this->get_visiting_id();
+		//$profile_id = 20;
 		$this->follower_model->unfollow($id, $profile_id);
-		redirect('profile');
+		$username = $this->session->userdata('username');
+		redirect('profile/$username');
 	}
 	
 	public function get_visiting_id() {
-		$username = $this->
-		$this->account_model->get_id($username);
+		$username = $this->session->userdata('username');
+		$id = $this->account_model->get_id($username);
+		return $id;
 	}
 
  	private function get_id(){

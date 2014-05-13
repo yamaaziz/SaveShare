@@ -15,12 +15,11 @@
 		<?php foreach (range(0, count($following)-1) as $whatever) { ?>
 			<?php if (array_values(array_values(array_values($following)[$index])[0])[0] != $var['username']) { ?>
 				<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/follow"><i class="fa fa-heart"></i> Follow </a>
-				<?php $index = $index + 1;?>
 			<?php } ?>
 			<?php if (array_values(array_values(array_values($following)[$index])[0])[0] == $var['username']) { ?>
 				<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/unfollow"><i class="fa fa-heart"></i> Unfollow </a>
-				<?php $index = $index + 1;?>
 			<?php } ?>
+			<?php $index = $index + 1;?> <!--kolla var denna ska ligga, förmodligen här-->
 		<?php } ?>
 	<?php } ?>
 		<a class="btn btn-info btn-lg" href="<?php echo base_url(); ?>profile/follow"><i class="glyphicon glyphicon-envelope"></i> Send message </a>
