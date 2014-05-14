@@ -4,6 +4,7 @@
 
 	<!-- START PAGE -->
 	<!-- Page content -->
+	<div
 	<div id="page-content-wrapper">
 		<div class="content-header">
 			<h1>
@@ -23,13 +24,13 @@
 		<div class="col-lg-12"> 
 		<div class="panel-body">
                             <div id="morris-area-chart"></div>
-                        </div>
+                    
                         <!-- /.panel-body -->
-                    </div>
+                  
                     <!-- /.panel -->
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                           <h3 class="panel-title">Forum</h3>
+                           <h3 class="panel-title">Threads</h3>
                             <div class="pull-right">
                                
                             </div>
@@ -46,15 +47,17 @@
                                                     <th>Topic</th>
                                                     <th>Creator</th>
                                                     <th>Start date</th>
+                                            
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php foreach ($thread as $news_item): ?>
+                                            <?php foreach ($thread as $thread_item): ?>
                                                 <tr>
-                                                    <td><?php echo $news_item['t_id'] ?></td>
-                                                    <td><a href="forum/<?php echo $news_item['slug'] ?>"> <?php echo $news_item['topic'] ?></a></td>
-                                                    <td> <a href="#"> <?php echo $news_item['creator_id'] ?> </td>
-                                                    <td> <?php echo $news_item['date_started'] ?></td>
+                                                    <td><?php echo $thread_item['t_id'] ?></td>
+                                                    <td><a href="forum/<?php echo $thread_item['slug'] ?>"> <?php echo $thread_item['topic'] ?></a></td>
+                                                    <td> <a href="#"> <?php echo $thread_item['creator_id'] ?> </td>
+                                                    <td> <?php echo $thread_item['date_started'] ?></td>
+                                                   
                                                 </tr>
                                                 
                                                 <?php endforeach ?>
@@ -72,6 +75,9 @@
                             </div>
                             <!-- /.row -->
                         </div>
+                        </div>
+                      </div>
+                     </div>
                         
         <div class="col-md-6">
 					<?php $attributes = array('id' =>'forum_form','class' => 'form-horizontal'); ?>
@@ -80,14 +86,14 @@
 		<p>
 		
 		</p>
-		
+        </div>
 		
 		<div class="row">
 		        <div class="col-md-6">
 		            <p class="lead">Start your own topic!</p>
 		            
-		        </div>
-		    </div>
+		      
+		
 			
 		
 					<!--Field: Topic-->
@@ -109,16 +115,17 @@
 					
 					<!--Field: Question-->
 					<p>
-					<?php echo form_label('Your message'); ?>
+					<?php echo form_label('Your question'); ?>
 					<?php
 					$data = array(
 									'name' 			=> 'message',
-									'placeholder' 	=> 'Message',
+									'placeholder' 	=> 'Type your question here',
 									'style' 		=> 'width:100%',
+									'rows'			=>	'5',
 									'value'			=> set_value('message')
 								);
 					?>
-					<?php echo form_input($data); ?>
+					<?php echo form_textarea($data); ?>
 					
 					<!--Display field errors-->
 					<?php echo form_error('message'); ?>
@@ -136,9 +143,10 @@
 					</p>
 					<?php echo form_close(); ?>
 				</div><!--./col-md-6 -->                
-
-
+    </div>
+				  </div>
 	
 	
 
-	</div><!-- /.page-content-wrapper --> 
+	<!-- /.page-content-wrapper --> 
+	</div>

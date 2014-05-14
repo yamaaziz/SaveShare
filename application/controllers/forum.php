@@ -54,6 +54,7 @@ class Forum extends CI_Controller{
 			}
 			
 			else {
+					
 					$id = $this->session->userdata('user_id');
 					$this->forum_model->create_message($id);
 					redirect('forum');			
@@ -61,13 +62,13 @@ class Forum extends CI_Controller{
 		}
 		
 	public function view($slug){
-		$data['news_item'] = $this->forum_model->get_threads($slug);
+		$data['thread_item'] = $this->forum_model->get_threads($slug);
 		$data['messages'] = $this->forum_model->get_messages($slug);
 		$data['slug'] = $slug;
 		
 		//$data[] = $this->forum_model->get_username();
 
-		if (empty($data['news_item']))
+		if (empty($data['thread_item']))
 		{
 			show_404();
 		}

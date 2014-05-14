@@ -55,10 +55,8 @@ class Forum_model extends CI_Model{
 	
 	public function create_message($id){
 			
-			//$t_id = $slug;
 			$message = array(
-					//'t_id' 		=> $t_id,
-					't_id' 		=> '12', //provisorisk siffra
+					't_id' 		=> $this->input->post('slug'), //provisorisk siffra
 					'content' 	=> $this->input->post('answer'),
 					'sender' 	=> $id
 					);
@@ -89,6 +87,7 @@ class Forum_model extends CI_Model{
 			return $query->result_array();
 			
 		}
+		
 		
 	//	public function get_username($sender);
 		
