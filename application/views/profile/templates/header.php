@@ -2,9 +2,7 @@
 <!-- PHP Code Here -->
 	<!-- START PAGE -->
 <!DOCTYPE html>
-
-
-	<?php	$today = getdate(); ?>
+	<?php $today = getdate(); ?>
 <html lang="en">
 	<head>
 	    <meta charset="utf-8">
@@ -158,41 +156,20 @@
 				                </ul>
 				            </li>
 					</ul>
-					<!-- Start search form -->
-					<?php $attributes = array('id' =>'search_form','class' => 'navbar-form navbar-left'); ?>
-					<?php echo form_open('search/validate_search', $attributes); ?>
-					<?php echo form_open(); ?>
-					<!--Field: Search-->
-					<?php echo form_label(); ?>
-					<?php
-					$data = array(
-									'name'			=> 'search',
-									'placeholder' 	=> 'Search',
-									'class'			=> 'form-control',
-									'value'			=> set_value('search')
-								);
-					?>
-					<?php echo form_input($data); ?>
-					<!--Display field errors-->
-					<?php echo form_error('search'); ?>
-					<!--Submit Buttons-->
-					<!-- DELETED -->
-					<?php echo form_close(); ?>
+					<div class="navbar-form navbar-left">
+						<input name="search_data" class="form-control" id="search_data" type="text" autocomplete="off"							onkeyup="ajaxSearch();">
+							<div id="suggestions">
+								<div id="autoSuggestionsList">  
+								</div>
+							</div>
+					</div>
 		        	<ul class = "advanced-search">
 			            	<a href="<?php echo base_url(); ?>search/advanced_search">
 							<small><em>Advanced search</em></small>
 							<i class="fa fa-angle-right"></i>
 	        			</a>
 	        		</ul>
-	        		
-	        		
-	        	
-
-
-							
-	            	            
-	            
-			    </div>
+			    </div><!--./collapse navbar-collapse -->
 			</nav>
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">

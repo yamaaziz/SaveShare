@@ -1,48 +1,36 @@
   <div id="page-content-wrapper">
 	        <div class="content-header">
-<?php
-echo '<h2>'.$news_item['topic'].'</h2>';
-//echo $news_item['creator_id'];
-$topic_id = $news_item['t_id'];
-//echo $slug;
-?>
-
-	        </div>    
-	        	
+				<?php
+				echo '<h2>'.$news_item['topic'].'</h2>';
+				//echo $news_item['creator_id'];
+				$topic_id = $news_item['t_id'];
+				//echo $slug;
+				?>
+	        </div>     	
   </div>
-  
- <?php foreach ($messages as $message): ?>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><?php echo $message['sender'] ?></h3>
-       <h1 class="panel-title"><?php echo $message['date_posted'] ?></h1>
-  </div>
-  <div class="panel-body">
-    <?php echo $message['content'] ?>
-  </div>
-</div>
-	    
+  <?php foreach ($messages as $message): ?>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title"><?php echo $message['sender'] ?></h3>
+	       <h1 class="panel-title"><?php echo $message['date_posted'] ?></h1>
+	  </div>
+	  <div class="panel-body">
+	    <?php echo $message['content'] ?>
+	  </div>
+	</div>
    <?php endforeach ?>  
-	        
-	        
 	         <div class="col-md-6">
 					<?php $attributes = array('id' =>'message_form','class' => 'form-horizontal'); ?>
 					<?php echo form_open('forum/validate_message', $attributes); ?>
-		
 		<p>
-		
 		</p>
-		
-		
 		<div class="row">
 		        <div class="col-md-6">
 		            <p class="lead">Answer on this thread</p>
 		            
 		        </div>
 		    </div>
-			
-		
+
 					<!--Field: Topic-->
 					<p>
 					<?php echo form_label('Answer'); ?>

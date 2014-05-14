@@ -13,13 +13,13 @@
 		<!-- Keep all page content within the page-content inset div! -->
 		<div class="page-content inset">
 			<div class="row">
-		        <div class="col-md-6">
+		        <div class="col-sm-3">
 		            <p class="lead">Enter your search</p>
 		            
 		        </div>
 		    </div>
 		    <div class="row">
-		    	<div class="col-md-6">
+		    	<div class="col-sm-3">
 					<?php $attributes = array('id' =>'search_form','class' => 'form-horizontal'); ?>
 					<?php echo form_open('search/validate_advanced_search', $attributes); ?>
 					<!--Field: Total savings-->
@@ -58,13 +58,13 @@
 					</p>
 					<!--Field: Commodities-->
 					<p>
-					<?php echo form_label('Age'); ?>
+					<?php echo form_label('Birth year'); ?>
 					<?php
 					$data = array(
-									'name' 			=> 'age',
-									'placeholder' 	=> 'age',
+									'name' 			=> 'birth_year',
+									'placeholder' 	=> 'Birth year',
 									'style' 		=> 'width:100%',
-									'value'			=> set_value('age')
+									'value'			=> set_value('birth_year')
 								);
 					?>
 					<?php 
@@ -85,32 +85,14 @@
 								);
 								
 								
-					echo form_dropdown('age', $data);
+					echo form_dropdown('birth_year', $data);
 					?>
 					
 					
 					<!--Display field errors-->
-					<?php echo form_error('age'); ?>
+					<?php echo form_error('birth_year'); ?>
 					</p>
-					
-					<!--Field: Properties-->
-					<p>
-					<?php echo form_label('Occupation'); ?>
-					<?php
-					$data = array(
-									'name' 			=> 'occupation',
-									'placeholder' 	=> 'Occupation',
-									'style' 		=> 'width:100%',
-									'value'			=> set_value('occupation')
-								);
-					?>
-					<?php echo form_input($data); ?>
-					
-					<!--Display field errors-->
-					<?php echo form_error('occupation'); ?>
-					</p>	
-					
-					<!--Field: Properties-->
+					<!--Field: City-->
 					<p>
 					<?php echo form_label('City'); ?>
 					<?php
@@ -126,7 +108,23 @@
 					<!--Display field errors-->
 					<?php echo form_error('city'); ?>
 					</p>
+					<!--Field: Occupation-->
+					<p>
+					<?php echo form_label('Occupation'); ?>
+					<?php
+					$data = array(
+									'name' 			=> 'occupation',
+									'placeholder' 	=> 'Occupation',
+									'style' 		=> 'width:100%',
+									'value'			=> set_value('occupation')
+								);
+					?>
+					<?php echo form_input($data); ?>
 					
+					<!--Display field errors-->
+					<?php echo form_error('occupation'); ?>
+					</p>	
+						
 					<!--Submit Buttons-->
 					<?php $data = array(
 											"value" => "Search",
