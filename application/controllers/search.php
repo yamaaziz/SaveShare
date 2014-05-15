@@ -25,17 +25,17 @@ class Search extends CI_Controller{
 			$this->advanced_search();
 		}
 		else
-		{	if($id = $this->search_model->adv_search())
+		{	if($data['user_info'] = $this->search_model->adv_search())
 			{
-			
 				$this->load->view('profile/templates/header');
-				//foreach ($id as $idn) {
-								
-				$data1['user_info']		= 	$this->collect_userinfo($id);
-				$data1['economy_info']	=	$this->collect_economyinfo($id);
+				
+				
+				//$data['user_info'] = $this->collect_userinfo($row['id']);				
+				//$data1['user_info']		= 	$this->collect_userinfo($id);
+				//$data1['economy_info']	=	$this->collect_economyinfo($id);
 				//Load Views
 				
-				$this->load->view('search/search_result', $data1);							
+				$this->load->view('search/search_result', $data);							
 				//}
 				
 				$this->load->view('profile/templates/footer'); 
@@ -48,29 +48,8 @@ class Search extends CI_Controller{
 			}
 		}
 	}
-	
-	private function collect_userinfo($id) {	
-    	return $this->account_model->get_userdata($id);
-    }
-    private function collect_economyinfo($id) {
-		return $this->economy_model->get_economydata($id);
-    }
-    public function get_followernames() {
-    	$id = $this->session->userdata('user_id');
-		$id_array = $this->follower_model->get_followersid($id);
-		$name_array = $this->follower_model->get_follower_username($id_array);
-		return $name_array;
-	}
-	
-	public function get_followingnames() {
-    	$id = $this->session->userdata('user_id');
-		$id_array = $this->follower_model->get_followingid($id);
-		$name_array = $this->follower_model->get_following_username($id_array);
-		return $name_array;
-	}
-
 	public function validate_search(){ 
-    	$this->form_validation->set_rules('search','Search','trim|xss_clean');
+    	$this->form_validation->set_rules('search_data','Search','trim|xss_clean');
     	
     	$this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
 		
@@ -100,6 +79,38 @@ class Search extends CI_Controller{
 		}
 
   }
+  	public function autocomplete() {
+        $search_data = $this->input->post('search_data');
+        $query = $this->search_model->get_autocomplete($search_data);
+
+        foreach ($query->result() as $row):
+        	$link = base_url() . 'profile/' . $row->username;
+            echo "<li><a href='$link'><strong id='search_result_username'>".$row->username."</strong></a>"."<br>".
+            "<span class=text-muted small>".$row->city."</span></li>";
+        endforeach;
+    }
+	
+	private function collect_userinfo($id) {	
+    	return $this->account_model->get_userdata($id);
+    }
+    private function collect_economyinfo($id) {
+		return $this->economy_model->get_economydata($id);
+    }
+    public function get_followernames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followersid($id);
+		$name_array = $this->follower_model->get_follower_username($id_array);
+		return $name_array;
+	}
+	
+	public function get_followingnames() {
+    	$id = $this->session->userdata('user_id');
+		$id_array = $this->follower_model->get_followingid($id);
+		$name_array = $this->follower_model->get_following_username($id_array);
+		return $name_array;
+	}
+
+	
 }
 /* End of file search.php */
 /* Location: ./application/controllers//search.php */

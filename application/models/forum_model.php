@@ -63,10 +63,8 @@ class Forum_model extends CI_Model{
 					'sender' 	=> $id
 					);
 							
-		$insert_message = $this->db->insert('message', $message);
-	
-				
-		
+			$insert_message = $this->db->insert('message', $message);
+
 	}
 	
 		public function get_threads($slug=FALSE){

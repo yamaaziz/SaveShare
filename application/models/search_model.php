@@ -9,32 +9,42 @@ class Search_model extends CI_Model{
 	public function adv_search(){		
 
 		$username	=	$this->input->post('username');
-		$age		=	$this->input->post('age');
+		$birth_year	=	$this->input->post('birth_year');
 		$gender		=	$this->input->post('gender');
 		$city		=	$this->input->post('city');
 		$occupation	=	$this->input->post('occupation');
 		$income		=	$this->input->post('income');
 		
 		$this->db->like('username', $username);
-		//$this->db->where('birth_year', $birth_year);
-		//$this->db->where('gender', $gender); 
-		//$this->db->or_like('city', $city);
-		//$this->db->or_like('occupation', $occupation);
-		//$this->db->or_like('income', $income);
+		if(!empty($this->input->post('gender'))){
+			$this->db->like('gender', $gender);
+		}
+		if(!empty($this->input->post('city'))){
+			$this->db->like('city', $city);
+		}
+		if(!empty($this->input->post('occupation'))){
+			$this->db->like('occupation', $occupation);
+		}
 		 
-		$this->db->select('id');
+		$this->db->select("
+			users.id,
+			users.username,
+			users.birth_year,
+			users.gender,
+			users.city,
+			users.occupation,
+			users.income
+			");
 		$query = $this->db->get('users');
 		
 		if ($query->num_rows() > 0) {
-		
-			$query = $query->row();
-			$query_array = get_object_vars($query);	
-			return $query_array['id'];
+			$query_array = $query->result_array();	
+			return $query_array;
 		}
 	}
 
 	public function search() {
-		$username	=	$this->input->post('search');
+		$username =	$this->input->post('search_data');
 		$this->db->like('username', $username);		 
 		$this->db->select('id');
 		$query = $this->db->get('users');
@@ -46,4 +56,10 @@ class Search_model extends CI_Model{
 			return $query_array['id'];			
 		}
 	}
+	public function get_autocomplete($search_data) {
+        $this->db->select('users.username');
+        $this->db->select('users.city');
+        $this->db->like('users.username', $search_data);
+        return $this->db->get('users', 10);
+    }
 }

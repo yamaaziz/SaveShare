@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- Save Share 2014 -->
 <!-- PHP Code Here -->
-<?php $var = get_object_vars($user_info); ?>
+
 	<!-- START PAGE -->
 	<!-- Page content -->
 	<div id="page-content-wrapper">
@@ -15,28 +15,53 @@
 		<div class="page-content inset">
 			<div class="row">
 		        <div class="col-md-6">
-		            <p class="lead">Search Results</p>
-		            
+		            <p class="lead">Search Results</p>     
 		        </div>
 		    </div>
-		    
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>City</th>
+                                    <th>Occupation</th>
+                                    <th>Income</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            		<? foreach ($user_info as $row){ ?>
+                            			<tr> 
+                            				<td><a href="<?php echo base_url().'profile/'.$row['username'];?>" >
+                            					<?php echo $row['username']; ?>
+                            				</a></td>
+                            				<?php if(empty($row['birth_year'])) {?>
+                            					<td></td>
+                            				<?} else {?>
+												<td><?php echo date("Y") - $row['birth_year']; ?></td>
+											<? } ?>
+											
+                            				<td><?php echo $row['gender']; ?></td>
+                            				<td><?php echo $row['city']; ?></td>
+                            				<td><?php echo $row['occupation']; ?></td>
+                            				<td><?php echo $row['income']; ?></td>
+                            			</tr>
+                            		<? }?>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.col-lg-12 -->
+            </div><!-- /.row -->	   
+                 
 		    <div class = "row">
-		    	<div class="col-md-6">
-		            <p><?php echo ucfirst($var['username']);?>
-		            	<a href= "#"><em>Go to profile</em> <i class="fa fa-angle-right"></i></a>
-		            </p>
-		            
-		   	</div>
-		    </div>
-
-
-		    <div class = "row">
-				<div class="col-md-6" >
-					
-					<?php $this->load->view('profile/user_info'); ?>
-					
-					<p><a href="<?php echo base_url();?>search/advanced_search"><large><em>Search again</em></large> <i class="fa fa-angle-right"></i></a></p>
-
+				<div class="col-lg-6" >
+					<p>
+						<a href="<?php echo base_url();?>search/advanced_search">
+							<large><em>Search again</em></large> <i class="fa fa-angle-right"></i>
+						</a></p>
 		        </div>
 		    </div>
 		</div><!-- /.page-content inset -->

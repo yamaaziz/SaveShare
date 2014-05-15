@@ -22,6 +22,14 @@ body{
 	font-size: small;
 }
 
+.navbar li{
+	font-size: small;
+}
+.head_text {
+	font-size: small;
+	padding-right: 10px; 
+}
+
 #logo{
 	font-weight: bold;
 	color: black;
@@ -79,6 +87,24 @@ body{
 .navbar-top-links .dropdown-user {
     right: 0;
     left: auto;
+}
+
+#autoSuggestionsList > li {
+	background: none repeat scroll 0 0 #ffffff;
+	border-bottom: 1px solid #E3E3E3;
+	list-style: none outside none;
+	padding: 3px 15px 3px 15px;
+	text-align: left;
+    }
+#autoSuggestionsList > li a { color: rgb(66,139,202); }
+	.auto_list {
+	     border: 1px solid #E3E3E3;
+	     border-radius: 5px 5px 5px 5px;
+	     position: absolute;
+	     width: 172px;
+    }
+#search_data{
+	width: 100%;
 }
 .advanced-search {
 	margin-top: 15px;
