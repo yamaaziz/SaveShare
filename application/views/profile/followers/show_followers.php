@@ -32,8 +32,8 @@
 											<?php $index = 0; ?>
 											<?php if (count($following) != 0) { ?>
 												<?php foreach (range(0, count($following)-1) as $whatever) { ?>
-													<?php $reference = 'profile'; ?>
-													<li class="list-group-item"><a href="<?php echo base_url();?>"$reference"><?php echo ucfirst(array_values(array_values(array_values($following)[$index])[0])[0]); ?></a></li>
+													<?php $username = array_values(array_values(array_values($following)[$index])[0])[0]; ?>
+													<li class="list-group-item"><a href="<?php echo base_url();?>profile/<?php echo $username;?>"><?php echo ucfirst(array_values(array_values(array_values($following)[$index])[0])[0]); ?></a></li>
 													<?php $index = $index + 1;?>
 												<?php } ?>
 											<?php } ?>
@@ -59,7 +59,8 @@
 											<?php $index2 = 0; ?>
 											<?php if (count($followers) != 0) { ?>
 												<?php foreach (range(0, count($followers)-1) as $whatever) { ?>  
-													<li class="list-group-item"><a href="#"><?php echo ucfirst(array_values(array_values(array_values($followers)[$index2])[0])[0]); ?></a></li>
+													<?php $username = array_values(array_values(array_values($followers)[$index2])[0])[0]; ?>
+													<li class="list-group-item"><a href="<?php echo base_url();?>profile/<?php echo $username;?>"><?php echo ucfirst(array_values(array_values(array_values($followers)[$index2])[0])[0]); ?></a></li>
 													<?php $index2 = $index2 + 1;?>
 												<?php } ?>	
 											<?php } ?>										

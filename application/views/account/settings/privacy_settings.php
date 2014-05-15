@@ -11,7 +11,7 @@
 	        <div class="content-header">
 	            <h1>
 	                <a id="menu-toggle" href="#" class="btn btn-default"> </a>
-	                Settings OBS OBS DONT TRY THIS YET
+	                Settings
 				</h1> 
 	        </div><!-- content-header-->
 	        
@@ -21,7 +21,8 @@
 			        <div class="col-md-7">
 			        <p class="lead">Your personal information <span style="float: right;">Only me Everyone</span></p>
 			         <!-- <p><span style="float: right;">Visible for me Visible for everyone</span></p> -->
-			        <div>
+			        
+
 					<?php echo $privacy_['p_gender']; ?>
 			        </br>
 			        <?php echo $privacy_['p_age']; ?>
@@ -35,11 +36,18 @@
 			        <?php echo $privacy_['p_savings']; ?>
 			        </br>
 			        <?php echo $privacy_['p_lias']; ?>
+			        </br>
+			        <?php echo $privacy_['p_dsavings']; ?>
+			        </br>
+			        <?php echo $privacy_['p_dlias']; ?>
 			        </br>		
 			        <?php echo $privacy_['p_following']; ?>
 			        </br>	  
 			        <?php echo $privacy_['p_search']; ?>
-			        </br>   
+			        </br> 
+			        
+			          
+			        
 			           
 			        	<!--Start form-->
 						<?php $attributes = array('id' =>'privacy_settings_form','class' => 'form-horizontal'); ?>
@@ -57,7 +65,7 @@
 						function gender_show_me() {	
 						global $privacy_;
 						echo $privacy_['p_gender'];
-
+						//echo var_dump($privacy_['p_gender']);
 							if ($privacy_['p_gender'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
 								
 								return TRUE;
@@ -71,7 +79,7 @@
 						function gender_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_gender'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_gender'] == '2'){ //detta bestämmer bara var det ska vara markerat, nu höger
 
 								return TRUE;
 							}
@@ -83,12 +91,12 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, 1, gender_show_me());
-						echo form_radio($data, 0, gender_show_everyone());
+						echo form_radio($data, '1', gender_show_me());
+						echo form_radio($data, '2', gender_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('gender'); ?></p>
+						<!-- <?php echo form_error('gender'); ?>--></p>
 
 						
 					
@@ -105,7 +113,7 @@
 						global $privacy_;
 						echo $privacy_['p_age'];
 						//echo var_dump($privacy_);
-							if ($privacy_['p_age'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
+							if ($privacy_['p_age'] == '1') {
 								
 								return TRUE;
 							}
@@ -118,7 +126,7 @@
 						function age_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_age'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_age'] == '2'){
 
 								return TRUE;
 							}
@@ -130,12 +138,12 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data2, 1, age_show_me());//age_show_me()
-						echo form_radio($data2, 0, age_show_everyone()); //age_show_everyone()
+						echo form_radio($data2, '1', age_show_me());
+						echo form_radio($data2, '2', age_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('birth_year'); ?></p>
+						<!--<?php echo form_error('birth_year'); ?>--></p>
 						
 						
 						
@@ -154,7 +162,7 @@
 						global $privacy_;
 						echo $privacy_['p_city'];
 						//echo var_dump($privacy_);
-							if ($privacy_['p_city'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
+							if ($privacy_['p_city'] == '1') {
 								
 								return TRUE;
 							}
@@ -167,7 +175,7 @@
 						function city_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_city'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_city'] == '2'){
 
 								return TRUE;
 							}
@@ -179,11 +187,11 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, 1, city_show_me());
-						echo form_radio($data, 0, city_show_everyone());
+						echo form_radio($data, '1', city_show_me());
+						echo form_radio($data, '2', city_show_everyone());
 						?>
 						</span>
-						<p><?php echo form_error('city'); ?></p>
+						<!--<p><?php echo form_error('city'); ?>--></p>
 						
 						
 						
@@ -202,7 +210,7 @@
 						global $privacy_;
 						echo $privacy_['p_occupation'];
 						//echo var_dump($privacy_);
-							if ($privacy_['p_occupation'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
+							if ($privacy_['p_occupation'] == '1') {
 								
 								return TRUE;
 							}
@@ -215,7 +223,7 @@
 						function occupation_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_occupation'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_occupation'] == '2') {
 
 								return TRUE;
 							}
@@ -227,12 +235,12 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, 1, occupation_show_me());
-						echo form_radio($data, 0, occupation_show_everyone());
+						echo form_radio($data, '1', occupation_show_me());
+						echo form_radio($data, '2', occupation_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('occupation'); ?></p>
+						<!--<?php echo form_error('occupation'); ?>--></p>
 
 						
 					<!--Field: Income-->
@@ -249,7 +257,7 @@
 						global $privacy_;
 						echo $privacy_['p_income'];
 						//echo var_dump($privacy_);
-							if ($privacy_['p_income'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
+							if ($privacy_['p_income'] == '1') {
 								
 								return TRUE;
 							}
@@ -262,7 +270,7 @@
 						function income_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_income'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_income'] == '2') {
 
 								return TRUE;
 							}
@@ -274,12 +282,12 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, 1, income_show_me());
-						echo form_radio($data, 0, income_show_everyone());
+						echo form_radio($data, '1', income_show_me());
+						echo form_radio($data, '2', income_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('income'); ?></p>
+						<!--<?php echo form_error('income'); ?>--></p>
 						
 						
 						
@@ -288,7 +296,7 @@
 						<br/>
 						<p class="lead">Your economy information <span style="float: right;">Only me Everyone</span></p>
 						
-					<!--Field: Savings-->
+					<!--Field: Savings table-->
 						<p><?php echo form_label('Savings table'); ?>
 												<?php
 						$data = array(
@@ -299,9 +307,9 @@
 						<?php
 						function savings_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_age'];
+						echo $privacy_['p_savings'];
 						//echo var_dump($privacy_);
-							if ($privacy_['p_savings'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
+							if ($privacy_['p_savings'] == '1') {
 								
 								return TRUE;
 							}
@@ -314,7 +322,7 @@
 						function savings_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_savings'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_savings'] == '2'){
 
 								return TRUE;
 							}
@@ -326,16 +334,16 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, 1, savings_show_me());
-						echo form_radio($data, 0, savings_show_everyone());
+						echo form_radio($data, '1', savings_show_me());
+						echo form_radio($data, '2', savings_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('income'); ?></p>
+						<!--<?php echo form_error('income'); ?>--></p>
 						
-						</p>
 						
-					<!--Field: Liabilities-->
+						
+					<!--Field: Liabilities table-->
 						<p><?php echo form_label('Liabilities table'); ?>
 												
 						<?php $data = array(
@@ -348,7 +356,7 @@
 						global $privacy_;
 						echo $privacy_['p_lias'];
 						//echo var_dump($privacy_);
-							if ($privacy_['p_lias'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
+							if ($privacy_['p_lias'] == '1') {
 								
 								return TRUE;
 							}
@@ -361,7 +369,7 @@
 						function lias_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_lias'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_lias'] == '2'){
 
 								return TRUE;
 							}
@@ -373,23 +381,115 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, 1, lias_show_me());
-						echo form_radio($data, 0, lias_show_everyone());
+						echo form_radio($data, '1', lias_show_me());
+						echo form_radio($data, '2', lias_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('income'); ?></p>
-						</p>
+						<!--<?php echo form_error('income'); ?>--></p>
+						
+						
+					
+					<!--Field: Savings donut-->
+						<p><?php echo form_label('Savings chart'); ?>
+						<?php
+						$data = array(
+										'name'	=>	'savings_chart',
+										'style'	=>	'margin:10px;'
+									);
+						?>
+						<?php
+						function savingsd_show_me() {	
+						global $privacy_;
+						echo $privacy_['p_dsavings'];
+						//echo var_dump($privacy_);
+							if ($privacy_['p_dsavings'] == '1') {
+								
+								return TRUE;
+							}
+							else
+							{
+								return FALSE;
+							}
+						}
+						
+						function savingsd_show_everyone() {	
+						global $privacy_;
+						
+							if($privacy_['p_dsavings'] == '2'){
+
+								return TRUE;
+							}
+							else
+							{
+								return FALSE;
+							}
+						}
+						?>
+						<span style="float: right;">
+						<?php			
+						echo form_radio($data, '1', savingsd_show_me());
+						echo form_radio($data, '2', savingsd_show_everyone());
+						?>
+						</span>
+						<!--Display field errors-->
+						<!--<?php echo form_error('income'); ?>--></p>
 						
 						
 						
+					<!--Field: Lias donut-->
+						<p><?php echo form_label('Liabilities chart'); ?>
+												<?php
+						$data = array(
+										'name'	=>	'lias_chart',
+										'style'	=>	'margin:10px;'
+									);
+						?>
+						<?php
+						function liasd_show_me() {	
+						global $privacy_;
+						echo $privacy_['p_dlias'];
+						//echo var_dump($privacy_);
+							if ($privacy_['p_dlias'] == '1') {
+								
+								return TRUE;
+							}
+							else
+							{
+								return FALSE;
+							}
+						}
+						
+						function liasd_show_everyone() {	
+						global $privacy_;
+						
+							if($privacy_['p_dsavings'] == '2'){
+
+								return TRUE;
+							}
+							else
+							{
+								return FALSE;
+							}
+						}
+						?>
+						<span style="float: right;">
+						<?php			
+						echo form_radio($data, '1', liasd_show_me());
+						echo form_radio($data, '2', liasd_show_everyone());
+						?>
+						</span>
+						<!--Display field errors-->
+						<!--<?php echo form_error('income'); ?>--></p>
+						
+
 						<br/>
 						<br/>
 						<p class="lead">Other <span style="float: right;">Enabled</span></p>
 					
 					<!--Field: Following-->
 						<p><?php echo form_label('People can follow me'); ?>
-												<?php
+						<?php
 						$data = array(
 										'name'	=>	'follow',
 										'style'	=>	'margin:10px;'
@@ -399,7 +499,7 @@
 						function followers_enable() {
 						global $privacy_;
 						
-							if($privacy_['p_following'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_following'] == '2'){
 
 								return TRUE;
 							}
@@ -412,19 +512,18 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_checkbox($data, 'follow', followers_enable());
+						echo form_checkbox($data, '2', followers_enable()); //här kanske det ska vara en 1a
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('income'); ?></p>
-						</p>
+						<!--<?php echo form_error('income'); ?>--></p>
 						
 						
 					<!--Field: Search-->
 						<p><?php echo form_label('People can find me in search'); ?>
 						<?php
 						$data = array(
-										'name'	=>	'income',
+										'name'	=>	'search',
 										'style'	=>	'margin:10px;'
 										
 									);
@@ -433,7 +532,7 @@
 						function search_enable() {
 						global $privacy_;
 						
-							if($privacy_['p_search'] == '0'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if($privacy_['p_search'] == '2'){
 
 								return TRUE;
 							}
@@ -446,12 +545,12 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_checkbox($data, 'search', search_enable());
+						echo form_checkbox($data, '2', search_enable());
 						
 						?>
 						</span>
 						<!--Display field errors-->
-						<?php echo form_error('income'); ?></p></p>
+						<!--<?php echo form_error('income'); ?>--></p>
 						
 						
 						<br/>

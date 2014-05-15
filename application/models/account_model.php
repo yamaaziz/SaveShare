@@ -58,6 +58,7 @@ class Account_model extends CI_Model{
 		if ($query->num_rows() == 1)
 		{
 			$this->economy_model->create_economy($query->row(0));
+			$this->account_model->create_privacy($query->row(0));
 		}
 		
 		return $insert;
@@ -107,14 +108,17 @@ class Account_model extends CI_Model{
 			'p_income'		=>		$this->input->post('income'),
 			'p_savings'		=>		$this->input->post('savings'),
 			'p_lias'		=>		$this->input->post('lias'),
+			'p_dsavings'	=>		$this->input->post('savings_cart'),
+			'p_dlias'		=>		$this->input->post('lias_chart'),
 			'p_following'	=>		$this->input->post('following'),
 			'p_search'		=>		$this->input->post('search')
 			);
 
-		$optional_clean = $this->set_NULL($optional);	
+		//$optional_clean = $this->set_NULL($optional);	
+		//$optional_clean = $this->update($optional, 2);
 				
 		$this->db->where('p_id', $id);
-		$insert = $this->db->update('privacy', $optional_clean);
+		$insert = $this->db->update('privacy', $optional);
 		
         return $insert;
 	}
@@ -185,6 +189,8 @@ class Account_model extends CI_Model{
  			privacy.p_income,
  			privacy.p_savings,
  			privacy.p_lias,
+ 			privacy.p_dsavings,
+ 			privacy.p_dlias,
  			privacy.p_following,
  			privacy.p_search
  			");
@@ -196,6 +202,27 @@ class Account_model extends CI_Model{
 				return $query->row();
 				}
  		}
+ 		
+ 		public function create_privacy($data){
+    	$data1 = get_object_vars($data);
+    	$privacy = array(
+    		'privacy.p_id'			=>	$data1['id'],
+			'privacy.p_age'			=>	2,
+			'privacy.p_gender'		=>	2,
+			'privacy.p_city'		=>	2,
+			'privacy.p_occupation'	=>	2,                    
+			'p_income'				=>	2,
+			'p_savings'				=>	2,
+			'p_lias'				=>	2,
+			'p_dsavings'			=>	2,
+			'p_dlias'				=>	2,
+			'p_following'			=>	2,
+			'p_search'				=>	2		
+        );
+
+		$insert = $this->db->insert('privacy', $privacy);
+        return $insert; 
+    }
 }
 /*End of file account_model.php*/
 /*Location: ./application/models/account_model.php */

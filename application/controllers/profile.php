@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php
 //Save Share 2014
@@ -20,17 +21,20 @@ class Profile extends CI_Controller{
 			show_404();
 			}
     		//Load Data
-    		//convert username to id
+    		global $data;
+    		
+    		$this->session->set_userdata('slug', $slug);
     		$id = $this->account_model->get_id($slug);
-    		$data1['user_info']		= 	$this->collect_userinfo($id);
-    		$data1['economy_info']	=	$this->collect_economyinfo($id);
-    		$data1['followers_name'] = $this->get_followernames();
-    		$data1['following_name'] = $this->get_followingnames();
-    		$data1['privacy'] = $this->account_model->get_privacy_data($id);
+    		$data['user_info']		= 	$this->collect_userinfo($id);
+    		$data['economy_info']	=	$this->collect_economyinfo($id);
+    		$data['followers_name'] = $this->get_followernames();
+    		$data['following_name'] = $this->get_followingnames();
+    		$data['privacy'] = $this->account_model->get_privacy_data($id);
+    		$data['slug'] = $slug;
 
     		//Load Views
     		$this->load->view('profile/templates/header');
-	    	$this->load->view('profile/profile_layout', $data1);
+	    	$this->load->view('profile/profile_layout', $data);
 	    	$this->load->view('profile/templates/footer');
 	    }    	    
     }
@@ -42,6 +46,7 @@ class Profile extends CI_Controller{
 	private function collect_economyinfo($id) {
 		return $this->economy_model->get_economydata($id);
     }
+    
     public function get_followernames() {
     	$id = $this->session->userdata('user_id');
 		$id_array = $this->follower_model->get_followersid($id);
@@ -58,21 +63,24 @@ class Profile extends CI_Controller{
 	
 	public function follow() {
 		$id = $this->session->userdata('user_id');
-		$profile_id = 7;
+		$username = $this->session->userdata('slug');
+		$profile_id = $this->get_visiting_id();
 		$this->follower_model->follow($id, $profile_id);
-		redirect('profile');
+		redirect("profile/" . $username);
 	}
 	
 	public function unfollow() {
 		$id = $this->session->userdata('user_id');
-		$profile_id = 7;
+		$username = $this->session->userdata('slug');
+		$profile_id = $this->get_visiting_id();
 		$this->follower_model->unfollow($id, $profile_id);
-		redirect('profile');
+		redirect("profile/" . $username);
 	}
 	
 	public function get_visiting_id() {
-		$username = $this->
-		$this->account_model->get_id($username);
+		$username = $this->session->userdata('slug');
+		$id = $this->account_model->get_id($username);
+		return $id;
 	}
 
  	private function get_id(){

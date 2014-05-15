@@ -6,7 +6,10 @@
 		$economy = get_object_vars($economy_info);
 		$var = get_object_vars($user_info);	
 		$today = getdate();
-	} 
+	} ?>
+ <?php $privacy = get_object_vars($privacy);?>
+ <?php $id = $this->session->userdata('user_id'); ?>
+	
 	?>
 	<!-- START PAGE -->
 		<!-- Page content -->
@@ -85,132 +88,33 @@
 			    </div>
 				<div class="row">
 					<div class="col-md-6">
-						<p class="lead" >Savings Chart</p>		
-							<div id="savings_chart" style="height: 350px;"></div>
-							<?php 
-							if(isset($economy_info))
-							{
-							$total_savings = $economy['funds']+
-							$economy['shares']+$economy['bonds']+$economy['commodities']+
-							$economy['saving_account']+$economy['properties']+$economy['other_savings'];
-							}
-							?>
-							<script>
-								new Morris.Donut({
-									element: 'savings_chart',
-									data: [
-										<?php if (!empty ($economy['funds'])) {?>
-										{
-											label: "Funds",
-											value: <?php echo round(($economy['funds']/$total_savings)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['shares'])) {?>
-										{
-											label: "Shares",
-											value: <?php echo round(($economy['shares']/$total_savings)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['bonds'])) {?>
-										{
-											label: "Bonds",
-											value: <?php echo round(($economy['bonds']/$total_savings)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['commodities'])) {?>
-										{
-											label: "Commodities",
-											value: <?php echo round(($economy['commodities']/$total_savings)*100); ?>
-											},
-										<?php } ?>
-										<?php if (!empty ($economy['saving_account'])) {?>
-										{
-											label: "Saving Account",
-											value: <?php echo round(($economy['saving_account']/$total_savings)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['properties'])) {?>
-										{
-											label: "Properties",
-											value: <?php echo round(($economy['properties']/$total_savings)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['other_savings'])) {?>
-										{
-											label: "Other Savings",
-											value: <?php echo round(($economy['other_savings']/$total_savings)*100); ?>
-										}
-										<?php } ?>
-										],
-										resize: true,
-										formatter: function (x, data) { return x + "%"; }
-									});
-							</script>
+					
+					<?php echo $this->load->view('economy/savings_donut'); ?>
+					
 					</div><!--./col-md-6-->
+					
 					<div class="col-md-6">
-						<?php echo $this->load->view('economy/show_savings'); ?>
+						<?php if ($privacy['p_id'] != $id && $privacy['p_savings'] == 2) { ?>
+							<?php echo $this->load->view('economy/show_savings'); ?>
+						<?php } ?>
+						<?php if ($privacy['p_id'] == $id) { ?>
+							<?php echo $this->load->view('economy/show_savings'); ?>
+						<?php } ?>
 					</div><!--./col-md-6-->
 				</div><!--./row-->
 				<div class="row">
 					<div class="col-md-6">
-						<p class="lead"> Liabilities Chart</p>
-							<div id="liabilities_chart" style="height: 350px;"></div>
-							<?php
-							if(isset($economy_info))
-							{
-							$total_lias = $economy['housing_loan']+$economy['construction_loan']+
-							$economy['private_loan']+$economy['student_loan']+$economy['senior_loan']+
-							$economy['other_loan'];
-							}
-							?>
-								<script>
-									new Morris.Donut({
-										element: 'liabilities_chart',
-										data: [
-										<?php if (!empty ($economy['housing_loan'])) {?>
-										{
-											label: "Housing Loan",
-											value: <?php echo round(($economy['housing_loan']/$total_lias)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['construction_loan'])) {?>
-										{
-											label: "Construction Loan",
-											value: <?php echo round(($economy['construction_loan']/$total_lias)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['private_loan'])) {?>
-										{
-											label: "Private Loan",
-											value: <?php echo round(($economy['private_loan']/$total_lias)*100);?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['student_loan'])) {?>
-										{
-											label: "Student Loan",
-											value: <?php echo round(($economy['student_loan']/$total_lias)*100); ?>
-											},
-										<?php } ?>
-										<?php if (!empty ($economy['senior_loan'])) {?>
-										{
-											label: "Senior Loan",
-											value: <?php echo round(($economy['senior_loan']/$total_lias)*100); ?>
-										},
-										<?php } ?>
-										<?php if (!empty ($economy['other_loan'])) {?>
-										{
-											label: "Other Loan",
-											value: <?php echo round(($economy['other_loan']/$total_lias)*100);?>
-										}
-										<?php } ?>
-										],
-										resize: true,
-										formatter: function (x, data) { return x + "%"; }
-									});
-								</script>
+					
+					<?php echo $this->load->view('economy/lias_donut'); ?>
+					
 					</div><!--./col-md-6-->
 					<div class="col-md-6">
-						<?php echo $this->load->view('economy/show_lias'); ?>
+						<?php if ($privacy['p_id'] != $id && $privacy['p_lias'] == 2) { ?>
+							<?php echo $this->load->view('economy/show_lias'); ?>
+						<?php } ?>
+						<?php if ($privacy['p_id'] == $id) { ?>
+							<?php echo $this->load->view('economy/show_lias'); ?>
+						<?php } ?>	
 					</div><!--./col-md-6-->
 				</div><!--./row-->
 				<div class="row">

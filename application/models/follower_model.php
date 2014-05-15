@@ -78,6 +78,7 @@ class Follower_model extends CI_Model{
 						);	
 		$delete = $this->db->delete('followers', $follow_data);
 		return $delete;
+
 		}	
 	
 	
@@ -88,9 +89,8 @@ class Follower_model extends CI_Model{
 						);	
 		$insert = $this->db->insert('followers', $follow_data);
 		return $insert;
-		}
-		
 
+		}
 }
 
 /*End of file follower_model.php*/

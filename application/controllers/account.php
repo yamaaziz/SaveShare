@@ -8,9 +8,10 @@ class Account extends CI_Controller{
 		// Your own constructor code
 	}
 	public function index(){
+		$data['economy_data']=$this->collect_economyinfo();
 		//Load Views
 		$this->load->view('profile/templates/header');
-		$this->load->view("account/settings/settings_layout");
+		$this->load->view("account/settings/settings_layout", $data);
 		$this->load->view('profile/templates/footer');
 	}
 
@@ -188,15 +189,14 @@ class Account extends CI_Controller{
 		else{
 			$this->session->set_flashdata('security_settings_succeeded', 'Your security settings was successfully changed.');
 			$username = $this->get_username();
-			redirect("profile/$username");
-				
-		
+			redirect("profile/$username");	
 		}
     }
     
     public function validate_privacy_settings() {
     	$id = $this->session->userdata('user_id');
 	    $privacy_data = get_object_vars($this->account_model->get_privacy_data($id));
+
 	    $this->form_validation->set_rules('gender','gender','trim|xss_clean');
 	    $this->form_validation->set_rules('age','age','trim|xss_clean');
 	    $this->form_validation->set_rules('city','city','trim|xss_clean');
@@ -204,8 +204,11 @@ class Account extends CI_Controller{
 	    $this->form_validation->set_rules('income','income','trim|xss_clean');
 	    $this->form_validation->set_rules('savings','savings','trim|xss_clean');
 	    $this->form_validation->set_rules('lias','lias','trim|xss_clean');
-	    //$this->form_validation->set_rules('following','following','trim|xss_clean');
-	    //$this->form_validation->set_rules('search','search','trim|xss_clean');
+	    $this->form_validation->set_rules('savings_chart','savings','trim|xss_clean');
+	    $this->form_validation->set_rules('lias_chart','lias','trim|xss_clean');
+	    $this->form_validation->set_rules('following','following','trim|xss_clean');
+	    $this->form_validation->set_rules('search','search','trim|xss_clean');
+	    
 	    
 		if($this->form_validation->run() == FALSE)
 		{
@@ -218,13 +221,19 @@ class Account extends CI_Controller{
 				//If you load a view after setting flashdata, the message is shown the next time you load the page, therefore
 				//you must use redirect() with flashdata. You can use set_message together with load();
 				$this->session->set_flashdata('privacy_settings_succeeded', 'Your privacy settings was successfully changed.');
-				redirect('profile');
+				$username = $this->get_username();
+				redirect("profile/$username");
 			}
 			else{
 				//Unsuccessful update
 			}
 			}
     	}
+    	
+    private function collect_economyinfo() {
+		$id = $this->session->userdata('user_id');
+		return $this->economy_model->get_economydata($id);
+	}
 	
 	//**********************************************************************************************************************************// 
 	// 	This function is called by the callback rule from set_rules for password. verify_sign_in either returns TRUE or FALSE. This	//
