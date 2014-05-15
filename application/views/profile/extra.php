@@ -8,23 +8,24 @@
 	<div class="btn-group">
 
 	<?php $index = 0; ?>
-	<?php if (count($following) == 0) { ?> <!--om man själv inte följer någon-->
+	<?php $antal_icke_true = 0; ?>
+	<?php if (count($following) == 0) { ?> <!--of the user is not following anyone-->
 			<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/follow"><i class="fa fa-heart"></i> Follow </a>
-			<?php echo 'fall 1'; ?>
 	<?php } ?>
-	<?php if (count($following) != 0) { ?> <!--om man följer någon-->
-		<?php foreach (range(0, count($following)-1) as $whatever) { ?> <!--gå igenom listan med de man själv följer-->
-			<?php if (array_values(array_values(array_values($following)[$index])[0])[0] == $var['username']) { ?> <!--om användarnamnet på den man besöker redan finns i min lista med followers-->
-				<?php echo 'fall 3'; ?>
-				<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/unfollow"><i class="fa fa-heart"></i> Unfollow </a>
-			<?php } ?> <!--ANVÄND WHILE-LOOP ISTÄLLET???-->
-			<?php if (array_values(array_values(array_values($following)[$index])[0])[0] != $var['username']) { ?> <!--om användarnamnet på den man besöker inte finns i min lista med followers-->
-				<?php echo 'fall 2'; ?>
-				<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/follow"><i class="fa fa-heart"></i> Follow </a>
+	<?php if (count($following) != 0) { ?> <!--if the user is following anyone-->
+		<?php foreach (range(0, count($following)-1) as $whatever) { ?> <!--go through the list of followers-->
+			<?php if (array_values(array_values(array_values($following)[$index])[0])[0] != $var['username']) { ?> <!--if the username of the profile is in my followers list -->
+				<?php $antal_icke_true = $antal_icke_true + 1; ?>	
 			<?php } ?>
-			<?php $index = $index + 1;?> <!--kolla var denna ska ligga, förmodligen här-->
+			<?php $index = $index + 1;?> 
+		<?php } ?>
+		<?php if (count($following) == $antal_icke_true) { ?> <!--if not in the list-->
+			<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/follow"><i class="fa fa-heart"></i> Follow </a>
+		<?php } ?>
+		<?php if (count($following) != $antal_icke_true) { ?> <!--if in the list-->
+			<a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>profile/unfollow"><i class="fa fa-heart"></i> Unfollow </a>
 		<?php } ?>
 	<?php } ?>
-		<a class="btn btn-info btn-lg" href="<?php echo base_url(); ?>profile/follow"><i class="glyphicon glyphicon-envelope"></i> Send message </a>
+		<!-- <a class="btn btn-info btn-lg" href="<?php echo base_url(); ?>profile/send_message"><i class="glyphicon glyphicon-envelope"></i> Send message </a> -->
 	</div>
 </div>
