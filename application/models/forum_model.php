@@ -72,22 +72,16 @@ class Forum_model extends CI_Model{
 		$name = get_object_vars($name);
 		$name = $name['username'];
 		
-			$message = array(
+		$message = array(
 					't_id' 			=> $this->input->post('slug'), 
 					'content' 		=> $this->input->post('answer'),
 					'sender' 		=> $id,
 					'sender_name'	=> $name
 					);
-							
-<<<<<<< HEAD
-			$insert_message = $this->db->insert('message', $message);
 
-=======
 		$insert_message = $this->db->insert('message', $message);
-	
-		return $insert_message;
 		
->>>>>>> origin/Sofias-gren-4
+		return $insert_message;
 	}
 	
 		public function get_threads($slug=FALSE){
