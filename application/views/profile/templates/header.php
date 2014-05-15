@@ -157,7 +157,7 @@
 				            </li>
 					</ul>
 					<div class="navbar-form navbar-left">
-						<input name="search_data" class="form-control" id="search_data" type="text" autocomplete="off"							onkeyup="ajaxSearch();">
+						<input name="search_data" class="form-control" id="search_data" type="text" autocomplete="off"							onkeyup="ajaxSearch();" onmousedown="redisplaySearch();" onmouseup="redisplaySearch();" 								onclick="redisplaySearch();">
 							<div id="suggestions">
 								<div id="autoSuggestionsList">  
 								</div>

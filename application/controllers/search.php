@@ -85,7 +85,8 @@ class Search extends CI_Controller{
 
         foreach ($query->result() as $row):
         	$link = base_url() . 'profile/' . $row->username;
-            echo "<li><a href='$link'>".$row->username."</a></li>";
+            echo "<li><a href='$link'><strong id='search_result_username'>".$row->username."</strong></a>"."<br>".
+            "<span class=text-muted small>".$row->city."</span></li>";
         endforeach;
     }
 	

@@ -21,6 +21,10 @@ body{
 .navbar a{
 	font-size: small;
 }
+
+.navbar li{
+	font-size: small;
+}
 .head_text {
 	font-size: small;
 	padding-right: 10px; 
@@ -86,7 +90,7 @@ body{
 }
 
 #autoSuggestionsList > li {
-	background: none repeat scroll 0 0 #F3F3F3;
+	background: none repeat scroll 0 0 #ffffff;
 	border-bottom: 1px solid #E3E3E3;
 	list-style: none outside none;
 	padding: 3px 15px 3px 15px;
@@ -97,10 +101,10 @@ body{
 	     border: 1px solid #E3E3E3;
 	     border-radius: 5px 5px 5px 5px;
 	     position: absolute;
-	     width: 130px;
+	     width: 172px;
     }
 #search_data{
-	width: 75%;
+	width: 100%;
 }
 .advanced-search {
 	margin-top: 15px;
