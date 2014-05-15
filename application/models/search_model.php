@@ -59,7 +59,7 @@ class Search_model extends CI_Model{
 	public function get_autocomplete($search_data) {
         $this->db->select('users.username');
         $this->db->select('users.city');
-        $this->db->like('users.username', $search_data);
+        $this->db->like('users.username', $search_data, 'after');
         return $this->db->get('users', 10);
     }
 }

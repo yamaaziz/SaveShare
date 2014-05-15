@@ -108,8 +108,8 @@ class Account_model extends CI_Model{
 			'p_income'		=>		$this->input->post('income'),
 			'p_savings'		=>		$this->input->post('savings'),
 			'p_lias'		=>		$this->input->post('lias'),
-			'p_savings'	=>		$this->input->post('savings_cart'),
-			'p_lias'		=>		$this->input->post('lias_chart'),
+			'p_dsavings'	=>		$this->input->post('savings_cart'),
+			'p_dlias'		=>		$this->input->post('lias_chart'),
 			'p_following'	=>		$this->input->post('following'),
 			'p_search'		=>		$this->input->post('search')
 			);
@@ -189,8 +189,8 @@ class Account_model extends CI_Model{
  			privacy.p_income,
  			privacy.p_savings,
  			privacy.p_lias,
- 			privacy.p_savings,
- 			privacy.p_lias,
+ 			privacy.p_dsavings,
+ 			privacy.p_dlias,
  			privacy.p_following,
  			privacy.p_search
  			");
