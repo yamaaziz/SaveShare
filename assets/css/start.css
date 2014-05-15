@@ -75,36 +75,27 @@ body {
 
 .intro {
   padding: 50px 0;
-  background: rgba(250,250,250,1);
-  color: black;
+  background: rgb(76,76,76);
+  color: white;
 }
 
-/* Services */
-
-.services {
-  background: rgb(66,139,177);
-  padding: 50px 0;
-  color: #ffffff;
+/* Featurettes */
+.featurette-divider {
+	margin: 80px 0;
+}
+.featurette {
+	overflow: hidden; 
 }
 
-.service-item {
-  margin-bottom: 15px;
+.featurette-image.pull-left {
+	margin-right: 40px;
+}
+.featurette-image.pull-right {
+	margin-left: 40px;
 }
 
-i.service-icon {
-  border: 3px solid #ffffff;
-  border-radius: 50%;
-  display: inline-block;
-  font-size: 56px;
-  width: 140px;
-  height: 140px;
-  line-height: 136px;
-  vertical-align: middle; 
-  text-align: center;
-}
-
-.marketing {
-	padding: 50px 0;
+.featurette-heading {
+	font-size: 50px;
 }
 
 /* Footer */
@@ -144,6 +135,49 @@ footer a:hover{
   .header {
 	background: url(../img/back2.jpg) no-repeat center center scroll;
   }
+
+}
+/* RESPONSIVE CSS */
+
+@media (max-width: 1200px) {
+
+.featurette-divider {margin: 50px 0;}
+.featurette-image.pull-left {margin-right: 20px;}
+.featurette-image.pull-right {margin-left: 20px;}
+.featurette-heading {font-size: 35px;}
+
+}
+
+@media (max-width: 991px) {
+
+.featurette-divider {margin: 40px 0;}
+.featurette-image {max-width: 50%;}
+.featurette-image.pull-left {margin-right: 10px;}
+.featurette-image.pull-right {margin-left: 10px;}
+.featurette-heading {font-size: 30px;}
+
+}
+
+@media (max-width: 768px) {
+	
+.featurette-divider {margin: 40px 0;}
+.featurette-heading {font-size: 25px;}
+
+}
+
+
+@media (max-width: 668px) {
+
+.featurette-divider {margin: 30px 0;}
+
+}
+
+@media (max-width: 375px) {
+
+.featurette-divider {margin: 10px 0;}
+.featurette-image {max-width: 100%;}
+.featurette-image.pull-left {margin-right: 0; margin-bottom: 10px;}
+.featurette-image.pull-right {margin-left: 0; margin-bottom: 10px;}
 
 }
 

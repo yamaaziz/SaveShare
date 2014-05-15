@@ -130,34 +130,41 @@
         </div>
     </div>
     <!-- /Intro -->
-    <!-- Services -->
-    <div id="services" class="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 text-center">
-                    <h2>The Team</h2>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-        		<div class="col-md-4">
-        			<img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
-					<h2>Marketing Box #1</h2>
-					<p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
-					</div>
-					<div class="col-md-4">
-	                <img class="img-circle img-responsive text-center" src="http://placehold.it/300x300">
-	                <h2>Marketing Box #2</h2>
-	                <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-				</div>
-				<div class="col-md-4">
-					<img class="img-circle img-responsive" src="http://placehold.it/300x300">
-					<h2>Marketing Box #3</h2>
-					<p></p>
-				</div>
-            </div><!-- ./row -->
-        </div><!-- ./container -->
-    </div>
+	<!-- START THE FEATURETTES -->
+	<div class="container">
+        <hr class="featurette-divider">
+
+        <div class="featurette" id="about">
+            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <h2 class="featurette-heading">This First Heading
+                <span class="text-muted">Will Catch Your Eye</span>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="featurette" id="services">
+            <img class="featurette-image img-circle img-responsive pull-left" src="http://placecreature.com/500/500">
+            <h2 class="featurette-heading">The Second Heading
+                <span class="text-muted">Is Pretty Cool Too.</span>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="featurette" id="contact">
+            <img class="featurette-image img-circle img-responsive pull-right" src="http://placecreature.com/500/500">
+            <h2 class="featurette-heading">The Third Heading
+                <span class="text-muted">Will Seal the Deal.</span>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+	</div>
+	<hr>
+	<!-- /END THE FEATURETTES -->
+	
+	</div class="container">
     <!-- Footer -->
     <footer>
         <div class="container">
