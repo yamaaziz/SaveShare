@@ -35,8 +35,7 @@ class Forum extends CI_Controller{
 		           
 	           		//$this->forum_model->create_message($id);
 			   		//$this->session->set_flashdata('start_thread_succeeded', 'You did successfully start a thread.');
-	                $this->index();
-		           }
+			   		redirect('forum');		           }
 		           else
 		           {
 			           //Skriv ut ett felmeddelande. 'Gick inte att registrera dig.'
@@ -55,19 +54,21 @@ class Forum extends CI_Controller{
 			}
 			
 			else {
+					
 					$id = $this->session->userdata('user_id');
-					$this->forum_model->create_message($id);				
+					$this->forum_model->create_message($id);
+					redirect('forum');			
 			}
 		}
 		
 	public function view($slug){
-		$data['news_item'] = $this->forum_model->get_threads($slug);
+		$data['thread_item'] = $this->forum_model->get_threads($slug);
 		$data['messages'] = $this->forum_model->get_messages($slug);
 		$data['slug'] = $slug;
 		
 		//$data[] = $this->forum_model->get_username();
 
-		if (empty($data['news_item']))
+		if (empty($data['thread_item']))
 		{
 			show_404();
 		}

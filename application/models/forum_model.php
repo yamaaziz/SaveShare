@@ -10,13 +10,20 @@ class Forum_model extends CI_Model{
 	
 	public function create_thread($id){
 				
+		$this->db->where('id', $id);
+		$this->db->select('username');
+		$name = $this->db->get('users');
 		
+		$name = $name->row();
+		$name = get_object_vars($name);
+		$name = $name['username'];
+
 		//$slug = url_title($this->input->post('topic'), 'dash', TRUE);
 		
 		$thread = array(
 			'topic'			=>		$this->input->post('topic'),                    
 			'creator_id'	=>		$id,
-			//'slug'			=>		$slug
+			'creator_name'	=>		$name
 			);
 		
 		$insert = $this->db->insert('thread', $thread);
@@ -36,7 +43,8 @@ class Forum_model extends CI_Model{
 		$message = array(
 					't_id' 		=> $t_id,
 					'content' 	=> $this->input->post('message'),
-					'sender' 	=> $id
+					'sender' 	=> $id,
+					'sender_name'=> $name
 					);
 							
 		$insert_message = $this->db->insert('message', $message);
@@ -48,7 +56,6 @@ class Forum_model extends CI_Model{
 		$this->db->update('thread', $slug);
 		
 		return $insert;
-
 		
 		}	
 		
@@ -56,15 +63,31 @@ class Forum_model extends CI_Model{
 	
 	public function create_message($id){
 			
-			$slug = $t_id;
+			
+		$this->db->where('id', $id);
+		$this->db->select('username');
+		$name = $this->db->get('users');
+		
+		$name = $name->row();
+		$name = get_object_vars($name);
+		$name = $name['username'];
+		
 			$message = array(
-					't_id' 		=> $t_id,
-					'content' 	=> $this->input->post('answer'),
-					'sender' 	=> $id
+					't_id' 			=> $this->input->post('slug'), 
+					'content' 		=> $this->input->post('answer'),
+					'sender' 		=> $id,
+					'sender_name'	=> $name
 					);
 							
+<<<<<<< HEAD
 			$insert_message = $this->db->insert('message', $message);
 
+=======
+		$insert_message = $this->db->insert('message', $message);
+	
+		return $insert_message;
+		
+>>>>>>> origin/Sofias-gren-4
 	}
 	
 		public function get_threads($slug=FALSE){
@@ -87,6 +110,7 @@ class Forum_model extends CI_Model{
 			return $query->result_array();
 			
 		}
+		
 		
 	//	public function get_username($sender);
 		
