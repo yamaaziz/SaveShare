@@ -55,7 +55,7 @@
                                                 <tr>
                                                     <td><?php echo $thread_item['t_id'] ?></td>
                                                     <td><a href="forum/<?php echo $thread_item['slug'] ?>"> <?php echo $thread_item['topic'] ?></a></td>
-                                                    <td> <a href="#"> <?php echo $thread_item['creator_id'] ?> </td>
+                                                    <td> <a href="#"> <?php echo $thread_item['creator_name'] ?> </td>
                                                     <td> <?php echo $thread_item['date_started'] ?></td>
                                                    
                                                 </tr>

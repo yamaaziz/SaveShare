@@ -39,17 +39,19 @@ $topic_id = $thread_item['t_id'];
                                <?php foreach ($messages as $message): ?>
                                  		 <li class="left clearfix">
                                     <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                        <img src="<?php echo base_url();?>assets/img/donut.png"> <alt="User Avatar" class="img-circle" />
                                     </span>
                                     <div class="chat-body clearfix">
                                         <div class="header">
                                             <small class=" text-muted">
                                                 <i class="fa fa-clock-o fa-fw"></i><?php echo $message['date_posted']?></small>
-                                            <strong class="pull-left primary-font"><?php echo $message['sender']?> </strong>
+                                            <strong class="pull-left primary-font"><?php echo $message['sender_name']?> </strong>
                                         </div>
                                         <p>
+                                        </p>
+                                        <p>
                                             <?php echo $message['content'] ?> 
-                                                                                    </p>
+                                   </p>
                                     </div>
                                 </li>
                                    <?php endforeach ?>  
@@ -71,7 +73,7 @@ $topic_id = $thread_item['t_id'];
 		
 	        
 	        
-	         <div class="col-md-6">
+	         <div class="col-md-4">
 					<?php $attributes = array('id' =>'message_form','class' => 'form-horizontal'); ?>
 					<?php echo form_open('forum/validate_message', $attributes); ?>
 		
@@ -79,7 +81,7 @@ $topic_id = $thread_item['t_id'];
 		
 	         </div>
 		<div class="row">
-		        <div class="col-md-6">
+		        <div class="col-md-4">
 		            <p class="lead">Answer on this thread</p>
 		            
 	
