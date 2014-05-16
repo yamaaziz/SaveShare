@@ -185,6 +185,9 @@
 			        </li>
 					<li>
 			        	<a href="<?php echo base_url();?>forum"><i class="fa fa-comment-o"></i> Forum</a>
-			        </li>   
+			        </li>
+					<li>
+			        	<a href="<?php echo base_url();?>private_message"><i class="fa fa-envelope"></i> PM</a>
+			        </li>    
 			    </ul>
 			</div>
