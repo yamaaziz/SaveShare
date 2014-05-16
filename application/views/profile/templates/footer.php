@@ -84,6 +84,13 @@
 			    }
 			});
 		</script>
+		<!-- Custom JavaScript for Private Messages -->
+		<script type="text/javascript">
+		$(function(){
+			$('#jack').click(function(){
+				$( "#chat_body" ).load( "<?php echo site_url('private_message/view_message') ?>" );
+			})
+		})
+		</script>
 	</body>
-	
 </html>

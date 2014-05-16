@@ -12,7 +12,9 @@ class Private_message extends CI_Controller{
 			$this->load->view('private_message/pm_layout');
 			$this->load->view('profile/templates/footer');
 		}
-		
+	}
+	public function view_message(){
+		$this->load->view('private_message/show_message');
 		
 	}
     private function is_signed_in() {

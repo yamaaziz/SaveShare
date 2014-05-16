@@ -29,20 +29,40 @@
             <div class="panel-body">
                 <ul class="chat">
                     <?php foreach ($messages as $message): ?>
-                        <li class="left clearfix">
-                            <span class="chat-img pull-left">
-                                <img src="<?php echo base_url(); ?>assets/img/donut.png"> <alt="User Avatar" class="img-circle" />
-                        </span>
-                        <div class="chat-body clearfix">
-                            <div class="header">
-                                <small class=" text-muted">
-                                    <i class="fa fa-clock-o fa-fw"></i><?php echo $message['date_posted'] ?>
-                                </small>
-                                <strong class="pull-left primary-font"><?php echo $message['sender_name'] ?> </strong>
-                            </div>
-                        </div>
-                        <p><?php echo $message['content'] ?></p>
-                    </li>
+                    	<?php if ($message['sender'] === $this->session->userdata('user_id')){ ?>
+							<li class="right clearfix">
+	                            <span class="chat-img pull-right">
+	                                <img src="<?php echo base_url(); ?>assets/img/donut.png"> <alt="User Avatar" class="img-circle" />
+	                        </span>
+	                        <div class="chat-body clearfix">
+	                            <div class="header">
+	                                <small class="text-muted">
+	                                    <i class="fa fa-clock-o fa-fw"></i><?php echo $message['date_posted'] ?>
+	                                </small>
+	                                <strong class="pull-right primary-font"><?php echo $message['sender_name'] ?> </strong>
+	                            </div>
+	                            <p><?php echo $message['content'] ?></p>
+	                        </div>
+	                        
+	                        </li>
+	                    	
+                    	<?php } 
+                    	else { ?>
+							<li class="left clearfix">
+	                            <span class="chat-img pull-left">
+	                                <img src="<?php echo base_url(); ?>assets/img/donut.png"> <alt="User Avatar" class="img-circle" />
+	                        </span>
+	                        <div class="chat-body clearfix">
+	                            <div class="header">
+	                            	<strong class="primary-font"><?php echo $message['sender_name'] ?> </strong>
+	                                <small class="pull-right text-muted">
+	                                    <i class="fa fa-clock-o fa-fw"></i><?php echo $message['date_posted'] ?>
+	                                </small>
+	                            </div>
+	                            <p><?php echo $message['content'] ?></p>
+	                        </div>
+	                        </li>
+                    	<?php } ?>
                 <?php endforeach ?>  
             </ul>
         </div><!--./panel-body --> 
