@@ -89,6 +89,15 @@ class Search extends CI_Controller{
             "<span class=text-muted small>".$row->city."</span></li>";
         endforeach;
     }
+    public function autocompleteMessage(){
+    	$message_search = $this->input->post('message_search');
+        $query = $this->search_model->get_autocompleteMessage($message_search);
+		
+        foreach ($query->result() as $row):
+        	$link = base_url() . 'profile/' . $row->username;
+            echo "<li class='search_result_message'><strong><a href='#'>".$row->username."</a></strong></li>";
+        endforeach;
+    }
 	
 	private function collect_userinfo($id) {	
     	return $this->account_model->get_userdata($id);

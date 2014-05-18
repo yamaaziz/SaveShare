@@ -99,13 +99,37 @@ body{
 #autoSuggestionsList > li a { color: rgb(66,139,202); }
 	.auto_list {
 	     border: 1px solid #E3E3E3;
-	     border-radius: 5px 5px 5px 5px;
+	     -webkit-border-bottom-right-radius: 5px;
+		 -webkit-border-bottom-left-radius: 5px;
+		 -moz-border-radius-bottomright: 5px;
+		 -moz-border-radius-bottomleft: 5px;
+		 border-bottom-right-radius: 5px;
+		 border-bottom-left-radius: 5px;
 	     position: absolute;
 	     width: 172px;
     }
 #search_data{
 	width: 100%;
 }
+#autoSuggestionsListMessage > li {
+	background: none repeat scroll 0 0 #ffffff;
+	border-bottom: 1px solid #E3E3E3;
+	list-style: none outside none;
+	padding: 3px 15px 3px 15px;
+	text-align: left;
+    }
+#autoSuggestionsListMessage > li a { color: rgb(66,139,202); }
+	.auto_list_message {
+	     border: 1px solid #E3E3E3;
+	     -webkit-border-bottom-right-radius: 5px;
+		 -webkit-border-bottom-left-radius: 5px;
+		 -moz-border-radius-bottomright: 5px;
+		 -moz-border-radius-bottomleft: 5px;
+		 border-bottom-right-radius: 5px;
+		 border-bottom-left-radius: 5px;
+	     position: absolute;
+	     width: 160px;
+    }
 .advanced-search {
 	margin-top: 15px;
 }
@@ -264,8 +288,42 @@ body{
 }
 
 .conversation-panel .panel-body {
-    height: 380px;
+    height: 350px;
     overflow-y: scroll;
+}
+#new_message_input_group{
+	padding-top: 5px;
+}
+.search_result_message{
+	color: rgb(66,139,202);
+	font-size: small;
+}
+.form-control-custom{
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+	
+}
+.input-append{
+	font-size: 0px;
 }
 
 .inset {

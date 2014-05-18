@@ -62,4 +62,9 @@ class Search_model extends CI_Model{
         $this->db->like('users.username', $search_data, 'after');
         return $this->db->get('users', 10);
     }
+    public function get_autocompleteMessage($message_search){
+    	$this->db->select('users.username');
+    	$this->db->like('users.username', $message_search, 'after');
+	    return $this->db->get('users', 10);
+    }
 }

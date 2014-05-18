@@ -22,7 +22,21 @@
                     <div class="panel-heading">
                         <i class="fa fa-comments fa-fw"></i>
                         Conversations
+							<div class="input-group" id="new_message_input_group">
+		                    <input name="message_search" id="message_search" type="text" class="form-control-custom input-sm"								placeholder="Username" autocomplete="off" onkeyup="ajaxSearchMessage();" 												onmousedown="redisplaySearchMessage();" 																				onmouseup="redisplaySearchMessage();" 																					onclick="redisplaySearchMessage();">
+									<div id="suggestionsMessage">
+										<div id="autoSuggestionsListMessage" onclick="selectUsername();">
+										</div>
+									</div>
+	                            <span class="input-group-btn">
+	                                <button class="btn btn-primary btn-sm" id="new_message_button" 															onclick="newMessage();">
+	                                <i class="fa fa-plus">
+	                                  New Message
+	                                </i></button>
+	                            </span>
+	                        </div>
                     </div>
+                    
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <ul class="conversation">
@@ -122,7 +136,7 @@
                         <div class="input-group">
                             <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                             <span class="input-group-btn">
-                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                <button class="btn btn-warning btn-sm" id="btn-send">
                                     Send
                                 </button>
                             </span>
