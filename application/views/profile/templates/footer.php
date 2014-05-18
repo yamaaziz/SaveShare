@@ -129,6 +129,7 @@
 				var value = $("#autoSuggestionsListMessage a").html();
 				var input = $('#message_search');
 				input.val(value);
+				$("#suggestionsMessage").hide();
 				var message_search = $( "#message_search" )[ 0 ];
 				jQuery.data(message_search, "username", value);
 			});
