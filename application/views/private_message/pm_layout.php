@@ -48,7 +48,7 @@
                                             <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
                                         </small>
                                     </div>
-                                    text
+                                    
                                 </div>
                             </li>
                             <li class="right clearfix">

@@ -14,10 +14,23 @@ class Private_message extends CI_Controller{
 			$this->load->view('profile/templates/footer');
 		}
 	}
+	
 	public function conversation(){
+	
+	$participant_b = strtolower($this->input->post('participant_b'));
+	
 	//if conversation does not exist
+	// (do later)
 	
 	//create one
+	if(!empty($participant_b)){
+		if($this->private_message_model->create_conversation($participant_b)){
+			//do something
+		}
+	}
+	else{
+		//Javascript failed to get the username. Write error.
+	}
 		
 	}
 	public function incoming_message(){

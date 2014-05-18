@@ -127,24 +127,38 @@
 		function selectUsername(){
 			$(document).ready(function(){	
 				$('#autoSuggestionsListMessage li a').click(function() {
-					var value = $(this).html();
+					var username = $(this).html();
 					var input = $('#message_search');
-					input.val(value);
+					input.val(username);
 					$("#suggestionsMessage").hide();
-					
 					var message_search = $( "#message_search" )[ 0 ];
-					jQuery.data(message_search, "username", value);
+					
+					jQuery.data(message_search, "username", username );
+					
+					
+					
 				});
 			});
-			
+
 		}
 		</script>
 		<!-- Custom JavaScript for New Message Button in PM -->
 		<script type="text/javascript">
 		function newMessage(){
 			$(document).ready(function(){
-				var username = jQuery.data(message_search, 'username'); 
-				jQuery.data(message_search, "username2", username);
+				var username = jQuery.data(message_search, 'username');
+				var url_controller = document.location.href + '/conversation' 
+				
+				$.ajax({
+						type: 'post',
+						url: url_controller,
+						data: {
+							participant_b: username
+							},
+						success: function( data ) {
+						console.log( data );
+						}
+					});
 			});
 		}
 		</script>
@@ -152,7 +166,7 @@
 		<script type="text/javascript">
 		$(function(){
 			$('#jack').click(function(){
-				$( "#chat_body" ).load( "<?php echo site_url('private_message/view_message') ?>" );
+				$( "#chat_body" ).load( "<?php echo base_url().'private_message/view_message' ?>" );
 			})
 		})
 		</script>

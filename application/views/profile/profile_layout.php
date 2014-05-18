@@ -115,6 +115,7 @@ if (strtolower($session_data['username']) != strtolower($var['username'])) {
                 <?php foreach ($session_data as $key => $value) {
                     echo "$key: $value\n" . '<br/>';
                 } ?>
+              
             </div><!--./col-md-12-->
         </div><!-- /.row -->
     </div><!-- /.page-content inset -->
