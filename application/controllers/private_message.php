@@ -15,7 +15,9 @@ class Private_message extends CI_Controller{
 		}
 	}
 	public function conversation(){
-	//if conversation does not exist, create one
+	//if conversation does not exist
+	
+	//create one
 		
 	}
 	public function incoming_message(){

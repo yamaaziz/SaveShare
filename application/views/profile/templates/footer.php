@@ -125,13 +125,18 @@
 		<!-- Custom JavaScript for Selecting Username in PM -->
 		<script type="text/javascript">
 		function selectUsername(){
-			$(document).ready(function(){
-				var value = $("#autoSuggestionsListMessage a").html();
-				var input = $('#message_search');
-				input.val(value);
-				var message_search = $( "#message_search" )[ 0 ];
-				jQuery.data(message_search, "username", value);
+			$(document).ready(function(){	
+				$('#autoSuggestionsListMessage li a').click(function() {
+					var value = $(this).html();
+					var input = $('#message_search');
+					input.val(value);
+					$("#suggestionsMessage").hide();
+					
+					var message_search = $( "#message_search" )[ 0 ];
+					jQuery.data(message_search, "username", value);
+				});
 			});
+			
 		}
 		</script>
 		<!-- Custom JavaScript for New Message Button in PM -->
