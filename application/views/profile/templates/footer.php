@@ -41,7 +41,7 @@
 	        function ajaxSearch() {
 	            var input_data = $('#search_data').val();
 	            if (input_data.length === 0) {
-	                $('.results').hide();
+	                $('#suggestions').hide();
 	            } else {
 	
 	                var post_data = {
@@ -57,9 +57,9 @@
 	                    success: function(data) {
 	                        // return success
 	                        if (data.length > 0) {
-	                            $('.results').show();
-	                            $('.results').addClass('auto_list');
-	                            $('.results').html(data);
+	                            $('#suggestions').show();
+	                            $('#autoSuggestionsList').addClass('auto_list');
+	                            $('#autoSuggestionsList').html(data);
 	                        }
 	                    }
 	                });
