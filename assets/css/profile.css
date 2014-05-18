@@ -320,7 +320,7 @@ body{
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
-
+	
 }
 .input-append{
 	font-size: 0px;
@@ -382,7 +382,7 @@ footer{
 	width: 100%;
 	font-size: smaller;
     text-align: center;
-
+	
 }
 footer a {
    color: #999;
