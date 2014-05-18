@@ -128,7 +128,7 @@ body{
 		 border-bottom-right-radius: 5px;
 		 border-bottom-left-radius: 5px;
 	     position: absolute;
-	     width: 140px;
+	     width: 160px;
     }
 .advanced-search {
 	margin-top: 15px;
@@ -320,7 +320,7 @@ body{
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
-	
+
 }
 .input-append{
 	font-size: 0px;
@@ -382,7 +382,7 @@ footer{
 	width: 100%;
 	font-size: smaller;
     text-align: center;
-	
+
 }
 footer a {
    color: #999;
