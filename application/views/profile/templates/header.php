@@ -154,11 +154,13 @@
 				            </li>
 					</ul>
 					<div class="navbar-form navbar-left">
-						<input name="search_data" class="form-control" id="search_data" type="text" placeholder="Username" 						autocomplete="off" onkeyup="ajaxSearch();" onmousedown="redisplaySearch();" 											onmouseup="redisplaySearch();" onclick="redisplaySearch();">
-						<div id="suggestions">
-							<div id="autoSuggestionsList">
-							</div>
-						</div>
+					<section class="">
+						 <form class="search" method="#" action="#">
+							 <input type="text" name="search_data" id="search_data" 																class="form-control search" placeholder="Search..." autocomplete="off" onkeyup="ajaxSearch();" />
+							 <ul class="results"  >
+							 </ul>
+						 </form>
+					</section>
 					</div>
 		        	<ul class = "advanced-search">
 			            	<a href="<?php echo base_url(); ?>search/advanced_search">
