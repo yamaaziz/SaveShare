@@ -19,17 +19,16 @@ class Private_message extends CI_Controller{
 	
 	$participant_b = strtolower($this->input->post('participant_b'));
 	
-	//if conversation does not exist
-	// (do later)
-	
-	//create one
-	if(!empty($participant_b)){
-		if($this->private_message_model->create_conversation($participant_b)){
+	//If conversation does not exist AND participant_B is not empty AND initiating conversation is successfull, do: something 
+	//else: 
+	if(!$this->private_message_model->conversation_exists($participant_b)){
+		if(!empty($participant_b)){
+			if($this->private_message_model->create_conversation($participant_b)){
 			//do something
+			}
 		}
 	}
 	else{
-		//Javascript failed to get the username. Write error.
 	}
 		
 	}
