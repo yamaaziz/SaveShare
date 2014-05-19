@@ -65,13 +65,43 @@
 	                });
 	
 	            }
+	        }	
+	        function ajaxSearchMessage() {
+	            var input_data = $('#message_search').val();
+	            if (input_data.length === 0) {
+	                $('#suggestionsMessage').hide();
+	            } else {	            	
+	                var post_data = {
+	                    'message_search': input_data,
+	                    '<?php echo $this->security->get_csrf_token_name(); ?>': 
+	                    '<?php echo $this->security->get_csrf_hash(); ?>'
+	                };
+	                $.ajax({
+	                    type: "POST",
+	                    url: "<?php echo base_url(); ?>search/autocompleteMessage/",
+	                    data: post_data,
+	                    success: function(data) {
+	                        // return success
+	                        if (data.length > 0) {
+	                            $('#suggestionsMessage').show();
+	                            $('#autoSuggestionsListMessage').addClass('auto_list_message');
+	                            $('#autoSuggestionsListMessage').html(data);
+	                        }
+	                    }
+	                });
+	            }
 	        }
 	        function redisplaySearch(){
 	        	var input_data = $('#search_data').val();
 	        	if (input_data.length > 0) {
 		        	$('#suggestions').show();
 	        	}
-		        
+	        }
+			function redisplaySearchMessage(){
+	        	var input_data = $('#message_search').val();
+	        	if (input_data.length > 0) {
+		        	$('#suggestionsMessage').show();
+	        	}
 	        }
 			$(document).mouseup(function (e)
 			{
@@ -82,8 +112,63 @@
 			    {
 			        container.hide();
 			    }
+			    
+			    var containerMessage = $("#suggestionsMessage");
+			
+			    if (!containerMessage.is(e.target) // if the target of the click isn't the container...
+			        && containerMessage.has(e.target).length === 0) // ... nor a descendant of the container
+			    {
+			        containerMessage.hide();
+			    }
 			});
 		</script>
+		<!-- Custom JavaScript for Selecting Username in PM -->
+		<script type="text/javascript">
+		function selectUsername(){
+			$(document).ready(function(){	
+				$('#autoSuggestionsListMessage li a').click(function() {
+					var username = $(this).html();
+					var input = $('#message_search');
+					input.val(username);
+					$("#suggestionsMessage").hide();
+					var message_search = $( "#message_search" )[ 0 ];
+					
+					jQuery.data(message_search, "username", username );
+					
+					
+					
+				});
+			});
+
+		}
+		</script>
+		<!-- Custom JavaScript for New Message Button in PM -->
+		<script type="text/javascript">
+		function newMessage(){
+			$(document).ready(function(){
+				var username = jQuery.data(message_search, 'username');
+				var url_controller = document.location.href + '/conversation' 
+				
+				$.ajax({
+						type: 'post',
+						url: url_controller,
+						data: {
+							participant_b: username
+							},
+						success: function( data ) {
+						console.log( data );
+						}
+					});
+			});
+		}
+		</script>
+		<!-- Custom JavaScript for Private Messages -->
+		<script type="text/javascript">
+		$(function(){
+			$('#jack').click(function(){
+				$( "#chat_body" ).load( "<?php echo base_url().'private_message/view_message' ?>" );
+			})
+		})
+		</script>
 	</body>
-	
 </html>

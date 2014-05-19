@@ -135,7 +135,7 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="about">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <img class="featurette-image img-rounded img-responsive pull-right" src="http://placehold.it/500x500">
             <h2 class="featurette-heading">This First Heading
                 <span class="text-muted">Will Catch Your Eye</span>
             </h2>
@@ -145,7 +145,7 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="services">
-            <img class="featurette-image img-circle img-responsive pull-left" src="http://placecreature.com/500/500">
+            <img class="featurette-image img-rounded img-responsive pull-left" src="http://placecreature.com/500/500">
             <h2 class="featurette-heading">The Second Heading
                 <span class="text-muted">Is Pretty Cool Too.</span>
             </h2>
@@ -155,7 +155,7 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="contact">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://placecreature.com/500/500">
+            <img class="featurette-image img-rounded img-responsive pull-right" src="http://placecreature.com/500/500">
             <h2 class="featurette-heading">The Third Heading
                 <span class="text-muted">Will Seal the Deal.</span>
             </h2>

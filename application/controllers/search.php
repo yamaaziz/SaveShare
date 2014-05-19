@@ -89,6 +89,20 @@ class Search extends CI_Controller{
             "<span class=text-muted small>".$row->city."</span></li>";
         endforeach;
     }
+    public function autocompleteMessage(){
+    	$message_search = $this->input->post('message_search');
+        $query = $this->search_model->get_autocompleteMessage($message_search);
+		
+		$number = 0;
+        foreach ($query->result() as $row):
+        	++$number;
+        	$link = base_url() . 'profile/' . $row->username;
+        	//You could store the value in a data attribute for each link:
+            echo "<li><strong><a href='javascript:;' class='search_result_message' id='autoListMessage$number'>"
+            .$row->username
+            ."</a></strong></li>";
+        endforeach;
+    }
 	
 	private function collect_userinfo($id) {	
     	return $this->account_model->get_userdata($id);

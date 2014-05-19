@@ -21,9 +21,6 @@
 	    <link href="<?php echo base_url();?>assets/css/profile.css" rel="stylesheet">
 	    <!--<link href="<?php echo base_url();?>css/font-awesome.min.css" rel="stylesheet">-->
 	    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	    <script src="<?php echo base_url();?>assets/js/Chart.js"></script>
-	    <script src="<?php echo base_url();?>assets/js/morris.js"></script>
-	    <script src="<?php echo base_url();?>assets/js/Donut.js"></script>
 	    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -157,11 +154,11 @@
 				            </li>
 					</ul>
 					<div class="navbar-form navbar-left">
-						<input name="search_data" class="form-control" id="search_data" type="text" autocomplete="off"							onkeyup="ajaxSearch();" onmousedown="redisplaySearch();" onmouseup="redisplaySearch();" 								onclick="redisplaySearch();">
-							<div id="suggestions">
-								<div id="autoSuggestionsList">  
-								</div>
+						<input name="search_data" class="form-control" id="search_data" type="text" placeholder="Username" 						autocomplete="off" onkeyup="ajaxSearch();" onmousedown="redisplaySearch();" 											onmouseup="redisplaySearch();" onclick="redisplaySearch();">
+						<div id="suggestions">
+							<div id="autoSuggestionsList">
 							</div>
+						</div>
 					</div>
 		        	<ul class = "advanced-search">
 			            	<a href="<?php echo base_url(); ?>search/advanced_search">
@@ -185,6 +182,9 @@
 			        </li>
 					<li>
 			        	<a href="<?php echo base_url();?>forum"><i class="fa fa-comment-o"></i> Forum</a>
-			        </li>   
+			        </li>
+					<li>
+			        	<a href="<?php echo base_url();?>private_message"><i class="fa fa-envelope"></i> PM</a>
+			        </li>    
 			    </ul>
 			</div>
