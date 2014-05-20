@@ -1,7 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
 <?php
-<<<<<<< HEAD
 $session_data = $this->session->all_userdata();
 if (isset($economy_info) && isset($user_info)) {
     $economy = get_object_vars($economy_info);
@@ -74,7 +73,7 @@ if (isset($economy_info) && isset($user_info)) {
             <div class="col-md-6" >
 <?php
 if (strtolower($session_data['username']) != strtolower($var['username'])) {
-    $this->load->view('profile/followers/follower_button');
+    $this->load->view('profile/followers/follow_button');
 }
 ?>
             </div>
@@ -203,7 +202,7 @@ if (strtolower($session_data['username']) != strtolower($var['username'])) {
 							if(strtolower($session_data['username']) != strtolower($var['username']))
 							{
 							if ($privacy['p_id'] != $id && $privacy['p_following'] == 2) {
-								$this->load->view('profile/follow_button');	
+								$this->load->view('profile/followers/follow_button');
 								}							
 							}
 							?>
@@ -258,4 +257,3 @@ if (strtolower($session_data['username']) != strtolower($var['username'])) {
 				</div><!-- /.row -->
 			</div><!-- /.page-content inset -->
 		</div><!-- /.page-content-wrapper --> 
->>>>>>> Johanna5
