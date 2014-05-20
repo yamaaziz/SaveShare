@@ -122,6 +122,27 @@
 			    }
 			});
 		</script>
+		<!-- Custom JavaScript for Loading Conversations -->
+		<script type="text/javascript">
+		$( document ).ready(function() {
+			var error_log = 'The DOM is now loaded and can be manipulated.';
+			console.log(error_log);
+			
+			ajaxGetConversations();	//Will occure at document load
+		});
+		
+		function ajaxGetConversations(){
+			$.ajax({
+				type: 'POST',
+				url: "<?php echo base_url(); ?>private_message/view_conversation",
+				success: function( data ){
+					//console.log( data); //spionutskrift ta bort sen
+					
+					$('#conversation_list').append(data);
+				}
+			});
+		};
+		</script>
 		<!-- Custom JavaScript for Selecting Username in PM -->
 		<script type="text/javascript">
 		function selectUsername(){
@@ -134,12 +155,9 @@
 					var message_search = $( "#message_search" )[ 0 ];
 					
 					jQuery.data(message_search, "username", username );
-					
-					
-					
+					console.log(username);
 				});
 			});
-
 		}
 		</script>
 		<!-- Custom JavaScript for New Message Button in PM -->
@@ -147,28 +165,56 @@
 		function newMessage(){
 			$(document).ready(function(){
 				var username = jQuery.data(message_search, 'username');
-				var url_controller = document.location.href + '/conversation' 
+				var url_controller = document.location.href + '/initiate_conversation' 
 				
 				$.ajax({
-						type: 'post',
+						type: 'POST',
 						url: url_controller,
 						data: {
 							participant_b: username
 							},
 						success: function( data ) {
-						console.log( data );
+						console.log( data ); //spionutskrift. ta bort sen.
+						
+						 $('#conversation_list').append(data);
 						}
 					});
 			});
 		}
 		</script>
-		<!-- Custom JavaScript for Private Messages -->
+		<!-- Custom JavaScript for Getting Private Messages -->
 		<script type="text/javascript">
-		$(function(){
-			$('#jack').click(function(){
-				$( "#chat_body" ).load( "<?php echo base_url().'private_message/view_message' ?>" );
-			})
-		})
+		$(document).ready(function(){
+			$(document).on("click", '.conversation-body .header a', function(event) { 
+				//$( "#message_body" ).load( "<?php echo base_url().'private_message/view_message' ?>" );
+				var participant_b = $(this).html();
+				var user_id = $(this).data('userid');
+				console.log(participant_b);
+				console.log(user_id);
+				jQuery.data(document.body, "user_id", user_id );
+				ajaxIncomingMessage();
+			});
+		});
+		function ajaxIncomingMessage(){
+			//var error_log = 'view message on load';
+			//console.log(error_log);
+
+			var url_controller = document.location.href + '/view_message';
+			var participant_b_c_id = jQuery.data(document.body, 'user_id');
+			
+			$.ajax({
+				type: 'POST',
+				url: url_controller,
+				data: { participant_b_c_id: participant_b_c_id	
+				},
+				success: function(data){
+					$("#message_body").html(data);
+					console.log(data);
+					//$("#chat_body").append('message');
+				}
+				
+			});
+		};
 		</script>
-	</body>
+			</body>
 </html>

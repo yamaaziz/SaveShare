@@ -136,6 +136,20 @@ class Account_model extends CI_Model{
 				return $query->row(0)->id;
 				}
 	}
+	public function get_username($id){
+	
+		$this->db->select("users.username");
+		$this->db->from('users');
+		$this->db->where('users.id', $id);
+		
+		$query = $this->db->get();
+			if ($query->num_rows() == 1) {
+				return $query->row(0)->username;
+				}
+			else{
+				return FALSE;
+			}
+	}
 
 	public function find_email($email){
 		$this->db->select("users.email, users.id");

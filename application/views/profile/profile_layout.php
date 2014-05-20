@@ -25,7 +25,7 @@ if (isset($economy_info) && isset($user_info)) {
     <div class="page-content inset">
         <div class="row">
             <div class="col-md-12">
-                <!-- Display success messages -->
+                <!-- Display user-feedback messages -->
                 <?php
                 //Sign in success
                 if ($this->session->flashdata('sign_in_succeeded')) {
