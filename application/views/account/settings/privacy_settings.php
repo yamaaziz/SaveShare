@@ -18,8 +18,8 @@
 		    <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
 			    <div class="row">
-			        <div class="col-md-10">
-			        <p class="lead">Your personal information <span style="float: right;">Only me Everyone</span></p>
+			        <div class="col-md-8">
+			        <p class="lead" >Visibility of personal information <span style="float: right;">Only me <? echo str_repeat('&nbsp;', 4); ?> Everyone</span></p>
 			         <!-- <p><span style="float: right;">Visible for me Visible for everyone</span></p> -->
 			           
 			        	<!--Start form-->
@@ -31,7 +31,7 @@
 						<?php
 						$data1 = array(
 										'name'	=>	'gender2',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -50,7 +50,7 @@
 						function gender_show_everyone() {	
 						global $privacy_;
 						
-							if ($privacy_['p_gender'] == '2'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if ($privacy_['p_gender'] == '2') { //detta bestämmer bara var det ska vara markerat, nu höger
 
 								return TRUE;
 							}
@@ -60,7 +60,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 332px;" >
 						<?php			
 						echo form_radio($data1, '1', gender_show_me());
 						echo form_radio($data1, '2', gender_show_everyone());
@@ -76,7 +76,7 @@
 						<?php
 						$data2 = array(
 										'name'	=>	'age2',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -105,7 +105,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 354px;" >
 						<?php			
 						echo form_radio($data2, '1', age_show_me());
 						echo form_radio($data2, '2', age_show_everyone());
@@ -123,7 +123,7 @@
 						<?php
 						$data3 = array(
 										'name'	=>	'city2',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -152,7 +152,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 355px;" >
 						<?php			
 						echo form_radio($data3, '1', city_show_me());
 						echo form_radio($data3, '2', city_show_everyone());
@@ -169,7 +169,7 @@
 						<?php
 						$data4 = array(
 										'name'	=>	'occupation2',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -198,7 +198,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 303px;" >
 						<?php			
 						echo form_radio($data4, '1', occupation_show_me());
 						echo form_radio($data4, '2', occupation_show_everyone());
@@ -214,7 +214,7 @@
 						<?php
 						$data5 = array(
 										'name'	=>	'income2',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -243,7 +243,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 331px;" >
 						<?php			
 						echo form_radio($data5, '1', income_show_me());
 						echo form_radio($data5, '2', income_show_everyone());
@@ -257,14 +257,14 @@
 						
 						<br/>
 						<br/>
-						<p class="lead">Your economy information <span style="float: right;">Only me Everyone</span></p>
+						<p class="lead">Visibility of economy information <span style="float: right;">Only me <? echo str_repeat('&nbsp;', 4); ?> Everyone</span></p>
 						
 					<!--Field: Savings table-->
 						<p><?php echo form_label('Savings table'); ?>
 						<?php
 						$data6 = array(
 										'name'	=>	'savings',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -293,7 +293,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 290px;" >
 						<?php			
 						echo form_radio($data6, '1', savings_show_me());
 						echo form_radio($data6, '2', savings_show_everyone());
@@ -309,7 +309,7 @@
 						<?php
 						$data7 = array(
 										'name'	=>	'lias',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -338,7 +338,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 277px;" >
 						<?php			
 						echo form_radio($data7, '1', lias_show_me());
 						echo form_radio($data7, '2', lias_show_everyone());
@@ -354,7 +354,7 @@
 						<?php
 						$data8 = array(
 										'name'	=>	'savings_chart',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -383,7 +383,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 290px;" >
 						<?php			
 						echo form_radio($data8, '1', savingsd_show_me());
 						echo form_radio($data8, '2', savingsd_show_everyone());
@@ -398,7 +398,7 @@
 												<?php
 						$data9 = array(
 										'name'	=>	'lias_chart',
-										'style'	=>	'margin:10px;'
+										'style'	=>	'margin:0px 41px;'
 									);
 						?>
 						<?php
@@ -427,7 +427,7 @@
 							}
 						}
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 277px;" >
 						<?php			
 						echo form_radio($data9, '1', liasd_show_me());
 						echo form_radio($data9, '2', liasd_show_everyone());
@@ -463,7 +463,7 @@
 						}
 
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 367px;" >
 						<?php			
 						echo form_checkbox($data10, '2', followers_enable()); //här kanske det ska vara en 1a
 						?>
@@ -495,7 +495,7 @@
 						}
 
 						?>
-						<span style="float: right;">
+						<span style="margin-left: 318px;" >
 						<?php			
 						echo form_checkbox($data11, '2', search_enable());
 						

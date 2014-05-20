@@ -3,6 +3,7 @@
 <!-- PHP Code Here -->
 <!-- START PAGE -->
 <!-- Page content -->
+<?php $privacy = get_object_vars($privacy);?>
 <div id="page-content-wrapper">
     <div class="content-header">
         <h1>
@@ -32,22 +33,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($user_info as $row): ?>
+                        	<?php var_dump($privacy); ?>
+                        	</br>
+                        	</br>
+                        	</br>
+                        	<?php var_dump($user_info); ?>
+								<!--- <?php $search_info = array_combine($user_info, $privacy); ?> --->
+                            <?php foreach ($user_info as $row) { ?>
                                 <tr> 
                                     <td><a href="<?php echo base_url() . 'profile/' . $row['username']; ?>" >
-                                            <?php echo $row['username']; ?>
+                                            <?php echo ucfirst($row['username']); ?>
+                                            
                                         </a></td>
                                     <?php if (empty($row['birth_year'])) { ?>
                                         <td></td>
                                     <?php } else { ?>
                                         <td><?php echo date("Y") - $row['birth_year']; ?></td>
                                     <?php } ?>
-                                    <td><?php echo $row['gender']; ?></td>
-                                    <td><?php echo $row['city']; ?></td>
-                                    <td><?php echo $row['occupation']; ?></td>
-                                    <td><?php echo $row['income']; ?></td>
+                                    <?php if ($privacy['p_id'] == $row['id'] && $privacy['p_gender'] == 2) { ?>
+                                    <td><?php echo ucfirst($row['gender']); ?></td>
+                                    <?php } elseif ($privacy['p_id'] == $row['id'] && $privacy['p_gender'] == 1) { ?>
+                                    <td><?php echo 'Hidden'; ?></td>
+                                    <?php } elseif ($privacy['p_id'] != $row['id']) { ?>
+                                    <td><?php echo 'Fel!'; ?></td>
+                                    <?php } ?>
+                                    
+                                    <td><?php echo ucfirst($row['city']); ?></td>
+                                    <td><?php echo ucfirst($row['occupation']); ?></td>
+                                    <td><?php echo ucfirst($row['income']); ?></td>
                                 </tr>
-                            <?php endforeach ?>
+                            
+                            <?php } ?>
+                            
+
+                           
                         </tbody>
                     </table>
                 </div><!-- /.table-responsive -->

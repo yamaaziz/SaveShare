@@ -4,14 +4,20 @@
 class Search extends CI_Controller{
 
 	public function advanced_search(){
-	
+		$id = $this->search_model->search(); //detta ger bara id på den som vi söker på
+		$user_data = $this->account_model->get_userdata($id);
+		$id2 = $this->account_model->get_id($username);
+		$data['privacy'] = $this->account_model->get_privacy_data($id2);
+
 		$this->load->view('profile/templates/header');
-		$this->load->view('search/advanced_search');
+		$this->load->view('search/advanced_search', $data);
 		$this->load->view('profile/templates/footer');
-		
 	}
 
-	public function validate_advanced_search(){ 
+	public function validate_advanced_search(){
+		$id = $this->search_model->search(); //detta ger bara id på den som vi söker på
+		$data['privacy'] = $this->account_model->get_privacy_data($id);
+
     	$this->form_validation->set_rules('username','Username','trim|xss_clean');
     	$this->form_validation->set_rules('birth_year','birth_year','trim|xss_clean');
     	$this->form_validation->set_rules('gender','Gender','trim|xss_clean');
@@ -25,7 +31,7 @@ class Search extends CI_Controller{
 			$this->advanced_search();
 		}
 		else
-		{	if($data['user_info'] = $this->search_model->adv_search())
+		{	if ($data['user_info'] = $this->search_model->adv_search())
 			{
 				$this->load->view('profile/templates/header');
 				
@@ -35,7 +41,7 @@ class Search extends CI_Controller{
 				//$data1['economy_info']	=	$this->collect_economyinfo($id);
 				//Load Views
 				
-				$this->load->view('search/search_result', $data);							
+				$this->load->view('search/search_result', $data);
 				//}
 				
 				$this->load->view('profile/templates/footer'); 
@@ -64,6 +70,7 @@ class Search extends CI_Controller{
 				$data1['economy_info']	=	$this->collect_economyinfo($id);
 				$data1['followers_name']		=	$this->get_followernames();
 				$data1['following_name']		= 	$this->get_followingnames();
+				$data1['privacy']		= 	$this->account_model->get_privacy_data($id);
 				
 				//Load Views
 				$this->load->view('profile/templates/header');
