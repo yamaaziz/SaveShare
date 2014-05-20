@@ -80,8 +80,10 @@
 			        <div class="col-md-6" >
 			            	<?php 
 							if(strtolower($session_data['username']) != strtolower($var['username']))
-							{						
-							$this->load->view('profile/extra');								
+							{
+							if ($privacy['p_id'] != $id && $privacy['p_following'] == 2) {
+								$this->load->view('profile/follow_button');	
+								}							
 							}
 							?>
 			        </div>
@@ -89,7 +91,12 @@
 				<div class="row">
 					<div class="col-md-6">
 					
-					<?php echo $this->load->view('economy/savings_donut'); ?>
+					<?php if ($privacy['p_id'] != $id && $privacy['p_dsavings'] == 2) { ?>
+							<?php echo $this->load->view('economy/savings_donut'); ?>
+						<?php } ?>
+						<?php if ($privacy['p_id'] == $id) { ?>
+							<?php echo $this->load->view('economy/savings_donut'); ?>
+					<?php } ?>
 					
 					</div><!--./col-md-6-->
 					
@@ -104,8 +111,13 @@
 				</div><!--./row-->
 				<div class="row">
 					<div class="col-md-6">
+					<?php if ($privacy['p_id'] != $id && $privacy['p_dlias'] == 2) { ?>
+							<?php echo $this->load->view('economy/lias_donut'); ?>
+						<?php } ?>
+						<?php if ($privacy['p_id'] == $id) { ?>
+							<?php echo $this->load->view('economy/lias_donut'); ?>
+					<?php } ?>
 					
-					<?php echo $this->load->view('economy/lias_donut'); ?>
 					
 					</div><!--./col-md-6-->
 					<div class="col-md-6">

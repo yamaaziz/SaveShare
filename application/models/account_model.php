@@ -101,16 +101,16 @@ class Account_model extends CI_Model{
 	public function change_privacy_settings() {
 		$id = $this->session->userdata('user_id');		
 		$optional = array(
-			'p_gender'		=>		$this->input->post('birth_year'),                    
-			'p_age'			=>		$this->input->post('gender'),
-			'p_city'		=>		$this->input->post('city'),
-			'p_occupation'	=>		$this->input->post('occupation'),
-			'p_income'		=>		$this->input->post('income'),
+			'p_gender'		=>		$this->input->post('gender2'),                    
+			'p_age'			=>		$this->input->post('age2'),
+			'p_city'		=>		$this->input->post('city2'),
+			'p_occupation'	=>		$this->input->post('occupation2'),
+			'p_income'		=>		$this->input->post('income2'),
 			'p_savings'		=>		$this->input->post('savings'),
 			'p_lias'		=>		$this->input->post('lias'),
-			'p_dsavings'	=>		$this->input->post('savings_cart'),
+			'p_dsavings'	=>		$this->input->post('savings_chart'),
 			'p_dlias'		=>		$this->input->post('lias_chart'),
-			'p_following'	=>		$this->input->post('following'),
+			'p_following'	=>		$this->input->post('follow'),
 			'p_search'		=>		$this->input->post('search')
 			);
 

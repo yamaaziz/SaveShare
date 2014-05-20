@@ -2,7 +2,7 @@
 <!-- Save Share 2014 -->
 <!-- PHP Code Here -->
 <?php global $profile_data_;
- $profile_data_ = get_object_vars($profile_data);?>
+ $profile_data_ = get_object_vars($profile_data2);?>
  <?php global $privacy_;
  $privacy_ = get_object_vars($privacy);?>
 
@@ -18,36 +18,9 @@
 		    <!-- Keep all page content within the page-content inset div! -->
 			<div class="page-content inset">
 			    <div class="row">
-			        <div class="col-md-7">
+			        <div class="col-md-10">
 			        <p class="lead">Your personal information <span style="float: right;">Only me Everyone</span></p>
 			         <!-- <p><span style="float: right;">Visible for me Visible for everyone</span></p> -->
-			        
-
-					<?php echo $privacy_['p_gender']; ?>
-			        </br>
-			        <?php echo $privacy_['p_age']; ?>
-			        </br>
-			        <?php echo $privacy_['p_city']; ?>
-			        </br>			        
-			        <?php echo $privacy_['p_occupation']; ?>
-			        </br>
-			        <?php echo $privacy_['p_income']; ?>
-			        </br>
-			        <?php echo $privacy_['p_savings']; ?>
-			        </br>
-			        <?php echo $privacy_['p_lias']; ?>
-			        </br>
-			        <?php echo $privacy_['p_dsavings']; ?>
-			        </br>
-			        <?php echo $privacy_['p_dlias']; ?>
-			        </br>		
-			        <?php echo $privacy_['p_following']; ?>
-			        </br>	  
-			        <?php echo $privacy_['p_search']; ?>
-			        </br> 
-			        
-			          
-			        
 			           
 			        	<!--Start form-->
 						<?php $attributes = array('id' =>'privacy_settings_form','class' => 'form-horizontal'); ?>
@@ -56,16 +29,14 @@
 					<!--Field: Gender-->
 						<p><?php echo form_label('Gender'); ?>
 						<?php
-						$data = array(
-										'name'	=>	'gender',
+						$data1 = array(
+										'name'	=>	'gender2',
 										'style'	=>	'margin:10px;'
 									);
 						?>
 						<?php
 						function gender_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_gender'];
-						//echo var_dump($privacy_['p_gender']);
 							if ($privacy_['p_gender'] == '1') { //detta bestämmer bara var det ska vara markerat, nu vänster
 								
 								return TRUE;
@@ -79,7 +50,7 @@
 						function gender_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_gender'] == '2'){ //detta bestämmer bara var det ska vara markerat, nu höger
+							if ($privacy_['p_gender'] == '2'){ //detta bestämmer bara var det ska vara markerat, nu höger
 
 								return TRUE;
 							}
@@ -91,8 +62,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', gender_show_me());
-						echo form_radio($data, '2', gender_show_everyone());
+						echo form_radio($data1, '1', gender_show_me());
+						echo form_radio($data1, '2', gender_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -104,15 +75,13 @@
 						<p><?php echo form_label('Age'); ?>
 						<?php
 						$data2 = array(
-										'name'	=>	'age',
+										'name'	=>	'age2',
 										'style'	=>	'margin:10px;'
 									);
 						?>
 						<?php
 						function age_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_age'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_age'] == '1') {
 								
 								return TRUE;
@@ -126,7 +95,7 @@
 						function age_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_age'] == '2'){
+							if ($privacy_['p_age'] == '2'){
 
 								return TRUE;
 							}
@@ -151,17 +120,15 @@
 
 					<!--Field: City-->
 						<p><?php echo form_label('City'); ?>
-												<?php
-						$data = array(
-										'name'	=>	'city',
+						<?php
+						$data3 = array(
+										'name'	=>	'city2',
 										'style'	=>	'margin:10px;'
 									);
 						?>
 						<?php
 						function city_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_city'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_city'] == '1') {
 								
 								return TRUE;
@@ -175,7 +142,7 @@
 						function city_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_city'] == '2'){
+							if ($privacy_['p_city'] == '2'){
 
 								return TRUE;
 							}
@@ -187,8 +154,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', city_show_me());
-						echo form_radio($data, '2', city_show_everyone());
+						echo form_radio($data3, '1', city_show_me());
+						echo form_radio($data3, '2', city_show_everyone());
 						?>
 						</span>
 						<!--<p><?php echo form_error('city'); ?>--></p>
@@ -200,16 +167,14 @@
 					<!--Field: Occupation-->
 						<p><?php echo form_label('Occupation'); ?>
 						<?php
-						$data = array(
-										'name'	=>	'occupation',
+						$data4 = array(
+										'name'	=>	'occupation2',
 										'style'	=>	'margin:10px;'
 									);
 						?>
 						<?php
 						function occupation_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_occupation'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_occupation'] == '1') {
 								
 								return TRUE;
@@ -223,7 +188,7 @@
 						function occupation_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_occupation'] == '2') {
+							if ($privacy_['p_occupation'] == '2') {
 
 								return TRUE;
 							}
@@ -235,8 +200,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', occupation_show_me());
-						echo form_radio($data, '2', occupation_show_everyone());
+						echo form_radio($data4, '1', occupation_show_me());
+						echo form_radio($data4, '2', occupation_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -247,16 +212,14 @@
 						<p><?php echo form_label('Income'); ?>
 						
 						<?php
-						$data = array(
-										'name'	=>	'income',
+						$data5 = array(
+										'name'	=>	'income2',
 										'style'	=>	'margin:10px;'
 									);
 						?>
 						<?php
 						function income_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_income'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_income'] == '1') {
 								
 								return TRUE;
@@ -270,7 +233,7 @@
 						function income_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_income'] == '2') {
+							if ($privacy_['p_income'] == '2') {
 
 								return TRUE;
 							}
@@ -282,8 +245,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', income_show_me());
-						echo form_radio($data, '2', income_show_everyone());
+						echo form_radio($data5, '1', income_show_me());
+						echo form_radio($data5, '2', income_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -298,8 +261,8 @@
 						
 					<!--Field: Savings table-->
 						<p><?php echo form_label('Savings table'); ?>
-												<?php
-						$data = array(
+						<?php
+						$data6 = array(
 										'name'	=>	'savings',
 										'style'	=>	'margin:10px;'
 									);
@@ -307,8 +270,6 @@
 						<?php
 						function savings_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_savings'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_savings'] == '1') {
 								
 								return TRUE;
@@ -322,7 +283,7 @@
 						function savings_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_savings'] == '2'){
+							if ($privacy_['p_savings'] == '2') {
 
 								return TRUE;
 							}
@@ -334,8 +295,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', savings_show_me());
-						echo form_radio($data, '2', savings_show_everyone());
+						echo form_radio($data6, '1', savings_show_me());
+						echo form_radio($data6, '2', savings_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -343,10 +304,10 @@
 						
 						
 						
-					<!--Field: Liabilities table-->
+		<!--Field: Liabilities table-->
 						<p><?php echo form_label('Liabilities table'); ?>
-												
-						<?php $data = array(
+						<?php
+						$data7 = array(
 										'name'	=>	'lias',
 										'style'	=>	'margin:10px;'
 									);
@@ -354,8 +315,6 @@
 						<?php
 						function lias_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_lias'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_lias'] == '1') {
 								
 								return TRUE;
@@ -369,7 +328,7 @@
 						function lias_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_lias'] == '2'){
+							if ($privacy_['p_lias'] == '2') {
 
 								return TRUE;
 							}
@@ -381,8 +340,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', lias_show_me());
-						echo form_radio($data, '2', lias_show_everyone());
+						echo form_radio($data7, '1', lias_show_me());
+						echo form_radio($data7, '2', lias_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -393,7 +352,7 @@
 					<!--Field: Savings donut-->
 						<p><?php echo form_label('Savings chart'); ?>
 						<?php
-						$data = array(
+						$data8 = array(
 										'name'	=>	'savings_chart',
 										'style'	=>	'margin:10px;'
 									);
@@ -401,8 +360,6 @@
 						<?php
 						function savingsd_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_dsavings'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_dsavings'] == '1') {
 								
 								return TRUE;
@@ -416,7 +373,7 @@
 						function savingsd_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_dsavings'] == '2'){
+							if ($privacy_['p_dsavings'] == '2') {
 
 								return TRUE;
 							}
@@ -428,19 +385,18 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', savingsd_show_me());
-						echo form_radio($data, '2', savingsd_show_everyone());
+						echo form_radio($data8, '1', savingsd_show_me());
+						echo form_radio($data8, '2', savingsd_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
 						<!--<?php echo form_error('income'); ?>--></p>
 						
 						
-						
 					<!--Field: Lias donut-->
 						<p><?php echo form_label('Liabilities chart'); ?>
 												<?php
-						$data = array(
+						$data9 = array(
 										'name'	=>	'lias_chart',
 										'style'	=>	'margin:10px;'
 									);
@@ -448,8 +404,6 @@
 						<?php
 						function liasd_show_me() {	
 						global $privacy_;
-						echo $privacy_['p_dlias'];
-						//echo var_dump($privacy_);
 							if ($privacy_['p_dlias'] == '1') {
 								
 								return TRUE;
@@ -463,7 +417,7 @@
 						function liasd_show_everyone() {	
 						global $privacy_;
 						
-							if($privacy_['p_dsavings'] == '2'){
+							if ($privacy_['p_dlias'] == '2') {
 
 								return TRUE;
 							}
@@ -475,8 +429,8 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_radio($data, '1', liasd_show_me());
-						echo form_radio($data, '2', liasd_show_everyone());
+						echo form_radio($data9, '1', liasd_show_me());
+						echo form_radio($data9, '2', liasd_show_everyone());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -487,10 +441,10 @@
 						<br/>
 						<p class="lead">Other <span style="float: right;">Enabled</span></p>
 					
-					<!--Field: Following-->
+					<!--Field: Following OBS OBS om vi ska ha den så kanske de som redan följer ska tas bort? eller man vill inte att fler ska kunna följa?-->
 						<p><?php echo form_label('People can follow me'); ?>
 						<?php
-						$data = array(
+						$data10 = array(
 										'name'	=>	'follow',
 										'style'	=>	'margin:10px;'
 									);
@@ -498,8 +452,7 @@
 						<?php
 						function followers_enable() {
 						global $privacy_;
-						
-							if($privacy_['p_following'] == '2'){
+							if ($privacy_['p_following'] == '2') {
 
 								return TRUE;
 							}
@@ -512,7 +465,7 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_checkbox($data, '2', followers_enable()); //här kanske det ska vara en 1a
+						echo form_checkbox($data10, '2', followers_enable()); //här kanske det ska vara en 1a
 						?>
 						</span>
 						<!--Display field errors-->
@@ -522,7 +475,7 @@
 					<!--Field: Search-->
 						<p><?php echo form_label('People can find me in search'); ?>
 						<?php
-						$data = array(
+						$data11 = array(
 										'name'	=>	'search',
 										'style'	=>	'margin:10px;'
 										
@@ -530,9 +483,8 @@
 						?>
 						<?php
 						function search_enable() {
-						global $privacy_;
-						
-							if($privacy_['p_search'] == '2'){
+						global $privacy_;						
+							if ($privacy_['p_search'] == '2'){
 
 								return TRUE;
 							}
@@ -545,7 +497,7 @@
 						?>
 						<span style="float: right;">
 						<?php			
-						echo form_checkbox($data, '2', search_enable());
+						echo form_checkbox($data11, '2', search_enable());
 						
 						?>
 						</span>
@@ -571,13 +523,13 @@
 						<p>
 						<?php echo form_label('Password'); ?>
 						<?php
-						$data2 = array(
+						$data12 = array(
 										'name'			=> 'password_',
 										'placeholder' 	=> 'Enter Password',
 										'style' 		=> 'width:100%',
 									);
 						?>
-						<?php echo form_password($data2); ?>					
+						<?php echo form_password($data12); ?>					
 						<!--Display field errors-->
 						<?php echo form_error('password_'); ?>
 						</p>					
@@ -585,15 +537,15 @@
 						<p>
 						
 						<!--Submit Buttons-->
-						<?php $data2 = array(
+						<?php $data13 = array(
 												"value" 	=> "Save",
 												"name"		=> "submit", //kanske ändra till login
 												"class"		=> "btn btn-success",
 												"style"		=>	"margin-right:10px"
 											);
 						?>
-						<?php echo form_submit($data2); ?>
-						<?php $data2 = array(
+						<?php echo form_submit($data13); ?>
+						<?php $data14 = array(
 											    'name' => 'reset',
 											    'id' => 'reset_button',
 											    'value' => 'true',
@@ -602,7 +554,7 @@
 											    'class'	=>	'btn btn-danger'
 											);
 						?>				
-						<?php echo form_button($data2); ?>
+						<?php echo form_button($data14); ?>
 						</p>
 						</br> 
 						</div>
