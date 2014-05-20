@@ -25,7 +25,7 @@
 						<?php echo form_label('Username *'); ?>
 						<?php
 						$data = array(
-										'name' 			=>'username_',
+										'name' 			=> 'username_',
 										'placeholder' 	=> 'Enter Username',
 										'style' 		=> 'width:100%',
 										'value'			=> set_value('username', $profile_data_['username'])

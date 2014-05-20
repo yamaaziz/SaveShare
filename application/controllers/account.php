@@ -104,7 +104,7 @@ class Account extends CI_Controller{
     public function privacy_settings() {
 		//Load Profile Data
 		$id = $this->session->userdata('user_id');
-    	$data['profile_data'] = $this->account_model->get_userdata($id);
+    	$data['profile_data2'] = $this->account_model->get_userdata($id);
     	$data['privacy'] = $this->account_model->get_privacy_data($id);
     	//View data
     	$this->load->view('profile/templates/header');
@@ -197,11 +197,11 @@ class Account extends CI_Controller{
     	$id = $this->session->userdata('user_id');
 	    $privacy_data = get_object_vars($this->account_model->get_privacy_data($id));
 
-	    $this->form_validation->set_rules('gender','gender','trim|xss_clean');
-	    $this->form_validation->set_rules('age','age','trim|xss_clean');
-	    $this->form_validation->set_rules('city','city','trim|xss_clean');
-	    $this->form_validation->set_rules('occupation','occupation','trim|xss_clean');
-	    $this->form_validation->set_rules('income','income','trim|xss_clean');
+	    $this->form_validation->set_rules('gender2','gender','trim|xss_clean');
+	    $this->form_validation->set_rules('age2','age','trim|xss_clean');
+	    $this->form_validation->set_rules('city2','city','trim|xss_clean');
+	    $this->form_validation->set_rules('occupation2','occupation','trim|xss_clean');
+	    $this->form_validation->set_rules('income2','income','trim|xss_clean');
 	    $this->form_validation->set_rules('savings','savings','trim|xss_clean');
 	    $this->form_validation->set_rules('lias','lias','trim|xss_clean');
 	    $this->form_validation->set_rules('savings_chart','savings','trim|xss_clean');
@@ -209,6 +209,7 @@ class Account extends CI_Controller{
 	    $this->form_validation->set_rules('following','following','trim|xss_clean');
 	    $this->form_validation->set_rules('search','search','trim|xss_clean');
 	    
+	    $this->form_validation->set_error_delimiters('<p class="text-error">','</p>');
 	    
 		if($this->form_validation->run() == FALSE)
 		{
