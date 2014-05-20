@@ -81,7 +81,8 @@ class Forum_model extends CI_Model{
 
 		$insert_message = $this->db->insert('message', $message);
 		
-		return $insert_message;
+		$id=$this->input->post('slug');
+		return $id;
 	}
 	
 		public function get_threads($slug=FALSE){

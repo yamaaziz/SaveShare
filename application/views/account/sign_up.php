@@ -36,10 +36,14 @@ $data = array(
 ?>
 <?php echo form_password($data); ?>
 
+
+
 <!--Display field errors-->
 <?php echo form_error('password'); ?>
 </p>
-
+<p>
+<em> Password must be at least 4 characters</em>
+</p>
 <!--Field: Confirm password-->
 <p>
 <?php echo form_label('Password confirmation *'); ?>
@@ -57,6 +61,8 @@ $data = array(
 <!--Display field errors-->
 <?php echo form_error('password_confirmation'); ?>
 </p>
+
+
 
 <!--Field: Email-->
 <p>

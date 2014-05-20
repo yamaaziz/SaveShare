@@ -7,6 +7,7 @@
 	<ul>
 		<div class="panel panel-default">
 			<div class="panel-heading"> Liabilities </div>
+			
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div class="table-responsive">
@@ -19,6 +20,7 @@
 							</tr>
 						</thead>
 						<tbody>
+							
 							<?php if (!empty ($economy['housing_loan'])) {?>
 								<tr>
 									<td></td>
