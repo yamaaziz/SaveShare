@@ -95,10 +95,10 @@ class Search extends CI_Controller{
 		
 		$number = 0;
         foreach ($query->result() as $row):
-        	++$number;
+        	
         	$link = base_url() . 'profile/' . $row->username;
         	//You could store the value in a data attribute for each link:
-            echo "<li><strong><a href='javascript:;' class='search_result_message' id='autoListMessage$number'>"
+            echo "<li><strong><a href='javascript:;' class='search_result_message' id='autoListMessage'>"
             .$row->username
             ."</a></strong></li>";
         endforeach;

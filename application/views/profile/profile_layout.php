@@ -1,6 +1,61 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
 
+<<<<<<< HEAD
+=======
+        </h1>	            
+    </div><!-- content-header-->
+    <!-- Keep all page content within the page-content inset div! -->
+    <div class="page-content inset">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Display user-feedback messages -->
+                <?php
+                //Sign in success
+                if ($this->session->flashdata('sign_in_succeeded')) {
+                    echo '<div class="alert alert-success alert-dismissable">';
+                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+                    echo '<strong>' . $this->session->flashdata('sign_in_succeeded') . '</strong>';
+                    echo '</div>';
+                }
+                //Economy success
+                elseif ($this->session->flashdata('economy_succeeded')) {
+                    echo '<div class="alert alert-success alert-dismissable">';
+                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+                    echo '<strong>' . $this->session->flashdata('economy_succeeded') . '</strong>';
+                    echo '</div>';
+                }
+                //Profile settings success
+                elseif ($this->session->flashdata('profile_settings_succeeded')) {
+                    echo '<div class="alert alert-success alert-dismissable">';
+                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+                    echo '<strong>' . $this->session->flashdata('profile_settings_succeeded') . '</strong>';
+                    echo '</div>';
+                }
+                //Security settings success
+                elseif ($this->session->flashdata('security_settings_succeeded')) {
+                    echo '<div class="alert alert-success alert-dismissable">';
+                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+                    echo '<strong>' . $this->session->flashdata('security_settings_succeeded') . '</strong>';
+                    echo '</div>';
+                }
+                //Privacy settings success
+                elseif ($this->session->flashdata('privacy_settings_succeeded')) {
+                    echo '<div class="alert alert-success alert-dismissable">';
+                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+                    echo '<strong>' . $this->session->flashdata('privacy_settings_succeeded') . '</strong>';
+                    echo '</div>';
+                }
+                ?>
+                <p class="lead">User Info</p>
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-md-6" >				
+<?php $this->load->view('profile/user_info'); ?>
+            </div>
+            <div class="col-md-6" >
+>>>>>>> yama
 <?php
 	$session_data = $this->session->all_userdata();
 	if(isset($economy_info) && isset($user_info)){

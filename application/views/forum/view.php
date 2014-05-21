@@ -26,7 +26,7 @@
                     </ul>
                 </div>
             </div><!--./panel-heading -->
-            <div class="panel-body">
+            <div class="panel-body" id='panel-body-chat'>
                 <ul class="chat">
                     <?php foreach ($messages as $message): ?>
                     	<?php if ($message['sender'] === $this->session->userdata('user_id')){ ?>
