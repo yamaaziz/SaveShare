@@ -42,8 +42,8 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="<?php echo base_url(); ?>profile<?php echo "/$username" ?>">
-			       		<img src="<?php echo base_url(); ?>assets/img/pacman.png"></img>
+			        <a class="navbar-brand" href="<?php echo base_url(); ?>home">
+			       		<img src="<?php echo base_url(); ?>assets/img/pacman.png"></img> <strong>Home</strong>
 			        </a>
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">

@@ -4,7 +4,7 @@
 		<footer>
 			<div id="footer">
 				<hr>
-				<p><a href="#">Contact</a></p>
+				<p><a href="<?php echo base_url(); ?>contact">Contact</a></p>
 			</div>
 		</footer>
 		</div> <!-- /.wrapper -->		
