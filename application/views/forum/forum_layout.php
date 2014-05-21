@@ -43,8 +43,8 @@
                                                     <td><?php echo $thread_item['t_id'] ?></td>
 
                                                     <td><a href="forum/<?php echo $thread_item['slug'] ?>"><?php echo $thread_item['topic'] ?></a></td>
-
-                                                    <td><a href="#"><?php echo $thread_item['creator_name'] ?></a></td>
+													<?php $username = $thread_item['creator_name']; ?>
+                                                    <td><a href="<?php echo base_url(); ?>profile/<?php echo $username; ?>"><?php echo $thread_item['creator_name'] ?></a></td>
 
                                                     <td><?php echo $thread_item['date_started'] ?></td>
                                                 </tr><?php endforeach ?>

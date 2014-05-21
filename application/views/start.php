@@ -25,11 +25,11 @@
         <div class="vert-text">
             <h1 class="logo_text">
             	<a href="<?php echo base_url();?>start">SaveShare</a>
-            	<a href="<?php echo base_url();?>start"><i class="fa fa-bar-chart-o"></i></a>
+            	<!--<a href="<?php echo base_url();?>start"><i class="fa fa-bar-chart-o"></i></a> -->
             </h1>
             <h3>
-                <em>Save</em> More,
-                <em>Learn</em> More
+                <em>Save</em> Money,
+                <em>Share</em> Economy
            </h3>    			
 			<!-- Button trigger sign_up_modal -->
 			<h3>
@@ -46,7 +46,7 @@
 				<!--/ Button trigger sign_in_modal -->	
 			</h3>
 			<h3>
-				<a href="#about" id="info_button" class="btn btn-link">Read More</a>
+				<a href="#about" id="info_button" class="btn btn-link">About SaveShare</a>
 			</h3>         
         </div>
     </div><!--./header-->
@@ -123,8 +123,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
-                    <h2>The World's Best Economy Service</h2>
-                    <p class="lead">Are you tired of constantly going broke? Do you have no idea of where your money goes? Are your pockets an empty, bottomless pit of guilt, doubt and self-pity? Sign up today and start saving.</p>
+                    <h2>Save and share</h2>
+                    <p class="lead">SaveShare helps you to get order in your economy and also lets you see how other people save to improve your own savings. Sign up today and start saving!</p>
                 </div>
             </div>
         </div>
@@ -135,31 +135,31 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="about">
-            <img class="featurette-image img-rounded img-responsive pull-right" src="http://placehold.it/500x500">
-            <h2 class="featurette-heading">This First Heading
-                <span class="text-muted">Will Catch Your Eye</span>
+            <img class="featurette-image img-rounded img-responsive pull-right" src="<?php echo base_url(); ?>assets/img/savingchart.jpg">
+            <h2 class="featurette-heading">Save Your Money
+                <span class="text-muted">And Keep Control Of It.</span>
             </h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p class="lead">Insert your saving and liabilities at your account to bring order in your economy. If you have your savings dispersed in different bank accounts or assets SaveShare lets you gather all in the same place.</p>
         </div>
 
         <hr class="featurette-divider">
 
         <div class="featurette" id="services">
-            <img class="featurette-image img-rounded img-responsive pull-left" src="http://placecreature.com/500/500">
-            <h2 class="featurette-heading">The Second Heading
-                <span class="text-muted">Is Pretty Cool Too.</span>
+            <img class="featurette-image img-rounded img-responsive pull-left" src="<?php echo base_url(); ?>assets/img/katrin.jpg">
+            <h2 class="featurette-heading">Follow People
+                <span class="text-muted">To Learn How Other Save.</span>
             </h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p class="lead">Follow other people to learn and study how similar people arrange their money.  In the forum users can connect with each other and discuss economy related issues. By sharing economic information it has never been this easy to save money!</p>
         </div>
 
         <hr class="featurette-divider">
 
         <div class="featurette" id="contact">
-            <img class="featurette-image img-rounded img-responsive pull-right" src="http://placecreature.com/500/500">
-            <h2 class="featurette-heading">The Third Heading
-                <span class="text-muted">Will Seal the Deal.</span>
+            <img class="featurette-image img-rounded img-responsive pull-right" src="<?php echo base_url(); ?>assets/img/privacy.jpg">
+            <h2 class="featurette-heading">Protect Your Privacy
+                <span class="text-muted">To Have Your Money Secured.</span>
             </h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p class="lead">By choosing a nickname it is possible to be anonymous and you can also chose how much you want to share with other users. The privacy settings lets you decide what only you can see and what everyone can see about your finances. </p>
 	</div>
 	<hr>
 	<!-- /END THE FEATURETTES -->

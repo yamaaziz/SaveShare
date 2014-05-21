@@ -56,8 +56,8 @@ class Forum extends CI_Controller{
 			else {
 					
 					$id = $this->session->userdata('user_id');
-					$this->forum_model->create_message($id);
-					redirect('forum');			
+					$slug= $this->forum_model->create_message($id);
+					redirect("forum/$slug");			
 			}
 		}
 		

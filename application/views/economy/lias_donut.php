@@ -14,6 +14,7 @@
 							$economy['other_loan'];
 							}
 							?>
+
 								<script>
 									new Morris.Donut({
 										element: 'liabilities_chart',
