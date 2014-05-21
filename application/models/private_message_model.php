@@ -40,14 +40,16 @@ class Private_message_model extends CI_Model{
 		);
 		
 		$insert = $this->db->insert('conversation', $new_conversation);
-		//echo $participant_b;
+		
+		
 		return $insert;
 	}
 	public function get_conversation($me){
 		
 		$this->db->select("conversation.c_id,
 						   conversation.participant_a,
-						   conversation.participant_b"
+						   conversation.participant_b,
+						   conversation.date_started"
 						  );
 
 		$where = "conversation.participant_a = $me OR conversation.participant_b = $me";
@@ -67,6 +69,20 @@ class Private_message_model extends CI_Model{
 				  AND private_message.c_id = $c_id";
 		$this->db->where($where);
 		return $this->db->get('private_message');
+	}
+	public function insert_message($c_id, $sender, $recipient, $content){
+		$pm = array(
+			'c_id'		=>	$c_id,
+			'sender'	=> $sender,
+			'recipient'	=> $recipient,
+			'content'	=> $content,
+			'active'	=> '1'
+			);		
+		
+		$insert = $this->db->insert('private_message', $pm);
+		return $insert;
+		
+		
 	}
 }
 /*End of file private_message_model.php*/
