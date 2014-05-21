@@ -29,12 +29,6 @@ body{
 	font-size: small;
 	padding-right: 10px; 
 }
-
-#logo{
-	font-weight: bold;
-	color: black;
-}
-
 .navbar-top-links li {
     display: inline-block;
 }

@@ -42,9 +42,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="<?php echo base_url(); ?>home">
-			       		<img src="<?php echo base_url(); ?>assets/img/pacman.png"></img> <strong>Home</strong>
-			        </a>
+			        <a class="navbar-brand" href="<?php echo base_url();?>home">SaveShare</a>			        
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">
 			        <ul class="nav navbar-nav">
@@ -171,8 +169,11 @@
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 			    <ul class="sidebar-nav">
+			    	<li>
+			        	<a href="<?php echo base_url();?>home"><i class="fa fa-home"></i> Home</a>
+			        </li>
 			        <li>
-			        	<a id='profile_link' data-test ="data_id" href="<?php echo base_url();?>profile<?php echo "/$username" ?>"><i class="fa fa-truck"></i> Profile</a>
+			        	<a href="<?php echo base_url();?>profile<?php echo "/$username" ?>"><i class="fa fa-user"></i> Profile</a>
 			        </li>
 			        <li>
 			        	<a href="<?php echo base_url(); ?>economy"><i class="fa fa-table"></i> Economy</a>
