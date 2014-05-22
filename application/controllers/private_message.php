@@ -59,15 +59,14 @@ class Private_message extends CI_Controller{
 		$me = $this->session->userdata('user_id');
 		if($conversations = $this->private_message_model->get_conversation($me)){
 			foreach ($conversations->result() as $row):
-				$participant_a = $row->participant_a;
-				$participant_b = $row->participant_b;
 				if(!($row->participant_a == $me)){
 					$username = $this->account_model->get_username($row->participant_a);
+					$participant_a = $row->participant_a;
 					$c_id = $row->c_id;
 					echo("<li class='left clearfix'>
 						<div class='conversation-body clearfix'>
 							<div class='header'>
-								<strong class='primary-font'><a data-c_id='$c_id' data-user_id='$participant_b' href='javascript:;' >$username</a>
+								<strong class='primary-font'><a data-c_id='$c_id' data-user_id='$participant_a' href='javascript:;' >$username</a>
 								</strong>
 								
 								<small class='pull-right text-muted'>
@@ -79,6 +78,7 @@ class Private_message extends CI_Controller{
                      ");
 				}
 				elseif(!($row->participant_b == $me)){
+					$participant_b = $row->participant_b;
 					$username = $this->account_model->get_username($row->participant_b);
 					$c_id = $row->c_id;
 					$date_started = $row->date_started;
