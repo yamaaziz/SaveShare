@@ -172,7 +172,7 @@
 			<div id="sidebar-wrapper">
 			    <ul class="sidebar-nav">
 			    	<li>
-			        	<a href="<?php echo base_url();?>profile/home"><i class="fa fa-home"></i> Home</a>
+			        	<a href="<?php echo base_url();?>home"><i class="fa fa-home"></i> Home</a>
 			        </li>
 			        <li>
 			        	<a href="<?php echo base_url();?>profile<?php echo "/$username" ?>"><i class="fa fa-user"></i> Profile</a>

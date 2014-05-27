@@ -8,16 +8,11 @@ class Account extends CI_Controller{
 		// Your own constructor code
 	}
 	public function index(){
-		if(!$this->is_signed_in()){
-			redirect('account/sign_in');
-		}
-		else{
 		$data['economy_data']=$this->collect_economyinfo();
 		//Load Views
 		$this->load->view('profile/templates/header');
 		$this->load->view("account/settings/settings_layout", $data);
 		$this->load->view('profile/templates/footer');
-		}
 	}
 
 	public function sign_in(){
@@ -33,7 +28,7 @@ class Account extends CI_Controller{
 		else{
 			$this->session->set_flashdata('sign_in_succeeded', 'You were successfully signed in.');
 			$username = $this->get_username();
-			redirect("profile/home");
+			redirect("profile/$username");
 		}
 	}
 	public function sign_up(){
@@ -505,16 +500,6 @@ class Account extends CI_Controller{
 	private function get_username(){
 	 	$username = $this->session->userdata('username');
 	 	return $username;
-	}
-	private function is_signed_in(){
-	
-		if($this->session->userdata('logged_in')){
-			return TRUE;
-		}
-		
-		else{
-			return FALSE;
-		}
 	}
 }	
 /* End of file account.php */
