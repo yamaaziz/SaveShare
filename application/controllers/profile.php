@@ -86,7 +86,27 @@ class Profile extends CI_Controller{
  	private function get_id(){
 	 	return $id = $this->session->userdata('user_id');
  	}
-
+ 	
+ 	public function home(){
+ 		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		$this->load->view('profile/templates/header');
+			$this->load->view('home/home');
+			$this->load->view('profile/templates/footer');	
+    	}
+	}
+	public function contact(){
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		$this->load->view('profile/templates/header');
+			$this->load->view('home/home');
+			$this->load->view('profile/templates/footer');	
+    	}
+	}
     private function is_signed_in() {
 	
 		if($this->session->userdata('logged_in')){
