@@ -14,17 +14,7 @@
     <div class="page-content inset">
         <div class="row">
             <div class="col-md-6">
-                <p <i class="fa fa-envelope"> </i>contact@saveshare.com</p>
-				<p 
-				</p>
-				 
-				 <i class="fa fa-phone"></i> +46 8670567</a>
-
-  
-                  
-
-	
-	
+                <p <i class="fa fa-envelope"> </i>savesharee [at] gmail [dot] com</p>
          </div><!--./col-md-6 -->
       </div><!--./row -->
     </div><!-- /.page-content inset -->

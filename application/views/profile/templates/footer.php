@@ -163,7 +163,6 @@
 </script>
 <!-- Custom JavaScript for Getting Private Messages -->
 <script type="text/javascript">
-    $(document).ready(function() {
         $(document).on("click", '.conversation-body .header a', function(event) {
             //$( "#message_body" ).load( "<?php echo base_url() . 'private_message/view_message' ?>" );
             //var participant_b = $(this).html(); //name
@@ -176,7 +175,7 @@
             ajaxIncomingMessage();
         });
         $(document).on('click','#btn-send', function(event){
-        	ajaxOutgoingMessage();	
+        	ajaxOutgoingMessage();
         });
         $(document).keypress(function(e) {
         	
@@ -185,16 +184,11 @@
         		if (typeof(send_input) != "undefined" && send_input !== null){
         			if(send_input.length > 0){
         				ajaxOutgoingMessage();
-
-	        			
+						//scrollDown();
         			}
 				}
-        	
 			}
 		});
-        
-
-    });
     function ajaxIncomingMessage() {
         //var error_log = 'view message on load';
         //console.log(error_log);

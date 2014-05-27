@@ -127,6 +127,9 @@ body{
 .advanced-search {
 	margin-top: 15px;
 }
+#warning-text{
+	padding-left = 10px;
+}
 
 
 /* sidebar */

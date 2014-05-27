@@ -33,7 +33,7 @@ class Private_message extends CI_Controller{
 				echo("<li class='left clearfix'>
 						<div class='conversation-body clearfix'>
 							<div class='header'>
-								<strong class='primary-font'><a data-c_id='$c_id' data-user_id:'$participant_b' href='javascript:;' >$username</a>
+								<strong class='primary-font'><a data-c_id='$c_id' data-user_id='$participant_b' href='javascript:;' >$username</a>
 								</strong>
 								<small class='pull-right text-muted'>
 									<i class='fa fa-clock-o fa-fw'></i>$date_started</small>  
@@ -63,6 +63,7 @@ class Private_message extends CI_Controller{
 					$username = $this->account_model->get_username($row->participant_a);
 					$participant_a = $row->participant_a;
 					$c_id = $row->c_id;
+					$date_started = $row->date_started;
 					echo("<li class='left clearfix'>
 						<div class='conversation-body clearfix'>
 							<div class='header'>
@@ -70,7 +71,7 @@ class Private_message extends CI_Controller{
 								</strong>
 								
 								<small class='pull-right text-muted'>
-									<i class='fa fa-clock-o fa-fw'></i> 13 mins ago</small>  
+									<i class='fa fa-clock-o fa-fw'></i> $date_started</small>  
 							</div>
 							<p></p>
 						</div>
