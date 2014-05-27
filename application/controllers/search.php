@@ -4,11 +4,14 @@
 class Search extends CI_Controller{
 
 	public function advanced_search(){
-	
-		$this->load->view('profile/templates/header');
-		$this->load->view('search/advanced_search');
-		$this->load->view('profile/templates/footer');
-		
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		$this->load->view('profile/templates/header');
+			$this->load->view('search/advanced_search');
+			$this->load->view('profile/templates/footer');
+    	}
 	}
 
 	public function validate_advanced_search(){ 
@@ -123,7 +126,16 @@ class Search extends CI_Controller{
 		$name_array = $this->follower_model->get_following_username($id_array);
 		return $name_array;
 	}
-
+	private function is_signed_in() {
+	
+		if($this->session->userdata('logged_in')){
+			return TRUE;
+		}
+		
+		else{
+			return FALSE;
+		}
+	}
 	
 }
 /* End of file search.php */

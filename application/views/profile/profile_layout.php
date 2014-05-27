@@ -27,15 +27,8 @@ if (isset($economy_info) && isset($user_info)) {
             <div class="col-md-12">
                 <!-- Display user-feedback messages -->
                 <?php
-                //Sign in success
-                if ($this->session->flashdata('sign_in_succeeded')) {
-                    echo '<div class="alert alert-success alert-dismissable">';
-                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-                    echo '<strong>' . $this->session->flashdata('sign_in_succeeded') . '</strong>';
-                    echo '</div>';
-                }
                 //Economy success
-                elseif ($this->session->flashdata('economy_succeeded')) {
+                if ($this->session->flashdata('economy_succeeded')) {
                     echo '<div class="alert alert-success alert-dismissable">';
                     echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
                     echo '<strong>' . $this->session->flashdata('economy_succeeded') . '</strong>';
@@ -109,14 +102,5 @@ if (strtolower($session_data['username']) != strtolower($var['username'])) {
                 <?php } ?>	
             </div><!--./col-md-6-->
         </div><!--./row-->
-        <div class="row">
-            <div class="col-md-12">
-                <p class="well"> Session data </p>
-                <?php foreach ($session_data as $key => $value) {
-                    echo "$key: $value\n" . '<br/>';
-                } ?>
-              
-            </div><!--./col-md-12-->
-        </div><!-- /.row -->
     </div><!-- /.page-content inset -->
 </div><!-- /.page-content-wrapper --> 
