@@ -4,11 +4,21 @@
 class Contact extends CI_Controller{
 
 	public function index(){
-	
-		$this->load->view('profile/templates/header');
-		$this->load->view('contact/contact');
-		$this->load->view('profile/templates/footer');
-		
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		$this->load->view('profile/templates/header');
+			$this->load->view('contact/contact');
+			$this->load->view('profile/templates/footer');	
+    	}
 	}
-
+	private function is_signed_in() {
+		if($this->session->userdata('logged_in')){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
+	}
 }

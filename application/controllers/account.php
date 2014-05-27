@@ -8,11 +8,17 @@ class Account extends CI_Controller{
 		// Your own constructor code
 	}
 	public function index(){
-		$data['economy_data']=$this->collect_economyinfo();
-		//Load Views
-		$this->load->view('profile/templates/header');
-		$this->load->view("account/settings/settings_layout", $data);
-		$this->load->view('profile/templates/footer');
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		$data['economy_data']=$this->collect_economyinfo();
+			//Load Views
+			$this->load->view('profile/templates/header');
+			$this->load->view("account/settings/settings_layout", $data);
+			$this->load->view('profile/templates/footer');
+	    	
+    	}
 	}
 
 	public function sign_in(){
@@ -28,7 +34,7 @@ class Account extends CI_Controller{
 		else{
 			$this->session->set_flashdata('sign_in_succeeded', 'You were successfully signed in.');
 			$username = $this->get_username();
-			redirect("profile/$username");
+			redirect("home");
 		}
 	}
 	public function sign_up(){
@@ -86,30 +92,45 @@ class Account extends CI_Controller{
     }
 	
     public function profile_settings(){
-		//Load Profile Data
-	    $id = $this->session->userdata('user_id');
-	    $data['profile_data'] = $this->account_model->get_userdata($id);	
-		//View data
-		$this->load->view('profile/templates/header');
-		$this->load->view('account/settings/profile_settings', $data);
-		$this->load->view('profile/templates/footer');
-		
+    	if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		//Load Profile Data
+			$id = $this->session->userdata('user_id');
+			$data['profile_data'] = $this->account_model->get_userdata($id);	
+			//View data
+			$this->load->view('profile/templates/header');
+			$this->load->view('account/settings/profile_settings', $data);
+			$this->load->view('profile/templates/footer');
+    	}
+
 	}
     public function security_settings(){
-		$this->load->view('profile/templates/header');
-		$this->load->view('account/settings/security_settings');
-		$this->load->view('profile/templates/footer');
+    	if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+			$this->load->view('profile/templates/header');
+			$this->load->view('account/settings/security_settings');
+			$this->load->view('profile/templates/footer');
+    	}
     }
     
     public function privacy_settings() {
-		//Load Profile Data
-		$id = $this->session->userdata('user_id');
-    	$data['profile_data2'] = $this->account_model->get_userdata($id);
-    	$data['privacy'] = $this->account_model->get_privacy_data($id);
-    	//View data
-    	$this->load->view('profile/templates/header');
-    	$this->load->view('account/settings/privacy_settings', $data);
-    	$this->load->view('profile/templates/footer');
+    	if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+    		//Load Profile Data
+			$id = $this->session->userdata('user_id');
+	    	$data['profile_data2'] = $this->account_model->get_userdata($id);
+	    	$data['privacy'] = $this->account_model->get_privacy_data($id);
+	    	//View data
+	    	$this->load->view('profile/templates/header');
+	    	$this->load->view('account/settings/privacy_settings', $data);
+	    	$this->load->view('profile/templates/footer');
+    	}
     }
     
     public function validate_profile_settings(){
@@ -501,6 +522,15 @@ class Account extends CI_Controller{
 	 	$username = $this->session->userdata('username');
 	 	return $username;
 	}
+	private function is_signed_in() {
+		if($this->session->userdata('logged_in')){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
+	}
+
 }	
 /* End of file account.php */
 /* Location: ./application/controllers//account.php */

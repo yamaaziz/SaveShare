@@ -159,12 +159,12 @@
 						</div>
 					</div>
 		        	<ul class = "advanced-search">
-			            	<a href="<?php echo base_url(); ?>search/advanced_search">
-							<small><em>Advanced search</em></small>
+		        		<a href="<?php echo base_url(); ?>search/advanced_search">
+		        			<small><em>Advanced search</em></small>
 							<i class="fa fa-angle-right"></i>
-							<span = class="text-error" id="warning-text"> <i class="fa fa-warning"></i> The site is under construction. Please use the contact link below to report errors.
-							</span>
-	        			</a>
+						</a>
+						<span = class="text-error" id="warning-text"> <i class="fa fa-warning"></i> The site is under construction. Please use the contact link below to report errors.
+						</span>
 	        		</ul>
 			    </div><!--./collapse navbar-collapse -->
 			</nav>

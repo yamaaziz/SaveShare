@@ -9,13 +9,18 @@ class Forum extends CI_Controller{
             // Your own constructor code
        }
 	   
-	public function index(){		
-		//Load Views
-		$data['thread'] = $this->forum_model->get_threads();
-		
-    	$this->load->view('profile/templates/header');
-    	$this->load->view('forum/forum_layout', $data);
-    	$this->load->view('profile/templates/footer');    	       
+	public function index(){
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+			//Load Views
+			$data['thread'] = $this->forum_model->get_threads();
+			
+	    	$this->load->view('profile/templates/header');
+	    	$this->load->view('forum/forum_layout', $data);
+	    	$this->load->view('profile/templates/footer');  
+    	}		       
 	}	
 
 
@@ -62,24 +67,36 @@ class Forum extends CI_Controller{
 		}
 		
 	public function view($slug){
-		$data['thread_item'] = $this->forum_model->get_threads($slug);
-		$data['messages'] = $this->forum_model->get_messages($slug);
-		$data['slug'] = $slug;
-		
-		//$data[] = $this->forum_model->get_username();
-
-		if (empty($data['thread_item']))
-		{
-			show_404();
-		}
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+	    	$data['thread_item'] = $this->forum_model->get_threads($slug);
+			$data['messages'] = $this->forum_model->get_messages($slug);
+			$data['slug'] = $slug;
+			
+			//$data[] = $this->forum_model->get_username();
 	
-		//$data['topic'] = $data['news_item']['topic'];
-	
-		$this->load->view('profile/templates/header', $data);
-		$this->load->view('forum/view', $data);
-		$this->load->view('profile/templates/footer');
+			if (empty($data['thread_item']))
+			{
+				show_404();
+			}
 		
+			//$data['topic'] = $data['news_item']['topic'];
+		
+			$this->load->view('profile/templates/header', $data);
+			$this->load->view('forum/view', $data);
+			$this->load->view('profile/templates/footer');
+    	}		
+	}
+	private function is_signed_in() {
+		if($this->session->userdata('logged_in')){
+			return TRUE;
 		}
+		else{
+			return FALSE;
+		}
+	}
 
 			
 }	

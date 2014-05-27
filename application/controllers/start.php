@@ -13,7 +13,7 @@ class Start extends CI_Controller{
 
 		if($this->is_signed_in()){
 			$username = $this->get_username();
-	    	redirect("profile/$username");
+	    	redirect("home");
     	}
     	else{
 	    	$this->load->view('start');

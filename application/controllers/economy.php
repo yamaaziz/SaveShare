@@ -10,12 +10,17 @@ class Economy extends CI_Controller{
        }
 	   
 	public function index(){
-		//Load Data
-		$data['economy_data']=$this->collect_economyinfo();
-		//Load Views
-    	$this->load->view('profile/templates/header');
-    	$this->load->view('economy/add_economy_layout', $data);
-    	$this->load->view('profile/templates/footer');    	       
+		if(!$this->is_signed_in()){
+	    	redirect('account/sign_in');
+    	}
+    	else{
+	    	//Load Data
+			$data['economy_data']=$this->collect_economyinfo();
+			//Load Views
+	    	$this->load->view('profile/templates/header');
+	    	$this->load->view('economy/add_economy_layout', $data);
+	    	$this->load->view('profile/templates/footer'); 
+    	}       
 	}
 	
 		
@@ -71,6 +76,14 @@ class Economy extends CI_Controller{
 	private function get_username(){
 	 	$username = $this->session->userdata('username');
 	 	return $username;
+	}
+	private function is_signed_in() {
+		if($this->session->userdata('logged_in')){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
 	}
 			
 }	
