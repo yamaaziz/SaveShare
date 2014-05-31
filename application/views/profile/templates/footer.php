@@ -135,13 +135,23 @@
         $.ajax({
             type: 'POST',
             url: "<?php echo base_url(); ?>private_message/view_conversation",
+            complete: function(){
+            	getLastMessage()
+            },
             success: function(data) {
                 //console.log( data); //spionutskrift ta bort sen
                 $('#conversation_list').append(data);
+                //console.log(data);
             }
         });
-    }
-    ;
+	
+	}
+	function getLastMessage(){
+		$( "div.header a" ).each(function( index )
+        {
+        	console.log( 'Username' + ": " + $( this ).text() + ' c_id = ' + $(this).data('c_id') + ' user_id = ' + $				(this).data('user_id') );
+		});
+	};
 </script>
 <!-- Custom JavaScript for Selecting Username in PM -->
 <script type="text/javascript">

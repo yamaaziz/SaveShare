@@ -46,7 +46,7 @@
 				<!--/ Button trigger sign_in_modal -->	
 			</h3>
 			<h3>
-				<a href="#about" id="info_button" class="btn btn-link">About SaveShare</a>
+				<a href="#about" id="info_button" class="btn btn-link">Learn More <i class="fa fa-chevron-down"></i></a>
 			</h3>         
         </div>
     </div><!--./header-->
@@ -186,9 +186,9 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
     <!-- JavaScript for showing the modals after form validation errors -->
-	<? if (isset($pathway) && $pathway != '') : ?>
+	<?php if (isset($pathway) && $pathway != '') { ?>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/<?=$pathway;?>"></script>
-	<? endif;?>
+	<?php }?>
 	<!-- Custom JavaScript for hidig forgot password modal -->
 	<script>
 	function hide_forgot_password_modal()
