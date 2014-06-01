@@ -3,7 +3,7 @@
 <!-- PHP Code Here -->
 <!-- START PAGE -->
 <!-- Page content -->
-<?php $privacy = get_object_vars($privacy);?>
+<?php $session_data = $this->session->all_userdata(); ?>
 <div id="page-content-wrapper">
     <div class="content-header">
         <h1>
@@ -33,40 +33,76 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	<?php var_dump($privacy); ?>
-                        	</br>
-                        	</br>
-                        	</br>
-                        	<?php var_dump($user_info); ?>
-								<!--- <?php $search_info = array_combine($user_info, $privacy); ?> --->
-                            <?php foreach ($user_info as $row) { ?>
-                                <tr> 
+                        
+					<!--Load all privacy arrays and put them in one array-->
+                        	<?php $privacy_combination = array(); ?>
+                        	<?php $index = 0; ?>
+                			<?php foreach (range(0, count($user_info)-1) as $whatever) { ?>
+                			<?php $privacy_y = 'privacy'. $index; ?>
+                			<?php $index = $index + 1; ?>
+                			<?php array_push($privacy_combination, get_object_vars($$privacy_y)); ?>
+                			<?php } ?>
+                			
+                	<!--Merge the privacy info with the user info about the hits from the search-->
+                			<?php $result = array_merge($user_info, $privacy_combination); ?>
+                			
+                	<!--Display search results-->
+                        	<?php $index_users = 0; ?>
+                        	<?php $index_privacy = count($result)/2; ?>
+                            <?php foreach (range(0, count($result)/2-1) as $row) { ?>
+                                <tr>
+                                
+                            <!--Conditions for only showing those that have chosen to display their information -->
+                                <?php if ($result[$index_users]['birth_year'] != 'hide' && $result[$index_users]['gender'] != 'hide' && $result[$index_users]['city'] != 'hide' && $result[$index_users]['occupation'] != 'hide' && $result[$index_users]['income'] != 'hide') { ?>
                                     <td><a href="<?php echo base_url() . 'profile/' . $row['username']; ?>" >
-                                            <?php echo ucfirst($row['username']); ?>
-                                            
+                                            <?php echo ucfirst($result[$index_users]['username']); ?>
                                         </a></td>
-                                    <?php if (empty($row['birth_year'])) { ?>
+                                        
+                                <!--Conditions for showing age-->
+                                    <?php if (empty($result[$index_users]['birth_year'])) { ?>
                                         <td></td>
                                     <?php } else { ?>
-                                        <td><?php echo date("Y") - $row['birth_year']; ?></td>
-                                    <?php } ?>
-                                    <?php if ($privacy['p_id'] == $row['id'] && $privacy['p_gender'] == 2) { ?>
-                                    <td><?php echo ucfirst($row['gender']); ?></td>
-                                    <?php } elseif ($privacy['p_id'] == $row['id'] && $privacy['p_gender'] == 1) { ?>
-                                    <td><?php echo 'Hidden'; ?></td>
-                                    <?php } elseif ($privacy['p_id'] != $row['id']) { ?>
-                                    <td><?php echo 'Fel!'; ?></td>
+                                    	<?php if ($result[$index_privacy]['p_age'] == 2) { ?>
+                                        <td><?php echo date("Y") - $result[$index_users]['birth_year']; ?></td>
+                                         <?php } elseif ($result[$index_privacy]['p_age'] == 1) { ?>
+                                         <td></td>
+                                         <?php } else { ?>
+                                         <td></td>
+                                    	<?php } ?>
                                     <?php } ?>
                                     
-                                    <td><?php echo ucfirst($row['city']); ?></td>
-                                    <td><?php echo ucfirst($row['occupation']); ?></td>
-                                    <td><?php echo ucfirst($row['income']); ?></td>
+                                <!--Conditions for showing gender-->
+                                    <?php if ($result[$index_privacy]['p_gender'] == 2) { ?>
+                                    <td><?php echo ucfirst($result[$index_users]['gender']); ?></td>
+                                    <?php } elseif ($result[$index_privacy]['p_gender'] == 1) { ?>
+                                    <td></td>
+                                    <?php } ?>
+                
+                                <!--Conditions for showing city-->
+                                    <?php if ($result[$index_privacy]['p_city'] == 2) { ?>
+                                    <td><?php echo ucfirst($result[$index_users]['city']); ?></td>
+                                    <?php } elseif ($result[$index_privacy]['p_city'] == 1) { ?>
+                                    <td></td>
+                                    <?php } ?>
+                
+                                <!--Conditions for showing occupation-->
+                                    <?php if ($result[$index_privacy]['p_occupation'] == 2) { ?>
+                                    <td><?php echo ucfirst($result[$index_users]['occupation']); ?></td>
+                                    <?php } elseif ($result[$index_privacy]['p_occupation'] == 1) { ?>
+                                    <td></td>
+                                    <?php } ?>
+                
+                                 <!--Conditions for showing income-->
+                                    <?php if ($result[$index_privacy]['p_income'] == 2) { ?>
+                                    <td><?php echo ucfirst($result[$index_users]['income']); ?></td>
+                                    <?php } elseif ($result[$index_privacy]['p_income'] == 1) { ?>
+                                    <td></td>
+                                    <?php } ?>
                                 </tr>
-                            
+                            	<?php } ?>
+                            	<?php $index_users = $index_users + 1; ?>
+                            	<?php $index_privacy = $index_privacy + 1; ?>
                             <?php } ?>
-                            
-
-                           
                         </tbody>
                     </table>
                 </div><!-- /.table-responsive -->

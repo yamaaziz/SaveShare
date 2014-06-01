@@ -4,19 +4,19 @@
 class Search extends CI_Controller{
 
 	public function advanced_search(){
-		$id = $this->search_model->search(); //detta ger bara id på den som vi söker på
-		$user_data = $this->account_model->get_userdata($id);
-		$id2 = $this->account_model->get_id($username);
-		$data['privacy'] = $this->account_model->get_privacy_data($id2);
-
 		$this->load->view('profile/templates/header');
-		$this->load->view('search/advanced_search', $data);
+		$this->load->view('search/advanced_search');
 		$this->load->view('profile/templates/footer');
 	}
 
 	public function validate_advanced_search(){
-		$id = $this->search_model->search(); //detta ger bara id på den som vi söker på
-		$data['privacy'] = $this->account_model->get_privacy_data($id);
+		$index = 0;
+		$array = $this->search_model->adv_search();
+		foreach (range(0, count($array)-1) as $whatever) {
+			$id3 = $array[$index]['id'];
+			$data['privacy'. $index] = $this->account_model->get_privacy_data($id3);
+			$index = $index + 1;
+		}
 
     	$this->form_validation->set_rules('username','Username','trim|xss_clean');
     	$this->form_validation->set_rules('birth_year','birth_year','trim|xss_clean');
@@ -39,8 +39,7 @@ class Search extends CI_Controller{
 				//$data['user_info'] = $this->collect_userinfo($row['id']);				
 				//$data1['user_info']		= 	$this->collect_userinfo($id);
 				//$data1['economy_info']	=	$this->collect_economyinfo($id);
-				//Load Views
-				
+				//Load Views				
 				$this->load->view('search/search_result', $data);
 				//}
 				
@@ -92,8 +91,14 @@ class Search extends CI_Controller{
 
         foreach ($query->result() as $row):
         	$link = base_url() . 'profile/' . $row->username;
+        	$privacy_data = get_object_vars($this->account_model->get_privacy_data($row->id));
+        	if ($privacy_data['p_city'] == 2) {
             echo "<li><a href='$link'><strong id='search_result_username'>".$row->username."</strong></a>"."<br>".
             "<span class=text-muted small>".$row->city."</span></li>";
+            } elseif ($privacy_data['p_city'] == 1) {
+            echo "<li><a href='$link'><strong id='search_result_username'>".$row->username."</strong></a>"."<br>".
+            "<span class=text-muted small>".' '."</span></li>";
+            }
         endforeach;
     }
     public function autocompleteMessage(){

@@ -465,7 +465,7 @@
 						?>
 						<span style="margin-left: 367px;" >
 						<?php			
-						echo form_checkbox($data10, '2', followers_enable()); //här kanske det ska vara en 1a
+						echo form_checkbox($data10, '2', followers_enable());
 						?>
 						</span>
 						<!--Display field errors-->
@@ -473,7 +473,7 @@
 						
 						
 					<!--Field: Search-->
-						<p><?php echo form_label('People can find me in search'); ?>
+						<!--<p><?php echo form_label('People can find me in search'); ?>
 						<?php
 						$data11 = array(
 										'name'	=>	'search',
@@ -481,6 +481,7 @@
 										
 									);
 						?>
+						
 						<?php
 						function search_enable() {
 						global $privacy_;						
@@ -502,7 +503,7 @@
 						?>
 						</span>
 						<!--Display field errors-->
-						<!--<?php echo form_error('income'); ?>--></p>
+						<!--<?php echo form_error('income'); ?>--><!-- </p> -->
 						
 						
 						<br/>
