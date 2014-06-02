@@ -42,7 +42,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-			        <a class="navbar-brand" href="<?php echo base_url();?>home">SaveShare</a>			        
+                    <a class="navbar-brand" id="logo" href="<?php echo base_url();?>home"><img src="<?php echo base_url();?>assets/img/logo_text.png"></img></a>			        
 			    </div>
 			    <div id="head" class="collapse navbar-collapse">
 			        <ul class="nav navbar-nav">
@@ -163,8 +163,6 @@
 		        			<small><em>Advanced search</em></small>
 							<i class="fa fa-angle-right"></i>
 						</a>
-						<span = class="text-error" id="warning-text"> <i class="fa fa-warning"></i> The site is under construction. Please use the contact link below to report errors.
-						</span>
 	        		</ul>
 			    </div><!--./collapse navbar-collapse -->
 			</nav>

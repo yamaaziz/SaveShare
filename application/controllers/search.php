@@ -4,7 +4,6 @@
 class Search extends CI_Controller{
 
 	public function advanced_search(){
-<<<<<<< HEAD
 		if(!$this->is_signed_in()){
 	    	redirect('account/sign_in');
     	}
@@ -13,11 +12,9 @@ class Search extends CI_Controller{
 			$this->load->view('search/advanced_search');
 			$this->load->view('profile/templates/footer');
     	}
-=======
 		$this->load->view('profile/templates/header');
 		$this->load->view('search/advanced_search');
 		$this->load->view('profile/templates/footer');
->>>>>>> origin/Johanna6
 	}
 
 	public function validate_advanced_search(){
@@ -116,12 +113,10 @@ class Search extends CI_Controller{
     	$message_search = $this->input->post('message_search');
         $query = $this->search_model->get_autocompleteMessage($message_search);
 		
-		$number = 0;
         foreach ($query->result() as $row):
         	
         	$link = base_url() . 'profile/' . $row->username;
-        	//You could store the value in a data attribute for each link:
-            echo "<li><strong><a href='javascript:;' class='search_result_message' id='autoListMessage'>"
+            echo "<li><strong><a href='javascript:;' class='search_result_message'>"
             .$row->username
             ."</a></strong></li>";
         endforeach;

@@ -131,7 +131,9 @@ body{
 	padding-left = 10px;
 	font-size: smaller;
 }
-
+#logo{
+    padding-top:5px;
+}
 
 /* sidebar */
 #sidebar-wrapper {
