@@ -54,7 +54,7 @@
                                 
                             <!--Conditions for only showing those that have chosen to display their information -->
                                 <?php if ($result[$index_users]['birth_year'] != 'hide' && $result[$index_users]['gender'] != 'hide' && $result[$index_users]['city'] != 'hide' && $result[$index_users]['occupation'] != 'hide' && $result[$index_users]['income'] != 'hide') { ?>
-                                    <td><a href="<?php echo base_url() . 'profile/' . $row['username']; ?>" >
+                                    <td><a href="<?php echo base_url() . 'profile/' . $result[$index_users]['username']; ?>" >
                                             <?php echo ucfirst($result[$index_users]['username']); ?>
                                         </a></td>
                                         
