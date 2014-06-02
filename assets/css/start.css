@@ -31,8 +31,8 @@ body {
 	padding-top: 50px;
 	color: rgb(66,139,177);
 	font-size: inherit;
-	text-decoration: none;
 }
+
 /*Custom: Positions the modals a bit more south*/
 #sign_in_modal_ {
   margin-top: 170px;

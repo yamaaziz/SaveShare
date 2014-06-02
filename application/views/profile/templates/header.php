@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!-- PHP Code Here -->
-<!-- START PAGE -->
+	<!-- START PAGE -->
 <!DOCTYPE html>
 	<?php $today = getdate(); ?>
 <html lang="en">
