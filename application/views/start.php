@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" type="image/ico" href="http://www.saveshare.stsvt14.student.it.uu.se/saveshare/favicon.ico">
     <title>SaveShare</title>
 
     <!-- Bootstrap core CSS -->
