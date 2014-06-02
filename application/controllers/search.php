@@ -4,6 +4,7 @@
 class Search extends CI_Controller{
 
 	public function advanced_search(){
+<<<<<<< HEAD
 		if(!$this->is_signed_in()){
 	    	redirect('account/sign_in');
     	}
@@ -12,9 +13,22 @@ class Search extends CI_Controller{
 			$this->load->view('search/advanced_search');
 			$this->load->view('profile/templates/footer');
     	}
+=======
+		$this->load->view('profile/templates/header');
+		$this->load->view('search/advanced_search');
+		$this->load->view('profile/templates/footer');
+>>>>>>> origin/Johanna6
 	}
 
-	public function validate_advanced_search(){ 
+	public function validate_advanced_search(){
+		$index = 0;
+		$array = $this->search_model->adv_search();
+		foreach (range(0, count($array)-1) as $whatever) {
+			$id3 = $array[$index]['id'];
+			$data['privacy'. $index] = $this->account_model->get_privacy_data($id3);
+			$index = $index + 1;
+		}
+
     	$this->form_validation->set_rules('username','Username','trim|xss_clean');
     	$this->form_validation->set_rules('birth_year','birth_year','trim|xss_clean');
     	$this->form_validation->set_rules('gender','Gender','trim|xss_clean');
@@ -28,7 +42,7 @@ class Search extends CI_Controller{
 			$this->advanced_search();
 		}
 		else
-		{	if($data['user_info'] = $this->search_model->adv_search())
+		{	if ($data['user_info'] = $this->search_model->adv_search())
 			{
 				$this->load->view('profile/templates/header');
 				
@@ -36,9 +50,8 @@ class Search extends CI_Controller{
 				//$data['user_info'] = $this->collect_userinfo($row['id']);				
 				//$data1['user_info']		= 	$this->collect_userinfo($id);
 				//$data1['economy_info']	=	$this->collect_economyinfo($id);
-				//Load Views
-				
-				$this->load->view('search/search_result', $data);							
+				//Load Views				
+				$this->load->view('search/search_result', $data);
 				//}
 				
 				$this->load->view('profile/templates/footer'); 
@@ -67,6 +80,7 @@ class Search extends CI_Controller{
 				$data1['economy_info']	=	$this->collect_economyinfo($id);
 				$data1['followers_name']		=	$this->get_followernames();
 				$data1['following_name']		= 	$this->get_followingnames();
+				$data1['privacy']		= 	$this->account_model->get_privacy_data($id);
 				
 				//Load Views
 				$this->load->view('profile/templates/header');
@@ -88,8 +102,14 @@ class Search extends CI_Controller{
 
         foreach ($query->result() as $row):
         	$link = base_url() . 'profile/' . $row->username;
+        	$privacy_data = get_object_vars($this->account_model->get_privacy_data($row->id));
+        	if ($privacy_data['p_city'] == 2) {
             echo "<li><a href='$link'><strong id='search_result_username'>".$row->username."</strong></a>"."<br>".
             "<span class=text-muted small>".$row->city."</span></li>";
+            } elseif ($privacy_data['p_city'] == 1) {
+            echo "<li><a href='$link'><strong id='search_result_username'>".$row->username."</strong></a>"."<br>".
+            "<span class=text-muted small>".' '."</span></li>";
+            }
         endforeach;
     }
     public function autocompleteMessage(){

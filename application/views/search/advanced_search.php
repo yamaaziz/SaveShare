@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <?php $attributes = array('id' => 'search_form', 'class' => 'form-horizontal'); ?>
                 <?php echo form_open('search/validate_advanced_search', $attributes); ?>
                 <!--Field: Total savings-->
