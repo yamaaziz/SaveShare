@@ -12,9 +12,6 @@ class Search extends CI_Controller{
 			$this->load->view('search/advanced_search');
 			$this->load->view('profile/templates/footer');
     	}
-		$this->load->view('profile/templates/header');
-		$this->load->view('search/advanced_search');
-		$this->load->view('profile/templates/footer');
 	}
 
 	public function validate_advanced_search(){
