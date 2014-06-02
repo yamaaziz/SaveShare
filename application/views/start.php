@@ -46,7 +46,7 @@
 				<!--/ Button trigger sign_in_modal -->	
 			</h3>
 			<h3>
-				<a href="#about" id="info_button" class="btn btn-link">About SaveShare</a>
+				<a href="#about" id="info_button" class="btn btn-link">Learn More</a>
 			</h3>         
         </div>
     </div><!--./header-->
