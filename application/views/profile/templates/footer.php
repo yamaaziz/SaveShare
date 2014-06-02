@@ -129,15 +129,15 @@
         console.log(error_log);
 
         ajaxGetConversations();	//Will occure at document load
-    });
+    })
 
     function ajaxGetConversations() {
         $.ajax({
             type: 'POST',
             url: "<?php echo base_url(); ?>private_message/view_conversation",
             complete: function(){
-            	getLastMessage()
-            },
+                appendLastMessage()
+                            },
             success: function(data) {
                 //console.log( data); //spionutskrift ta bort sen
                 $('#conversation_list').append(data);
@@ -145,13 +145,52 @@
             }
         });
 	
-	}
-	function getLastMessage(){
-		$( "div.header a" ).each(function( index )
+    }
+    function getConversationList(){
+        var conversationList = [];
+        $( "div.header a" ).each(function( )
         {
-        	console.log( 'Username' + ": " + $( this ).text() + ' c_id = ' + $(this).data('c_id') + ' user_id = ' + $				(this).data('user_id') );
-		});
-	};
+           conversationList.push($(this).data('c_id'));
+        });
+        return conversationList;
+    };
+    function appendLastMessage(){
+		$( "div.conversation-body p" ).each(function( index )
+        {
+            var conversationList = getConversationList();
+            //console.log(conversationList);
+            for ( var i = 0; i < conversationList.length; i = i + 1 ){
+                if ($(this).attr('id') == conversationList[ i ]){  
+                    $(this).append('testing');
+                    console.log(this); 
+
+
+                    //ajaxGetConversations should call getLastMessage.
+                    //getLastMessage should call appendLastMessage.
+                    //getLastMessage sends the conversationList to the controller
+                    //The controller should call the model in a for loop
+                    //for each element -> send the c_id and user_id to the model and retrieve the latest message
+                    //
+
+                }
+            }
+        });
+    }
+    function getLastMessage(){
+        var conversationList = getConversationList();
+
+        $ajax({
+            type: 'POST',
+            url: "<?php echo base_url(); ?>private_message/view_last_message",
+            data: {conversationList : conversationList},
+            success: function(data) {
+                //appendLastMessage(data)
+            }
+        
+
+
+        });
+    };
 </script>
 <!-- Custom JavaScript for Selecting Username in PM -->
 <script type="text/javascript">

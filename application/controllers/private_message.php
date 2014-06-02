@@ -38,7 +38,7 @@ class Private_message extends CI_Controller{
 								<small class='pull-right text-muted'>
 									<i class='fa fa-clock-o fa-fw'></i>$date_started</small>  
 							</div>
-							<p></p>
+	    					<p id='$c_id'></p>
 						</div>
                       </li>
                      ");
@@ -73,7 +73,7 @@ class Private_message extends CI_Controller{
 								<small class='pull-right text-muted'>
 									<i class='fa fa-clock-o fa-fw'></i> $date_started</small>  
 							</div>
-							<p></p>
+						    <p id='$c_id'></p>
 						</div>
                       </li>
                      ");
@@ -91,7 +91,7 @@ class Private_message extends CI_Controller{
 								<small class='pull-right text-muted'>
 									<i class='fa fa-clock-o fa-fw'></i>$date_started</small>  
 							</div>
-							<p></p>
+						    <p id='$c_id'></p>
 						</div>
                       </li>
                      ");
@@ -105,7 +105,11 @@ class Private_message extends CI_Controller{
 		$data['messages'] = $this->private_message_model->get_message($c_id,$me);
 		$this->load->view('private_message/view_message',$data);
 		
-	}
+    }
+    public function view_last_message(){
+        $conversationList = $this->input->post('conversationList');
+        echo conversationList;
+    }
 	public function send_message(){
 		//echo 'You just clicked SEND';
 		$c_id = $this->input->post('c_id');
