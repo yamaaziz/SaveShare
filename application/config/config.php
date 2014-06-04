@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:8888/test/';
+$config['base_url']	= 'http://localhost:8888/saveshare/';
 /*
 |--------------------------------------------------------------------------
 | Index File
